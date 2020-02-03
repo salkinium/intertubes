@@ -1,0 +1,1613 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>ELVA Signale</title>
+<script type="text/javascript" src="https://www.x3dom.org/release/x3dom-full.js"> </script>
+<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/release/x3dom.css"></link>
+<style>
+x3d
+{
+    border:2px solid black;
+    width: 95%;
+    height: 90%;
+}
+</style>
+<script>
+function toggleMast(button)
+{
+	for (i=0; i < 10; i++) {
+		mast = document.getElementById("transform_mast_links_"+i)
+		mast.setAttribute("translation", mast.getAttribute("translation") == "0 0 0" ? "-30 0 0" : "0 0 0")
+	}
+}
+function toggleMatrix(button)
+{
+	matrix = document.getElementById("switch_matrix_zs3")
+	matrixv = document.getElementById("switch_matrix_zs3v")
+	choice = matrix.getAttribute("whichChoice")
+	matrix.setAttribute("whichChoice", choice == 0 ? -1 : 0)
+	matrixv.setAttribute("whichChoice", choice == 0 ? -1 : 0)
+}
+function toggleMaske(button)
+{
+	maske = document.getElementById("transform_maske")
+	optik = document.getElementById("transform_optik")
+	maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
+	optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
+	var i;
+	for (i=0; i < 3; i++) {
+		maske = document.getElementById("transform_matrix_maske_"+i)
+		optik = document.getElementById("transform_matrix_optik_"+i)
+		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
+		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 30" : "0 0 0")
+	}
+}
+function configure()
+{
+	signal = document.getElementById("input_signaltyp")
+	zs3 = document.getElementById("input_zs3typ")
+	zs3v = document.getElementById("input_zs3vtyp")
+	matrix = document.getElementById("input_matrix")
+	if (signal.value.includes("_h") && !signal.value.includes("_hb")) {
+		zs3v.value = "none"
+		zs3v.disabled = true
+		zs3.disabled = false
+	}
+	else if (signal.value.includes("_s")) {
+		zs3.value = "none"
+		zs3.disabled = true
+		zs3v.value = "none"
+		zs3v.disabled = true
+	}
+	else if (signal.value.includes("_v")) {
+		zs3.value = "none"
+		zs3.disabled = true
+		zs3v.disabled = false
+	}
+	else {
+		zs3.disabled = false
+		zs3v.disabled = false
+	}
+	matrix.disabled = !zs3.value.includes("matrix") && !zs3v.value.includes("matrix")
+	selectSignal(signal.value, zs3.value, zs3v.value)
+}
+
+function selectSignal(signal, zs3, zs3v)
+{
+	maske = document.getElementById("signal_switch_maske")
+	optik = document.getElementById("signal_switch_optik")
+	schirm = document.getElementById("switch_schirm")
+	mast_schild = document.getElementById("switch_mast_schild")
+	zs3_schild = document.getElementById("switch_zs3_schild")
+	zs3v_schild = document.getElementById("switch_zs3v_schild")
+	mast = document.getElementById("switch_mast")
+	zs3_schild_typ = 0
+	zs3v_schild_typ = 0
+
+	mast_schild.setAttribute("whichChoice", -1)
+	if (signal.includes("ks_h") || signal.includes("ks_m")) {
+		schirm.setAttribute("whichChoice", 0)
+		if (zs3.includes("matrix")) {
+			schirm.setAttribute("whichChoice", 1)
+		}
+		mask_index = 0
+		if (signal.includes("ks_ml")) mask_index = 13
+		else if (signal.includes("ks_m")) mask_index = 7
+		if (zs3.includes("schild")) mask_index += 1
+		if (zs3.includes("matrix")) mask_index += 2
+		if (zs3v.includes("schild")) mask_index += 3
+		maske.setAttribute("whichChoice", mask_index)
+		optik.setAttribute("whichChoice", signal.includes("ks_h") ? 0 : 3)
+		mast.setAttribute("whichChoice", zs3v.includes("matrix") ? 1 : 0)
+		mast_schild.setAttribute("whichChoice", signal.includes("ks_h") ? 0 : 1)
+	}
+	else if (signal.includes("ks_v")) {
+		schirm.setAttribute("whichChoice", 2)
+		mask_index = 3
+		if (signal.includes("ks_vw")) mask_index = 5
+		if (zs3v.includes("schild")) mask_index += 1
+		maske.setAttribute("whichChoice", mask_index)
+		optik.setAttribute("whichChoice", signal.includes("ks_vw") ? 2 : 1)
+		mast.setAttribute("whichChoice", zs3v.includes("matrix") ? 1 : 0)
+		mast_schild.setAttribute("whichChoice", signal.includes("ks_vw") ? -1 : 4)
+	}
+	else if (signal.includes("ks_s")) {
+		schirm.setAttribute("whichChoice", 3)
+		maske.setAttribute("whichChoice", 19)
+		optik.setAttribute("whichChoice", 4)
+		mast.setAttribute("whichChoice", -1)
+	}
+	else if (signal.includes("hv_h")) {
+		mast_index = 4
+		if (zs3v.includes("matrix")) mast_index = 3
+		if (signal.includes("_hb")) mast_index += 1
+		if (signal.includes("_k")) mast_index = 2
+		mast.setAttribute("whichChoice", mast_index)
+
+		schirm_index = 4
+		if (zs3.includes("matrix")) schirm_index += 1
+		if (signal.includes("_hb")) schirm_index += 2
+		if (signal.includes("_k")) schirm_index += 4
+		schirm.setAttribute("whichChoice", schirm_index)
+
+		mast_schild_index = 0
+		if (signal.includes("_hb")) mast_schild_index = 2
+		if (signal.includes("_k") && !zs3v.includes("schild")) mast_schild_index = 0
+		mast_schild.setAttribute("whichChoice", mast_schild_index)
+
+		if (signal.includes("_a")) tr = "0 2.34375 0"
+		else tr = "0 0 0"
+		document.getElementById("transform_hv_hauptsperr").setAttribute("translation", tr)
+		document.getElementById("transform_hv_hauptsperr_zs3m").setAttribute("translation", tr)
+		document.getElementById("transform_hv_block").setAttribute("translation", tr)
+		document.getElementById("transform_hv_block_zs3m").setAttribute("translation", tr)
+		document.getElementById("transform_hv_schild_zs3").setAttribute("translation", tr)
+
+		optik_index = 7
+		if (signal.includes("_hs")) optik_index = 5
+		if (signal.includes("_hb")) optik_index = 10
+		if (signal.includes("_a")) optik_index += 1
+		if (signal.includes("_k")) optik_index += 2
+		optik.setAttribute("whichChoice", optik_index)
+
+		mask_index = 26
+		if (signal.includes("_hs")) mask_index = 20
+		if (signal.includes("_hb")) mask_index = 35
+		if (zs3.includes("schild")) mask_index += 1
+		if (zs3.includes("matrix")) mask_index += 2
+		if (signal.includes("_a")) mask_index += 3
+		if (signal.includes("_k")) mask_index += 6
+		maske.setAttribute("whichChoice", mask_index)
+
+		zs3v_schild_typ = 0
+		if (signal.includes("_hb")) zs3v_schild_typ += 1
+		if (!signal.includes("_k")) zs3v_schild_typ += 2
+
+		if (!signal.includes("_k")) zs3_schild_typ = 1
+	}
+	else if (signal.includes("hv_v")) {
+		mast_index = 2
+		if (zs3v.includes("matrix")) mast_index += 1
+		mast.setAttribute("whichChoice", mast_index)
+
+		schirm_index = 12
+		if (signal.includes("_w")) schirm_index += 1
+		if (signal.includes("_k")) schirm_index += 2
+		schirm.setAttribute("whichChoice", schirm_index)
+		mast_schild.setAttribute("whichChoice", -1)
+
+		optik_index = 13
+		if (signal.includes("_a")) optik_index += 1
+		if (signal.includes("_w")) optik_index += 2
+		if (signal.includes("_k")) optik_index += 4
+		optik.setAttribute("whichChoice", optik_index)
+
+		mask_index = 44
+		if (signal.includes("_a")) mask_index += 1
+		if (signal.includes("_w")) mask_index += 2
+		if (signal.includes("_k")) mask_index += 4
+		maske.setAttribute("whichChoice", mask_index)
+
+		zs3v_schild_typ = 2
+		if (!signal.includes("_k")) zs3_schild_typ = 2
+		mast_schild.setAttribute("whichChoice", 4)
+	}
+
+	zs3_schild.setAttribute("whichChoice", zs3.includes("schild") ? zs3_schild_typ : -1)
+	zs3v_schild.setAttribute("whichChoice", zs3v.includes("schild") ? zs3v_schild_typ : -1)
+}
+
+function setColor(element, color)
+{
+	color = {
+		"rot": "1 0 0",
+		"gruen": "0 1 0",
+		"gelb": "1 1 0",
+		"weiss": ".7 .7 .7",
+	}[color]
+	element.getElementsByTagName("Material")[0].setAttribute("emissiveColor", color)
+}
+
+document.onload = function() {
+	configure()
+}
+</script>
+</head>
+<body>
+
+<center>
+<table>
+<tr>
+	<th>Typ</th>
+	<th>Zs3</th>
+	<th>Zs3v</th>
+</tr>
+<tr><td>
+<select id="input_signaltyp" size="8" onchange="configure()">
+  <option value="hv_v_w_a">H/V Vorsignal (1951)</option>
+  <option value="hv_hb_a">H/V Blocksignal (1951)</option>
+  <option value="hv_h_a">H/V Hauptsignal (1951)</option>
+  <option value="hv_hs_a">H/V Haupt-/Sperrsignal (1951)</option>
+  <option value="hv_v_w">H/V Vorsignal</option>
+  <option value="hv_hb">H/V Blocksignal</option>
+  <option value="hv_h">H/V Hauptsignal</option>
+  <option value="hv_hs">H/V Haupt-/Sperrsignal</option>
+  <option value="hv_v_k">H/V Vorsignal (Kompakt)</option>
+  <option value="hv_hb_k" selected>H/V Blocksignal (Kompakt)</option>
+  <option value="hv_h_k">H/V Hauptsignal (Kompakt)</option>
+  <option value="ks_v">Ks-Vorsignal</option>
+  <option value="ks_vw">Ks-Vorsignal-Wiederholer</option>
+  <option value="ks_m">Ks-Mehrabschnittsignal</option>
+  <option value="ks_ml">Ks-Mehrabschnittsignal (lang)</option>
+  <option value="ks_h">Ks-Hauptsignal</option>
+  <option value="ks_s">Ks-Sperrsignal</option>
+</select>
+</td><td>
+<select id="input_zs3typ" size="3" onchange="configure()">
+  <option value="none">None</option>
+  <option value="schild" selected>Zs3-Schild</option>
+  <option value="matrix">Zs3-Matrix</option>
+</select>
+</td><td>
+<select id="input_zs3vtyp" size="3" onchange="configure()" disabled>
+  <option value="none">None</option>
+  <option value="schild" selected>Zs3v-Schild</option>
+  <option value="matrix">Zs3v-Matrix</option>
+</select>
+</td><td>
+<button onclick="toggleMast(this)">Mast auf/zu</button></br>
+<button id="input_matrix" disabled onclick="toggleMatrix(this)">LED-Matrix unsichtbar</button></br>
+<button onclick="toggleMaske(this)">Maske auf/zu</button>
+</td>
+<td>
+Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
+Notiz: Die LED-Matrix verlangsamt das Rendering stark!
+</td>
+</tr>
+</table>
+
+
+<x3d>
+<scene>
+
+<!-- bottom electronics -->
+<!-- <Viewpoint position="16.48565 -3.37102 49.10453" orientation="0.66321 0.74743 0.03876 0.55760"></Viewpoint> -->
+<!-- whole mast -->
+<Viewpoint position="218.20319 136.05609 100.05485" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
+<!-- top shields -->
+<!-- <Viewpoint position="105.08279 142.67345 76.42526" orientation="0.04031 0.98750 0.15237 0.90551"></Viewpoint> -->
+<!-- alignment tool view -->
+<!-- <Viewpoint position="18.05524 88.56182 91.86890" orientation="0.01694 0.91142 0.41112 0.26370"></Viewpoint> -->
+<!-- <Viewpoint position="73.14040 134.75195 4.92653" orientation="-0.04128 0.99909 -0.01058 1.50728"></Viewpoint> -->
+<!-- <Viewpoint position="-33.27651 109.21189 9.59937" orientation="0.00715 -0.99530 -0.09656 1.48178"></Viewpoint> -->
+<!-- <Viewpoint position="64.24932 20.74279 24.41692" orientation="-0.12430 0.98930 0.07645 1.18352"></Viewpoint> -->
+<!-- Sperrsignal -->
+<!-- <Viewpoint position="44.86801 19.58215 15.61126" orientation="-0.21949 0.96311 0.15569 1.20048"></Viewpoint> -->
+
+<!-- <transform translation="-6.25 80 0">
+<transform rotation="1 0 0 1.5708" translation="0 5.8 -1.6">
+<inline url="alignment_mast_x.x3d"></inline>
+</transform>
+<transform rotation="0 1 0 3.1416">
+<transform rotation="1 0 0 -1.5708" translation="0 -5.8 1.6">
+<inline url="alignment_mast_x.x3d"></inline>
+</transform>
+</transform>
+<transform rotation="0 1 0 3.1416" translation="0 0 -2.4">
+<inline url="alignment_mast_x_2.x3d"></inline>
+</transform>
+<transform translation="0 0 -9">
+<inline url="alignment_mast_x_2.x3d"></inline>
+</transform>
+</transform> -->
+
+
+<switch whichChoice="0" id="switch_mast">
+	<!-- Ks Mast ohne Zs3v -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_ks_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_ks_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_0">
+				<inline url="mast_ks_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Ks Mast mit Zs3v -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_ks_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_ks_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_1">
+				<inline url="mast_ks_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="12.9 93.75 0">
+			<inline url="schirm_matrix_logic.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="14.1 93.75 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3v">
+			<transform rotation="0 1 0 1.5708" translation="15.3 93.75 0">
+				<transform rotation="0 0 1 3.1416">
+					<inline url="schirm_ks_matrix_leds_1005.x3d"></inline>
+				</transform>
+			</transform>
+		</switch>
+
+		<transform rotation="0 1 0 1.5708" translation="12.5 93.75 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_0">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="17.15 93.75 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_0">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast ohne Zs1 -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_2">
+				<inline url="mast_hv_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs3v -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_3">
+				<inline url="mast_hv_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="12.9 93.75 0">
+			<inline url="schirm_matrix_logic.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="14.1 93.75 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3v">
+			<transform rotation="0 1 0 1.5708" translation="15.3 93.75 0">
+				<transform rotation="0 0 1 3.1416">
+					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+				</transform>
+			</transform>
+		</switch>
+
+		<transform rotation="0 1 0 1.5708" translation="12.5 93.75 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_0">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="17.15 93.75 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_0">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs1 -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs1.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs1.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_4">
+				<inline url="mast_hv_links_zs1.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="8.2125 91.6875 0">
+			<inline url="schirm_hv_zs1.x3d"></inline>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs1 und Vorsignal -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs1_block.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs1_block.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_5">
+				<inline url="mast_hv_links_zs1_block.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="8.2125 91.6875 0">
+			<inline url="schirm_hv_zs1.x3d"></inline>
+		</transform>
+	</group>
+</switch>
+
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik">
+	<switch whichChoice="0" id="signal_switch_optik">
+		<!-- Ks-Hauptsignal -->
+		<transform translation="0 107.03125 1.5">
+			<transform translation="0 28.125 0">
+				<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+			<transform translation="0 20.3125 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="0 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="-3.125 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="3.125 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="0 7.8125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="-6.25 7.8125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+		</transform>
+		<!-- Ks-Vorsignal -->
+		<transform translation="0 107.03125 1.5">
+			<transform translation="-4.6875 26.5625 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="-4.6875 17.1875 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="4.6875 17.1875 0">
+				<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+		</transform>
+		<!-- Ks-Vorsignal-Wiederholer -->
+		<transform translation="0 107.03125 1.5">
+			<transform translation="-4.6875 17.1875 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="4.6875 17.1875 0">
+				<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="-4.6875 4.6875 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+		</transform>
+		<!-- Ks-Mehrabschnittsignal -->
+		<transform translation="0 107.03125 1.5">
+			<transform translation="-4.6875 34.375 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="0 28.125 0">
+				<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+			<transform translation="-4.6875 20.3125 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="4.6875 20.3125 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="0 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="-3.125 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="3.125 13.28125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="0 7.8125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="-6.25 7.8125 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+		</transform>
+		<!-- Ks-Sperrsignal -->
+		<group>
+			<transform translation="3.125 15.625 -1.6">
+				<inline url="optik_ks_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="-3.125 15.625 -1.6">
+				<inline url="optik_ks_sperr_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+			<transform translation="-3.125 9.375 -1.6">
+				<inline url="optik_ks_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+		</group>
+		<!-- H/V Haupt-/Sperrsignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-4.6875 36.71875 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-4.6875 28.28125 0">
+					<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="4.6875 28.28125 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="-4.6875 5.46875 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+
+				<transform translation="-4.375 20.78125 0">
+					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="4.375 20.78125 0">
+					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-4.375 12.65625 0">
+					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Haupt-/Sperrsignal 1951 -->
+		<group>
+			<transform translation="0 109.375 1.5">
+				<transform translation="-2.625 36.71875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="2.625 36.71875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-4.6875 28.28125 0">
+					<inline url="optik_hv_gross_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="4.6875 28.28125 0">
+					<inline url="optik_hv_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="0 5.46875 0">
+					<inline url="optik_hv_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+
+				<transform translation="-4.375 12.65625 0">
+					<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="4.375 20.78125 0">
+					<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-2.625 36.71875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 36.71875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-2.625 5.46875 0">
+					<inline url="optik_hv_doppel_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 5.46875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal 1951-->
+		<group>
+			<transform translation="0 109.375 1.5">
+				<transform translation="-2.625 36.71875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 36.71875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-2.625 5.46875 0">
+					<inline url="optik_hv_doppel_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 5.46875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal Kompakt -->
+		<transform translation="0 107.03125 1.5">
+			<transform translation="-4.6875 31.25 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="-4.6875 25 0">
+				<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+			<transform translation="4.6875 25 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+
+			<transform translation="-3.125 17.96875 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="0 17.96875 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="3.125 17.96875 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+
+			<transform translation="-6.25 12.5 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="0 12.5 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="6.25 12.5 0">
+				<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+
+			<transform translation="-4.6875 6.25 0">
+				<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+		</transform>
+		<!-- H/V Blocksignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-2.625 5.46875 0">
+					<inline url="optik_hv_doppel_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 5.46875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Vorsignal -->
+			<transform translation="0 57.1875 12.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-10.4375 22.5 0">
+					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Blocksignal 1951-->
+		<group>
+			<transform translation="0 109.375 1.5">
+				<transform translation="-2.625 5.46875 0">
+					<inline url="optik_hv_doppel_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="2.625 5.46875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Zs1 -->
+			<transform translation="0 91.6875 7.8125">
+				<transform translation="0 8.3125 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_hv_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Vorsignal -->
+			<transform translation="0 57.1875 12.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-10.4375 22.5 0">
+					<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Blocksignal Kompakt -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-4.6875 31.25 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-4.6875 25 0">
+					<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="4.6875 25 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+
+				<transform translation="-3.125 17.96875 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="0 17.96875 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 17.96875 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+
+				<transform translation="-6.25 12.5 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="0 12.5 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="6.25 12.5 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+
+				<transform translation="-4.6875 6.25 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+
+			<!-- Vorsignal -->
+			<transform translation="0 71.875 1.5">
+				<transform translation="-6.25 25 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="6.25 25 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="6.25 18.75 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-6.25 12.5 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-6.25 6.25 0">
+					<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal 1951 -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal mit Wiederholer -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-10.4375 22.5 0">
+					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal 1951 mit Wiederholer -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_hv_doppel_a_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_hv_doppel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-10.4375 22.5 0">
+					<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal Kompakt -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<transform translation="-6.25 25 0">
+					<inline url="optik_ks_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="6.25 25 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="6.25 18.75 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-6.25 12.5 0">
+					<inline url="optik_ks_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-6.25 6.25 0">
+					<inline url="optik_ks_gross_s.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</transform>
+		</group>
+	</switch>
+</transform>
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske">
+	<switch whichChoice="0" id="signal_switch_maske">
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_haupt_r_v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_haupt_r_v_3.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_haupt_r_v_3m.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_vor_b.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_vor_b_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_vor_w.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_vor_w_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_3.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_3m.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_3_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_3m_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l_3.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l_3m.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l_3_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_ks_mehrabschnitt_r_v_b_l_3m_3v.x3d"></inline>
+		</transform>
+		<transform translation="0 6.875 -1.6">
+			<inline url="maske_ks_sperr_w.x3d"></inline>
+		</transform>
+		<!-- H/V Haupt-/Sperrsignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_l.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_l_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_l_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Haupt-/Sperrsignal 1951 -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_a.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_a_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_hauptsperr_k_a_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal 1951 -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt_a.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt_a_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_haupt_a_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Hauptsignal Kompakt -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_k_haupt_r_k_1.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_k_haupt_r_k_1_3.x3d"></inline>
+		</transform>
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_k_haupt_r_k_1_3m.x3d"></inline>
+		</transform>
+		<!-- H/V Blocksignal -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_r_l.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Blocksignal 1951 -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block_a.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w_a.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block_a_3.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w_a.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_block_a_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 91.6875 7.8125">
+				<inline url="maske_hv_zs1_d.x3d"></inline>
+			</transform>
+			<transform translation="0 57.1875 12.5">
+				<inline url="maske_hv_vor_w_a.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Blocksignal Kompakt -->
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_k_haupt_r_k_1.x3d"></inline>
+			</transform>
+			<transform translation="0 71.875 1.5">
+				<inline url="maske_hv_k_vor_b.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_k_haupt_r_k_1_3.x3d"></inline>
+			</transform>
+			<transform translation="0 71.875 1.5">
+				<inline url="maske_hv_k_vor_b.x3d"></inline>
+			</transform>
+		</group>
+		<group>
+			<transform translation="0 107.03125 1.5">
+				<inline url="maske_hv_k_haupt_r_k_1_3m.x3d"></inline>
+			</transform>
+			<transform translation="0 71.875 1.5">
+				<inline url="maske_hv_k_vor_b.x3d"></inline>
+			</transform>
+		</group>
+		<!-- H/V Vorsignal -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_vor.x3d"></inline>
+		</transform>
+		<!-- H/V Vorsignal 1951 -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_vor_a.x3d"></inline>
+		</transform>
+		<!-- H/V Vorsignal mit Wiederholer -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_vor_w.x3d"></inline>
+		</transform>
+		<!-- H/V Vorsignal 1951 mit Wiederholer -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_vor_w_a.x3d"></inline>
+		</transform>
+		<!-- H/V Vorsignal Kompakt -->
+		<transform translation="0 107.03125 1.5">
+			<inline url="maske_hv_k_vor_b.x3d"></inline>
+		</transform>
+	</switch>
+</transform>
+
+<switch whichChoice="-1" id="switch_mast_schild">
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="0.4 40.625 0">
+			<inline url="mast_schild.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0.9 40.625 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_haupt.png"></ImageTexture>
+				</appearance>
+				<plane size="3.3,46.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="0.4 40.625 0">
+			<inline url="mast_schild.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0.9 40.625 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_mehrabschnitt.png"></ImageTexture>
+				</appearance>
+				<plane size="3.3,46.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="0.4 26.5625 0">
+			<inline url="mast_schild.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0.9 26.5625 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_haupt.png"></ImageTexture>
+				</appearance>
+				<plane size="3.3,46.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<transform rotation="0 1 0 1.5708" translation="0.9 51.5625 0">
+		<shape>
+			<appearance>
+				<ImageTexture url="druck_schild_haupt_klein.png"></ImageTexture>
+			</appearance>
+			<plane size="3.2,21.875"></plane>
+		</shape>
+	</transform>
+	<group>
+		<transform rotation="0 1 0 -1.5708" translation="0.4 40.625 0">
+			<inline url="mast_tafel_vor.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0.9 40.625 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_tafel_vor.png"></ImageTexture>
+				</appearance>
+				<plane size="12.8125,18.75"></plane>
+			</shape>
+		</transform>
+	</group>
+</switch>
+
+<switch whichChoice="0" id="switch_schirm">
+	<!-- Ks-Hauptsignal -->
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_ks_haupt.x3d"></inline>
+	</transform>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_ks_haupt_zs3m.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="3.1 159.375 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3">
+			<transform rotation="0 1 0 1.5708" translation="4.3 159.375 0">
+				<transform rotation="0 0 1 3.1416">
+					<!-- <inline url="schirm_ks_matrix_leds_0603.x3d"></inline> -->
+					<inline url="schirm_ks_matrix_leds_1005.x3d"></inline>
+				</transform>
+			</transform>
+		</switch>
+		<transform rotation="0 1 0 1.5708" translation="1.5 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_1">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="6.15 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_1">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+
+	<!-- Ks-Vorsignal -->
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_ks_vor.x3d"></inline>
+	</transform>
+
+	<!-- Ks-Sperrsignal -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-1.2 0 0">
+			<inline url="schirm_ks_sperr.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 -1.5708" translation="-1.625 12.8125 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_ks_sperr.png"></ImageTexture>
+				</appearance>
+				<plane size="12.08125,10.675"></plane>
+			</shape>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-0.775 12.225 -8.153125">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_sperr.png"></ImageTexture>
+				</appearance>
+				<plane size="2.625,9.5"></plane>
+			</shape>
+		</transform>
+	</group>
+
+	<!-- H/V Haupt-/Sperrsignal -->
+	<transform translation="0 0 0" id="transform_hv_hauptsperr">
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_hauptsperr.x3d"></inline>
+		</transform>
+	</transform>
+
+	<transform translation="0 0 0" id="transform_hv_hauptsperr_zs3m">
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_hauptsperr_zs3m.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="3.1 164.84375 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3">
+			<transform rotation="0 1 0 1.5708" translation="4.3 164.84375 0">
+				<transform rotation="0 0 1 3.1416">
+					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+				</transform>
+			</transform>
+		</switch>
+		<transform rotation="0 1 0 1.5708" translation="1.5 164.84375 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_2">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="6.15 164.84375 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_2">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</transform>
+
+	<!-- H/V Blocksignal -->
+	<group>
+		<transform translation="0 0 0" id="transform_hv_block">
+			<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+				<inline url="schirm_hv_hauptsperr.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="12.9 57.1875 0">
+			<inline url="schirm_hv_vor_w.x3d"></inline>
+		</transform>
+	</group>
+	<group>
+		<transform translation="0 0 0" id="transform_hv_block_zs3m">
+			<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+				<inline url="schirm_hv_hauptsperr_zs3m.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="12.9 57.1875 0">
+			<inline url="schirm_hv_vor_w.x3d"></inline>
+		</transform>
+	</group>
+
+	<!-- H/V Hauptsignal (Kompakt) -->
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_hv_k_haupt.x3d"></inline>
+	</transform>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_k_haupt_zs3m.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="3.1 159.375 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3">
+			<transform rotation="0 1 0 1.5708" translation="4.3 159.375 0">
+				<transform rotation="0 0 1 3.1416">
+					<!-- <inline url="schirm_ks_matrix_leds_1005.x3d"></inline> -->
+				</transform>
+			</transform>
+		</switch>
+		<transform rotation="0 1 0 1.5708" translation="1.5 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_1">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="6.15 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_1">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+
+	<!-- H/V Blocksignal (Kompakt) -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_k_haupt.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.9 71.875 0">
+			<inline url="schirm_hv_k_vor.x3d"></inline>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_k_haupt_zs3m.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="3.1 159.375 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_zs3">
+			<transform rotation="0 1 0 1.5708" translation="4.3 159.375 0">
+				<transform rotation="0 0 1 3.1416">
+					<!-- <inline url="schirm_ks_matrix_leds_1005.x3d"></inline> -->
+				</transform>
+			</transform>
+		</switch>
+		<transform rotation="0 1 0 1.5708" translation="1.5 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_1">
+				<inline url="maske_ks_matrix_1005w.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="6.15 159.375 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_1">
+				<inline url="optik_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.9 71.875 0">
+			<inline url="schirm_hv_k_vor.x3d"></inline>
+		</transform>
+	</group>
+
+	<!-- H/V Vorsignal -->
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_hv_vor.x3d"></inline>
+	</transform>
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_hv_vor_w.x3d"></inline>
+	</transform>
+
+	<!-- H/V Vorsignal (Kompakt) -->
+	<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+		<inline url="schirm_hv_k_vor.x3d"></inline>
+	</transform>
+</switch>
+
+<switch whichChoice="-1" id="switch_zs3v_schild">
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_ks_schild_zs3.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="2.4 92.1875 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3v.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 71.875 0">
+			<inline url="schirm_ks_schild_zs3.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="2.4 57.03125 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3v.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 107.03125 0">
+			<inline url="schirm_hv_schild_zs3v.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="2.4 92.1875 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3v.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="12.9 57.1875 0">
+			<inline url="schirm_hv_schild_zs3v.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="13.4 42.34375 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3v.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</group>
+</switch>
+
+<switch whichChoice="-1" id="switch_zs3_schild">
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="1.9 146.09375 0">
+			<transform rotation="0 0 1 3.1416">
+				<inline url="schirm_ks_schild_zs3.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="2.4 160.9375 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</group>
+	<transform translation="0 0 0" id="transform_hv_schild_zs3">
+		<transform rotation="0 1 0 1.5708" translation="1.9 151.5625 0">
+			<inline url="schirm_hv_schild_zs3.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="2.4 166.40625 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_zs3.png"></ImageTexture>
+				</appearance>
+				<plane size="25.625,21.875"></plane>
+			</shape>
+		</transform>
+	</transform>
+</switch>
+</group>
+
+
+</scene>
+</x3d>
+</center>
+
+</body>
+</html>
