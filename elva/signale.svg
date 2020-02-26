@@ -2,8 +2,8 @@
 <svg version="1.1"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	width="1150" height="31260"
-	viewBox="-80 -31260 1150 31260">
+	width="1150" height="35949"
+	viewBox="-80 -35949 1150 35949">
 
 	<defs>
 
@@ -263,10 +263,10 @@
 			<use href="#lichtraumprofil-h0-halb" transform="scale(-1,1)"/>
 		</g>
 		<g id="lichtraumprofil-elva">
-			<use href="#lichtraumprofil-h0-halb" transform="translate( 960,-50) scale( 32,32)"/>
-			<use href="#lichtraumprofil-h0-halb" transform="translate(-960,-50) scale(-32,32)"/>
-			<use href="#lichtraumprofil-ebo-haupt-halb" transform="translate( 960,-50) scale( 0.367816092,0.367816092)"/>
-			<use href="#lichtraumprofil-ebo-haupt-halb" transform="translate(-960,-50) scale(-0.367816092,0.367816092)"/>
+			<use href="#lichtraumprofil-h0-halb" transform="translate( 960,-160) scale( 32,32)"/>
+			<use href="#lichtraumprofil-h0-halb" transform="translate(-960,-160) scale(-32,32)"/>
+			<use href="#lichtraumprofil-ebo-haupt-halb" transform="translate( 960,-160) scale( 0.367816092,0.367816092)"/>
+			<use href="#lichtraumprofil-ebo-haupt-halb" transform="translate(-960,-160) scale(-0.367816092,0.367816092)"/>
 			<path fill="none" stroke="black" stroke-width="5" d="
 				M -320,    0
 				L -320,-1900
@@ -308,11 +308,6 @@
 				Z
 				"/>
 		</g>
-		<g id="vorsignal-tafel-bremsweg-klein">
-			<use href="#mast-schmal-2" y="-550"/>
-			<use href="#vorsignal-tafel-klein"/>
-			<use href="#vorsignal-bremsweg-klein" y="-535"/>
-		</g>
 
 		<g id="fs-vorsignal-entfernung-basis">
 			<rect x="-150" y="-475" width="300" height="950" fill="white" rx="10" stroke="black" stroke-width="16"/>
@@ -327,32 +322,27 @@
 				"/>
 		</g>
 
-		<g id="fs-vorsignal-entfernung-1">
-			<use href="#mast-schmal-1"/>
+		<g id="fs-vorsignal-entfernung-schild-1">
 			<use href="#fs-vorsignal-entfernung-basis"/>
 			<use href="#fs-vorsignal-entfernung-streifen"/>
 		</g>
-		<g id="fs-vorsignal-entfernung-2">
-			<use href="#mast-schmal-1"/>
+		<g id="fs-vorsignal-entfernung-schild-2">
 			<use href="#fs-vorsignal-entfernung-basis"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="-100"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="100"/>
 		</g>
-		<g id="fs-vorsignal-entfernung-3">
-			<use href="#mast-schmal-1"/>
-			<use href="#fs-vorsignal-entfernung-1"/>
+		<g id="fs-vorsignal-entfernung-schild-3">
+			<use href="#fs-vorsignal-entfernung-schild-1"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="-200"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="200"/>
 		</g>
-		<g id="fs-vorsignal-entfernung-4">
-			<use href="#mast-schmal-1"/>
-			<use href="#fs-vorsignal-entfernung-2"/>
+		<g id="fs-vorsignal-entfernung-schild-4">
+			<use href="#fs-vorsignal-entfernung-schild-2"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="-300"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="300"/>
 		</g>
-		<g id="fs-vorsignal-entfernung-5">
-			<use href="#mast-schmal-1"/>
-			<use href="#fs-vorsignal-entfernung-3"/>
+		<g id="fs-vorsignal-entfernung-schild-5">
+			<use href="#fs-vorsignal-entfernung-schild-3"/>
 			<clipPath id="fs-vorsignal-entfernung-5-clip-oben">
 				<rect x="-150" y="-75" width="300" height="300"/>
 			</clipPath>
@@ -363,11 +353,6 @@
 				clip-path="url(#fs-vorsignal-entfernung-5-clip-oben)"/>
 			<use href="#fs-vorsignal-entfernung-streifen" y="400"
 				clip-path="url(#fs-vorsignal-entfernung-5-clip-unten)"/>
-		</g>
-		<g id="fs-vorsignal-entfernung-bremsweg-3">
-			<use href="#mast-schmal-1" y="-700"/>
-			<use href="#fs-vorsignal-entfernung-3"/>
-			<use href="#vorsignal-bremsweg-klein" y="-710"/>
 		</g>
 
 		<!-- Geschwindigkeitsanzeiger Schild -->
@@ -613,60 +598,60 @@
 		<!-- Kombinations-Signale -->
 		<g id="ks-mehrabschnittssignal">
 			<use href="#ks-schirm-gross"/>
-			<use href="#ks-lampe-gross" id="halt"          fill="red"/>
-			<use href="#ks-lampe-gross" id="fahrt"         fill="mediumseagreen" x="-150" y="250"/>
-			<use href="#ks-lampe-gross" id="halt-erwarten" fill="gold"           x="150" y="250"/>
-		</g>
-		<g id="ks-mehrabschnittssignal-b">
-			<use href="#ks-lampe-klein" id="bremsweg" fill="white" x="-150" y="-200"/>
-		</g>
-		<g id="ks-mehrabschnittssignal-r">
-			<use href="#ks-lampe-klein" id="schutz-1" fill="white" y="475"/>
-			<use href="#ks-lampe-klein" id="schutz-2" fill="white" x="-200" y="650"/>
-		</g>
-		<g id="ks-mehrabschnittssignal-v">
-			<use href="#ks-lampe-klein" id="vorsicht-1" fill="gold" x="100" y="475"/>
-			<use href="#ks-lampe-klein" id="vorsicht-2" fill="gold" x="-100" y="475"/>
-			<use href="#ks-lampe-klein" id="vorsicht-3" fill="gold" y="650"/>
-		</g>
-		<g id="ks-mehrabschnittssignal-w">
-			<use href="#ks-lampe-klein" id="wiederholer" fill="white" x="-200" y="650"/>
+			<use href="#ks-lampe-gross" fill="red"/>
+			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150" y="250"/>
+			<use href="#ks-lampe-gross" fill="gold"           x="150" y="250"/>
 		</g>
 		<g id="ks-mehrabschnittssignal-k">
-			<use href="#ks-lampe-klein" id="vorsicht-3" fill="white" y="650"/>
+			<use href="#ks-lampe-klein" fill="white" x="-150" y="-200"/>
 		</g>
-		<g id="ks-mehrabschnittssignal-kl">
-			<use href="#ks-lampe-klein" id="ersatz"    fill="white" x="-200" y="475"/>
+		<g id="ks-mehrabschnittssignal-zs1">
+			<use href="#ks-lampe-klein" fill="white" y="650"/>
+		</g>
+		<g id="ks-mehrabschnittssignal-r">
+			<use href="#ks-lampe-klein" fill="white" y="475"/>
+			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
+		</g>
+		<g id="ks-mehrabschnittssignal-v">
+			<use href="#ks-lampe-klein" fill="gold" x="100" y="475"/>
+			<use href="#ks-lampe-klein" fill="gold" x="-100" y="475"/>
+			<use href="#ks-lampe-klein" fill="gold" y="650"/>
+		</g>
+		<g id="ks-mehrabschnittssignal-w">
+			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
 		</g>
 
 		<g id="ks-hauptsignal">
 			<use href="#ks-schirm-gross"/>
-			<use href="#ks-lampe-gross" id="halt"  fill="red"/>
-			<use href="#ks-lampe-gross" id="fahrt" fill="mediumseagreen" y="250"/>
+			<use href="#ks-lampe-gross" fill="red"/>
+			<use href="#ks-lampe-gross" fill="mediumseagreen" y="250"/>
 		</g>
 		<g id="ks-hauptsignal-r">
-			<use href="#ks-lampe-klein" id="schutz-1" fill="white" y="475"/>
-			<use href="#ks-lampe-klein" id="schutz-2" fill="white" x="-200" y="650"/>
+			<use href="#ks-lampe-klein" fill="white" y="475"/>
+			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
 		</g>
 		<g id="ks-hauptsignal-v">
-			<use href="#ks-lampe-klein" id="vorsicht-1" fill="gold" x="100" y="475"/>
-			<use href="#ks-lampe-klein" id="vorsicht-2" fill="gold" x="-100" y="475"/>
-			<use href="#ks-lampe-klein" id="vorsicht-3" fill="gold" y="650"/>
+			<use href="#ks-lampe-klein" fill="gold" x="100" y="475"/>
+			<use href="#ks-lampe-klein" fill="gold" x="-100" y="475"/>
+			<use href="#ks-lampe-klein" fill="gold" y="650"/>
 		</g>
 		<g id="ks-hauptsignal-k">
-			<use href="#ks-lampe-klein" id="vorsicht-3" fill="white" y="650"/>
+			<use href="#ks-lampe-klein" fill="white" x="-150" y="-200"/>
+		</g>
+		<g id="ks-hauptsignal-zs1">
+			<use href="#ks-lampe-klein" fill="white" y="650"/>
 		</g>
 
 		<g id="ks-vorsignal">
 			<use href="#ks-schirm-klein"/>
-			<use href="#ks-lampe-gross" id="fahrt"         fill="mediumseagreen" x="-150"/>
-			<use href="#ks-lampe-gross" id="halt-erwarten" fill="gold"           x="150"/>
+			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150"/>
+			<use href="#ks-lampe-gross" fill="gold"           x="150"/>
 		</g>
 		<g id="ks-vorsignal-w">
-			<use href="#ks-lampe-klein" id="wiederholer" fill="white" x="-150" y="400"/>
+			<use href="#ks-lampe-klein" fill="white" x="-150" y="400"/>
 		</g>
 		<g id="ks-vorsignal-b">
-			<use href="#ks-lampe-klein" id="bremsweg" fill="white" x="-150" y="-300"/>
+			<use href="#ks-lampe-klein" fill="white" x="-150" y="-300"/>
 		</g>
 
 		<g id="ks-sperrsignal-klein">
@@ -865,22 +850,22 @@
 		</g>
 
 		<g id="hv-schild-hauptsignal">
-			<rect x="-53" y="-750" width="106" height="1500" fill="white" stroke="black" stroke-width="4" rx="8"/>
-			<rect x="-53" y="-375" width="106" height="750" fill="red" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="-750" width="100" height="1500" fill="white" stroke="black" stroke-width="4" rx="8"/>
+			<rect x="-50" y="-375" width="100" height="750" fill="red" stroke="black" stroke-width="4"/>
 		</g>
 		<g id="hv-schild-hauptsignal-klein">
-			<rect x="-53" y="-350" width="106" height="700" fill="white" stroke="black" stroke-width="4" rx="8"/>
-			<rect x="-53" y="-175" width="106" height="350" fill="red" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="-350" width="100" height="700" fill="white" stroke="black" stroke-width="4" rx="8"/>
+			<rect x="-50" y="-175" width="100" height="350" fill="red" stroke="black" stroke-width="4"/>
 		</g>
 		<g id="hv-schild-selbstblock">
-			<rect x="-53" y="-750" width="106" height="1500" fill="white" stroke="black" stroke-width="4" rx="8"/>
-			<rect x="-53" y="-450" width="106" height="300"  fill="#fcb931" stroke="black" stroke-width="4"/>
-			<rect x="-53" y="150" width="106" height="300"  fill="#fcb931" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="-750" width="100" height="1500" fill="white" stroke="black" stroke-width="4" rx="8"/>
+			<rect x="-50" y="-450" width="100" height="300"  fill="#fcb931" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="150" width="100" height="300"  fill="#fcb931" stroke="black" stroke-width="4"/>
 		</g>
 		<g id="hv-schild-selbstblock-klein">
-			<rect x="-53" y="-350" width="106" height="700" fill="white" stroke="black" stroke-width="4" rx="8"/>
-			<rect x="-53" y="-210" width="106" height="140"  fill="#fcb931" stroke="black" stroke-width="4"/>
-			<rect x="-53" y="70" width="106" height="140"  fill="#fcb931" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="-350" width="100" height="700" fill="white" stroke="black" stroke-width="4" rx="8"/>
+			<rect x="-50" y="-210" width="100" height="140"  fill="#fcb931" stroke="black" stroke-width="4"/>
+			<rect x="-50" y="70" width="100" height="140"  fill="#fcb931" stroke="black" stroke-width="4"/>
 		</g>
 		<g id="hv-schild-sperrsignal">
 			<rect x="-40" y="-150" width="80" height="300" fill="white" stroke="black" stroke-width="4" rx="8"/>
@@ -1154,8 +1139,8 @@
 		<!-- Formsignal-Komponenten -->
 		<g id="fs-mast" stroke="black">
 			<path stroke-linejoin="round" stroke-width="6" fill="#b7c8b9" d="
-				M  125,5350
-				L -125,5350
+				M  125,5600
+				L -125,5600
 				L  -90,-300
 				L    0,-390
 				L   90,-300
@@ -1345,19 +1330,19 @@
 		</g> -->
 		<g id="fs-fluegel-vor" stroke="black">
 			<path stroke-width="10" stroke-linejoin="round" fill="white" d="
-				M -120,-670
-				L  120,-670
-				L  120, 520
-				L    0, 640
-				L -120, 520
+				M -120,-710
+				L  120,-710
+				L  120, 560
+				L    0, 680
+				L -120, 560
 				Z
 				"/>
 			<path stroke-width="30" fill="#fcb931" d="
-				M  -65,-615
-				L   65,-615
-				L   65, 502.5
-				L    0, 567.5
-				L  -65, 502.5
+				M  -65,-655
+				L   65,-655
+				L   65, 542.5
+				L    0, 607.5
+				L  -65, 542.5
 				Z
 				"/>
 			<circle cx="0" cy="0" r="20" stroke-width="15" fill-opacity="0"/>
@@ -1389,7 +1374,6 @@
 				"/>
 			<rect x="-275" y="-300" width="550" height="620" fill="#4c4c4c" stroke="black" stroke-width="10" rx="10"/>
 			<circle cx="0" cy="0" r="230" stroke-width="4" fill="white"/>
-			<use href="#fs-schutz-rueckstrahler" y="370"/>
 		</g>
 		<g id="fs-schutz-balken-klein" stroke="black">
 			<rect x="-250" y="-90" width="500" height="180" fill="#4c4c4c" stroke-width="6" rx="10"/>
@@ -1409,24 +1393,37 @@
 
 		<g id="fs-fluegel-klein-halt">
 			<use href="#fs-blende-1" x="185" y="1800"/>
-			<use href="#fs-fluegel-klein" y="1600"/>
+			<use href="#fs-fluegel-klein" y="1650"/>
 		</g>
 		<g id="fs-fluegel-klein-langsamfahrt">
 			<use href="#fs-blende-1" transform="translate(185,1800) rotate(-70)"/>
 			<circle cx="410" cy="1800" r="80" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
-			<use href="#fs-fluegel-klein" transform="translate(0,1600) rotate(45)"/>
+			<use href="#fs-fluegel-klein" transform="translate(0,1650) rotate(45)"/>
 		</g>
 
-		<g id="fs-schild-hauptsignal-2" stroke-width="4" stroke="black">
-			<rect x="-87"  y="200" width="175" height="1000" fill="red"/>
-			<rect x="-87" y="1200" width="175" height="250"  fill="white"/>
-			<rect x="-87" y="2450" width="175" height="2700" fill="red"/>
-			<rect x="-87" y="3200" width="175" height="1000" fill="white"/>
-		</g>
 		<g id="fs-schild-hauptsignal-1" stroke-width="4" stroke="black">
-			<rect x="-87"  y="200" width="175" height="4950" fill="red"/>
-			<rect x="-87" y="1200" width="175" height="1000" fill="white"/>
-			<rect x="-87" y="3200" width="175" height="1000" fill="white"/>
+			<rect x="-87"  y="245" width="175" height="5030" fill="red"/>
+			<rect x="-87" y="1255" width="175" height="1010" fill="white"/>
+			<rect x="-87" y="3265" width="175" height="1010" fill="white"/>
+		</g>
+		<g id="fs-schild-hauptsignal-1-zs1" stroke-width="4" stroke="black">
+			<rect x="-87"  y="245" width="175" height="1010" fill="red"/>
+			<rect x="-87" y="1255" width="175" height="720"  fill="white"/>
+			<rect x="-87" y="2585" width="175" height="2690" fill="red"/>
+			<rect x="-87" y="3265" width="175" height="1010" fill="white"/>
+		</g>
+		<g id="fs-schild-hauptsignal-2" stroke-width="4" stroke="black">
+			<rect x="-87"  y="245" width="175" height="1010" fill="red"/>
+			<rect x="-87" y="1255" width="175" height="170"  fill="white"/>
+			<rect x="-87" y="2100" width="175" height="165"  fill="white"/>
+			<rect x="-87" y="2265" width="175" height="3010" fill="red"/>
+			<rect x="-87" y="3265" width="175" height="1010" fill="white"/>
+		</g>
+		<g id="fs-schild-hauptsignal-2-zs1" stroke-width="4" stroke="black">
+			<rect x="-87"  y="245" width="175" height="1010" fill="red"/>
+			<rect x="-87" y="1255" width="175" height="170"  fill="white"/>
+			<rect x="-87" y="2585" width="175" height="2690" fill="red"/>
+			<rect x="-87" y="3265" width="175" height="1010" fill="white"/>
 		</g>
 
 
@@ -1438,99 +1435,113 @@
 			<use href="#hv-lampe-klein" fill="white" x="100" y="173"/>
 		</g>
 
-		<g id="fs-mast-1">
+		<g id="fs-hauptsignal-1-halt">
 			<use href="#fs-mast"/>
 			<use href="#fs-schild-hauptsignal-1"/>
-		</g>
-		<g id="fs-mast-2">
-			<use href="#fs-mast"/>
-			<use href="#fs-schild-hauptsignal-2"/>
-		</g>
-
-		<g id="fs-hauptsignal-1-halt">
-			<use href="#fs-mast-1"/>
 			<use href="#fs-fluegel-gross-halt"/>
+		</g>
+		<g id="fs-hauptsignal-1-zs1-halt">
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-1-zs1"/>
+			<use href="#fs-fluegel-gross-halt"/>
+			<use href="#fs-ersatzsignal" y="2195"/>
 		</g>
 
 		<g id="fs-hauptsignal-1-fahrt">
-			<use href="#fs-mast-1"/>
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-1"/>
 			<use href="#fs-fluegel-gross-fahrt"/>
+		</g>
+		<g id="fs-hauptsignal-1-zs1-fahrt">
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-1-zs1"/>
+			<use href="#fs-fluegel-gross-fahrt"/>
+			<use href="#fs-ersatzsignal" y="2195"/>
 		</g>
 
 		<g id="fs-hauptsignal-2-halt">
-			<use href="#fs-mast-2"/>
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2"/>
 			<use href="#fs-fluegel-gross-halt"/>
 			<use href="#fs-fluegel-klein-halt"/>
 		</g>
+		<g id="fs-hauptsignal-2-zs1-halt">
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2-zs1"/>
+			<use href="#fs-fluegel-gross-halt"/>
+			<use href="#fs-fluegel-klein-halt"/>
+			<use href="#fs-ersatzsignal" y="2195"/>
+		</g>
 
 		<g id="fs-hauptsignal-2-fahrt">
-			<use href="#fs-mast-2"/>
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2"/>
 			<use href="#fs-fluegel-gross-fahrt"/>
 			<use href="#fs-fluegel-klein-halt"/>
 		</g>
+		<g id="fs-hauptsignal-2-zs1-fahrt">
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2-zs1"/>
+			<use href="#fs-fluegel-gross-fahrt"/>
+			<use href="#fs-fluegel-klein-halt"/>
+			<use href="#fs-ersatzsignal" y="2195"/>
+		</g>
 
 		<g id="fs-hauptsignal-2-langsamfahrt">
-			<use href="#fs-mast-2"/>
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2"/>
 			<use href="#fs-fluegel-gross-fahrt"/>
 			<use href="#fs-fluegel-klein-langsamfahrt"/>
+		</g>
+		<g id="fs-hauptsignal-2-zs1-langsamfahrt">
+			<use href="#fs-mast"/>
+			<use href="#fs-schild-hauptsignal-2-zs1"/>
+			<use href="#fs-fluegel-gross-fahrt"/>
+			<use href="#fs-fluegel-klein-langsamfahrt"/>
+			<use href="#fs-ersatzsignal" y="2195"/>
 		</g>
 
 		<g id="fs-vorsignal-leuchten">
 			<circle cx="236" cy="635" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
-			<circle cx="-236" cy="1370" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
+			<circle cx="-236" cy="1455" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
 		</g>
 		<g id="fs-vorsignal-1-halt">
-			<use href="#mast-mittel-1" transform="scale(1,2.35)"/>
+			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" y="755"/>
-			<use href="#fs-blende-vor" transform="translate(0,1250) rotate(180)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-halt"/>
 		</g>
 		<g id="fs-vorsignal-1-fahrt">
-			<use href="#mast-mittel-1" transform="translate(0,-70) scale(1,2.42)"/>
+			<use href="#mast-mittel-1" transform="translate(0,-70) scale(1,2.585)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
-			<use href="#fs-blende-vor" transform="translate(0,1250) rotate(126)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(126)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-fahrt"/>
 		</g>
 
 		<g id="fs-vorsignal-2-halt">
 			<use href="#fs-vorsignal-1-halt"/>
-			<use href="#fs-fluegel-vor" y="1250"/>
+			<use href="#fs-fluegel-vor" y="1335"/>
 		</g>
 		<g id="fs-vorsignal-2-fahrt">
 			<use href="#fs-vorsignal-1-fahrt"/>
-			<use href="#fs-fluegel-vor" y="1250"/>
+			<use href="#fs-fluegel-vor" y="1335"/>
 		</g>
 		<g id="fs-vorsignal-2-langsamfahrt">
-			<use href="#mast-mittel-1" transform="scale(1,2.35)"/>
+			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
-			<use href="#fs-blende-vor" transform="translate(0,1250) rotate(180)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-halt"/>
-			<use href="#fs-fluegel-vor" transform="translate(0,1250) rotate(-45)"/>
+			<use href="#fs-fluegel-vor" transform="translate(0,1335) rotate(-45)"/>
 		</g>
 
-		<g id="fs-sperrsignal-halt">
-			<use href="#mast-schmal-3"/>
-			<use href="#fs-schutz-kasten"/>
-			<use href="#fs-schutz-balken"/>
-		</g>
-		<g id="fs-sperrsignal-fahrt">
-			<use href="#mast-schmal-3"/>
-			<use href="#fs-schutz-kasten"/>
-			<use href="#fs-schutz-balken" transform="rotate(-45)"/>
-		</g>
-		<g id="fs-sperrsignal-klein-halt">
-			<!-- <use href="#mast-schmal-1" y="-600"/> -->
-			<use href="#fs-schutz-kasten-klein"/>
-			<use href="#fs-schutz-balken-klein"/>
-		</g>
-		<g id="fs-sperrsignal-klein-fahrt">
-			<!-- <use href="#mast-schmal-1" y="-600"/> -->
-			<use href="#fs-schutz-kasten-klein"/>
-			<use href="#fs-schutz-balken-klein" transform="rotate(-45)"/>
-		</g>
+
+
+
+
+
 
 
 		<!-- Spezifische PCB Varianten von Texturen -->
@@ -1550,26 +1561,153 @@
 				"/>
 		</g>
 
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Vordefinierte Baugruppen von Tafeln -->
+		<g id="tafel-vor-klein">
+			<use href="#mast-schmal-1" transform="translate(0,-500) scale(1,0.5)"/>
+			<use href="#vorsignal-tafel-klein" y="-427.5"/>
+		</g>
+		<g id="tafel-vor-klein-bremsweg">
+			<use href="#mast-schmal-1" transform="translate(0,-900) scale(1,0.9)"/>
+			<use href="#vorsignal-tafel-klein" y="-427.5"/>
+			<use href="#vorsignal-bremsweg-klein" y="-962.5"/>
+		</g>
+
+		<g id="tafel-entfernung-1">
+			<use href="#mast-schmal-1" y="-1000"/>
+			<use href="#fs-vorsignal-entfernung-schild-1" y="-608"/>
+		</g>
+		<g id="tafel-entfernung-2">
+			<use href="#mast-schmal-1" y="-1000"/>
+			<use href="#fs-vorsignal-entfernung-schild-2" y="-608"/>
+		</g>
+		<g id="tafel-entfernung-3">
+			<use href="#mast-schmal-1" y="-1000"/>
+			<use href="#fs-vorsignal-entfernung-schild-3" y="-608"/>
+		</g>
+		<g id="tafel-entfernung-3-bremsweg">
+			<use href="#mast-schmal-1" transform="translate(0,-1200) scale(1,1.2)"/>
+			<use href="#fs-vorsignal-entfernung-schild-3" y="-608"/>
+			<use href="#vorsignal-bremsweg-klein" y="-1310"/>
+		</g>
+		<g id="tafel-entfernung-4">
+			<use href="#mast-schmal-1" y="-1000"/>
+			<use href="#fs-vorsignal-entfernung-schild-4" y="-608"/>
+		</g>
+		<g id="tafel-entfernung-5">
+			<use href="#mast-schmal-1" y="-1000"/>
+			<use href="#fs-vorsignal-entfernung-schild-5" y="-608"/>
+		</g>
+
 		<!-- Vordefinierte Baugruppen von Signalen -->
+		<!-- Form-Sperrsignale -->
+		<g id="signal-fs-sperr-halt">
+			<use href="#mast-schmal-1" transform="translate(0,-2400) scale(1,2.5)"/>
+			<use href="#fs-schutz-kasten"       y="-2400"/>
+			<use href="#fs-schutz-balken"       y="-2400"/>
+			<use href="#fs-schutz-rueckstrahler" y="-500"/>
+		</g>
+		<g id="signal-fs-sperr-fahrt">
+			<use href="#mast-schmal-1" transform="translate(0,-2400) scale(1,2.5)"/>
+			<use href="#fs-schutz-kasten"       y="-2400"/>
+			<use href="#fs-schutz-balken" transform="translate(0,-2400) rotate(-45)"/>
+			<use href="#fs-schutz-rueckstrahler" y="-500"/>
+		</g>
+		<g id="signal-fs-sperr-klein-halt">
+			<use href="#mast-schmal-1" transform="translate(0,-500) scale(1,0.5)"/>
+			<use href="#fs-schutz-kasten-klein"  y="-500"/>
+			<use href="#fs-schutz-balken-klein"  y="-500"/>
+			<use href="#fs-schutz-rueckstrahler" y="-125"/>
+		</g>
+		<g id="signal-fs-sperr-klein-fahrt">
+			<use href="#mast-schmal-1" transform="translate(0,-500) scale(1,0.5)"/>
+			<use href="#fs-schutz-kasten-klein"  y="-500"/>
+			<use href="#fs-schutz-balken-klein" transform="translate(0,-500) rotate(-45)"/>
+			<use href="#fs-schutz-rueckstrahler" y="-125"/>
+		</g>
+
+		<!-- Form-Vorsignale -->
+		<g id="signal-fs-vor-1-halt">
+			<use href="#fs-vorsignal-1-halt" y="-2515"/>
+		</g>
+		<g id="signal-fs-vor-1-fahrt">
+			<use href="#fs-vorsignal-1-fahrt" y="-2515"/>
+		</g>
+
+		<g id="signal-fs-vor-2-halt">
+			<use href="#fs-vorsignal-2-halt" y="-2515"/>
+		</g>
+		<g id="signal-fs-vor-2-fahrt">
+			<use href="#fs-vorsignal-2-fahrt" y="-2515"/>
+		</g>
+		<g id="signal-fs-vor-2-langsamfahrt">
+			<use href="#fs-vorsignal-2-langsamfahrt" y="-2515"/>
+		</g>
+
+		<!-- Form-Hauptsignale -->
+		<g id="signal-fs-haupt-1-halt">
+			<use href="#fs-hauptsignal-1-halt" y="-5600"/>
+		</g>
+		<g id="signal-fs-haupt-1-zs1-halt">
+			<use href="#fs-hauptsignal-1-zs1-halt" y="-5600"/>
+		</g>
+
+		<g id="signal-fs-haupt-1-fahrt">
+			<use href="#fs-hauptsignal-1-fahrt" y="-5600"/>
+		</g>
+		<g id="signal-fs-haupt-1-zs1-fahrt">
+			<use href="#fs-hauptsignal-1-zs1-fahrt" y="-5600"/>
+		</g>
+
+		<g id="signal-fs-haupt-2-halt">
+			<use href="#fs-hauptsignal-2-halt" y="-5600"/>
+		</g>
+		<g id="signal-fs-haupt-2-zs1-halt">
+			<use href="#fs-hauptsignal-2-zs1-halt" y="-5600"/>
+		</g>
+
+		<g id="signal-fs-haupt-2-fahrt">
+			<use href="#fs-hauptsignal-2-fahrt" y="-5600"/>
+		</g>
+		<g id="signal-fs-haupt-2-zs1-fahrt">
+			<use href="#fs-hauptsignal-2-zs1-fahrt" y="-5600"/>
+		</g>
+
+		<g id="signal-fs-haupt-2-langsamfahrt">
+			<use href="#fs-hauptsignal-2-langsamfahrt" y="-5600"/>
+		</g>
+		<g id="signal-fs-haupt-2-zs1-langsamfahrt">
+			<use href="#fs-hauptsignal-2-zs1-langsamfahrt" y="-5600"/>
+		</g>
 
 		<!-- H/V-Signale 1951 -->
 		<g id="signal-hv-haupt-51-zs1-sperr">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsignal-alt"    y="-4675"/>
-			<use href="#hv-ersatzsignal-alt"   y="-3205"/>
-			<use href="#hv-sperrsignal-alt"    y="-2200"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
+			<use href="#hv-hauptsignal-alt"    y="-4875"/>
+			<use href="#hv-ersatzsignal-alt"   y="-3405"/>
+			<use href="#hv-sperrsignal-alt"    y="-2400"/>
+			<use href="#hv-schild-hauptsignal" y="-875"/>
 		</g>
 		<g id="signal-hv-zs3-haupt-51-zs1-sperr">
-			<use href="#mast-schmal-1" y="-5300"/>
-			<use href="#hv-zs3-matrix" y="-5290"/>
+			<use href="#mast-schmal-1" y="-5400"/>
+			<use href="#hv-zs3-matrix" y="-5490"/>
 			<use href="#signal-hv-haupt-51-zs1-sperr"/>
 		</g>
 		<g id="signal-hv-haupt-hp0-51-sperr">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-sperrsignal-alt"    y="-2200"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
-			<g transform="translate(0,-4675)">
+			<use href="#hv-sperrsignal-alt"    y="-2400"/>
+			<use href="#hv-schild-hauptsignal" y="-875"/>
+			<g transform="translate(0,-4875)">
 				<use href="#hv-hauptschirm-alt"/>
 				<use href="#hv-lampe-gross-links" fill="red"/>
 				<use href="#hv-lampe-gross-rechts" fill-opacity="0"/>
@@ -1583,99 +1721,106 @@
 		</g>
 		<g id="signal-hv-haupt-51-zs1-vor">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsignal-alt"    y="-4675"/>
-			<use href="#hv-ersatzsignal-alt"   y="-3205"/>
-			<use href="#hv-vorsignal"          y="-2555"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
+			<use href="#hv-hauptsignal-alt"    y="-4875"/>
+			<use href="#hv-ersatzsignal-alt"   y="-3405"/>
+			<use href="#hv-vorsignal"          y="-2745"/>
+			<use href="#hv-schild-hauptsignal" y="-875"/>
 		</g>
 		<g id="signal-hv-sperr-51">
 			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,0.5)"/>
 			<use href="#hv-sperrsignal-alt"    y="-500"/>
-			<use href="#hv-schild-sperrsignal" y="-285" x="240"/>
+			<use href="#hv-schild-sperrsignal" y="-275" x="240"/>
 		</g>
 		<g id="signal-hv-sperr-klein-51">
 			<use href="#mast-schmal-1"            y="-1000" transform="scale(1,0.5)"/>
 			<use href="#hv-sperrsignal-alt-klein" y="-500"/>
-			<use href="#hv-schild-sperrsignal"    y="-285" x="190"/>
+			<use href="#hv-schild-sperrsignal"    y="-275" x="190"/>
 		</g>
 		<!-- H/V-Signale -->
 		<g id="signal-hv-vor">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-vorsignal"          y="-4150"/>
-			<use href="#vorsignal-tafel-klein" y="-1300"/>
+			<use href="#hv-vorsignal"          y="-4350"/>
+			<use href="#vorsignal-tafel-klein" y="-1325"/>
 		</g>
 		<g id="signal-hv-vor-zs3vm">
 			<use href="#signal-hv-vor"/>
-			<use href="#hv-zs3v-matrix" y="-3065"/>
+			<use href="#hv-zs3v-matrix" y="-3265"/>
 		</g>
 		<g id="signal-hv-haupt-zs1">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsignal"        y="-4600"/>
-			<use href="#hv-ersatzsignal"       y="-3205"/>
-			<use href="#hv-schild-hauptsignal" y="-1300"/>
+			<use href="#hv-hauptsignal"        y="-4800"/>
+			<use href="#hv-ersatzsignal"       y="-3405"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
 		</g>
 		<g id="signal-hv-haupt-v">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsignal"        y="-4600"/>
-			<use href="#hv-vorsichtsignal"     y="-3205"/>
-			<use href="#hv-schild-hauptsignal" y="-1300"/>
+			<use href="#hv-hauptsignal"        y="-4800"/>
+			<use href="#hv-vorsichtsignal"     y="-3405"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
 		</g>
 		<g id="signal-hv-haupt-zs1-vor">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsignal"        y="-4600"/>
-			<use href="#hv-ersatzsignal"       y="-3205"/>
-			<use href="#hv-vorsignal"          y="-2555"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
+			<use href="#hv-hauptsignal"        y="-4800"/>
+			<use href="#hv-ersatzsignal"       y="-3405"/>
+			<use href="#hv-vorsignal"          y="-2745"/>
+			<use href="#hv-schild-hauptsignal" y="-875"/>
 		</g>
 		<g id="signal-hv-zs3m-haupt-zs1-vor">
-			<use href="#mast-schmal-1" y="-5100"/>
-			<use href="#hv-zs3-matrix" y="-5215"/>
+			<use href="#mast-schmal-1" y="-5200"/>
+			<use href="#hv-zs3-matrix" y="-5415"/>
 			<use href="#signal-hv-haupt-zs1-vor"/>
 		</g>
 		<g id="signal-hv-sperr-gross">
-			<use href="#mast-schmal-2"         y="-2000"/>
-			<use href="#hv-sperrsignal"        y="-2200"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
+			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,2.5)"/>
+			<use href="#hv-sperrsignal"        y="-2400"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
 		</g>
 		<g id="signal-hv-sperr-deckung-gross">
-			<use href="#mast-schmal-2"         y="-2000"/>
-			<use href="#hv-deckungssignal"     y="-2200"/>
-			<use href="#hv-schild-hauptsignal" y="-850"/>
+			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,2.5)"/>
+			<use href="#hv-deckungssignal"     y="-2400"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
 		</g>
 		<g id="signal-hv-sperr">
 			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,0.5)"/>
 			<use href="#hv-sperrsignal"        y="-500"/>
-			<use href="#hv-schild-sperrsignal" y="-285" x="250"/>
+			<use href="#hv-schild-sperrsignal" y="-275" x="250"/>
 		</g>
 		<g id="signal-hv-hauptsperr-zs1">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-hauptsperrsignal"   y="-4330"/>
-			<use href="#hv-ersatzsignal"       y="-3205"/>
-			<use href="#hv-schild-hauptsignal" y="-1300"/>
+			<use href="#hv-hauptsperrsignal"   y="-4530"/>
+			<use href="#hv-ersatzsignal"       y="-3405"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
+		</g>
+		<g id="signal-hv-hauptsperr-zs1-vor">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hv-hauptsperrsignal"   y="-4530"/>
+			<use href="#hv-ersatzsignal"       y="-3405"/>
+			<use href="#hv-vorsignal"          y="-2745"/>
+			<use href="#hv-schild-hauptsignal" y="-875"/>
 		</g>
 
 		<!-- H/V-Signale Kompakt -->
 		<g id="signal-hvk-vor">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-vorsignal-kompakt"  y="-4225"/>
-			<use href="#vorsignal-tafel-klein" y="-1300"/>
+			<use href="#hv-vorsignal-kompakt"  y="-4425"/>
+			<use href="#vorsignal-tafel-klein" y="-1325"/>
 		</g>
 		<g id="signal-hvk-vor-zs3vm">
 			<use href="#signal-hvk-vor"/>
-			<use href="#hv-zs3v-matrix-kompakt" y="-3030"/>
+			<use href="#hv-zs3v-matrix-kompakt" y="-3230"/>
 		</g>
 		<g id="signal-hvk-haupt">
 			<use href="#mast-schmal-4"          y="-4000"/>
-			<use href="#hv-hauptsignal-kompakt" y="-4225"/>
-			<use href="#hv-schild-hauptsignal"  y="-1300"/>
+			<use href="#hv-hauptsignal-kompakt" y="-4425"/>
+			<use href="#hv-schild-hauptsignal"  y="-1250"/>
 		</g>
 		<g id="signal-hvk-haupt-k">
 			<use href="#signal-hvk-haupt"/>
-			<!-- <use href="#hv-hauptsignal-kompakt-k" y="-4225"/> -->
+			<!-- <use href="#hv-hauptsignal-kompakt-k" y="-4425"/> -->
 		</g>
 		<g id="signal-hvk-haupt-v">
 			<use href="#signal-hvk-haupt"/>
-			<use href="#hv-hauptsignal-kompakt-v" y="-4225"/>
+			<use href="#hv-hauptsignal-kompakt-v" y="-4425"/>
 		</g>
 		<g id="signal-hvk-zs3-6-haupt-k">
 			<use href="#signal-ks-zs3-6"/>
@@ -1683,81 +1828,90 @@
 		</g>
 		<g id="signal-hvk-zs3m-mehrabschnitt-v">
 			<use href="#mast-schmal-1"          y="-5000"/>
-			<use href="#hv-zs3-matrix-kompakt"  y="-5065"/>
+			<use href="#hv-zs3-matrix-kompakt"  y="-5265"/>
 			<use href="#signal-hvk-haupt-v"/>
-			<use href="#hv-vorsignal-kompakt"   y="-3100"/>
+			<use href="#hv-vorsignal-kompakt"   y="-3300"/>
 		</g>
 		<g id="signal-hvk-zs3m-mehrabschnitt-zs3v-4">
 			<use href="#mast-schmal-5"          y="-5000"/>
-			<use href="#hv-zs3-matrix-kompakt"  y="-5065"/>
-			<use href="#hv-hauptsignal-kompakt" y="-4225"/>
-			<use href="#hv-vorsignal-kompakt"   y="-3100"/>
-			<use href="#hv-schild-hauptsignal"  y="-850"/>
-			<use href="#zs3v-schild-4"          y="-1825"/>
+			<use href="#hv-zs3-matrix-kompakt"  y="-5265"/>
+			<use href="#hv-hauptsignal-kompakt" y="-4425"/>
+			<use href="#hv-vorsignal-kompakt"   y="-3300"/>
+			<use href="#hv-schild-hauptsignal"  y="-875"/>
+			<use href="#zs3v-schild-4"          y="-2025"/>
 		</g>
 
 
 		<!-- Ks-Signale -->
 		<g id="signal-ks-haupt">
 			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#ks-hauptsignal"        y="-4325"/>
-			<use href="#ks-schild-hauptsignal" y="-1300"/>
+			<use href="#ks-hauptsignal"        y="-4525"/>
+			<use href="#ks-schild-hauptsignal" y="-1250"/>
 		</g>
 		<g id="signal-ks-haupt-k">
 			<use href="#signal-ks-haupt"/>
-			<use href="#ks-hauptsignal-k" y="-4325"/>
+			<use href="#ks-hauptsignal-k" y="-4525"/>
+		</g>
+		<g id="signal-ks-haupt-zs1">
+			<use href="#signal-ks-haupt"/>
+			<use href="#ks-hauptsignal-zs1" y="-4525"/>
 		</g>
 		<g id="signal-ks-haupt-r">
 			<use href="#signal-ks-haupt"/>
-			<use href="#ks-hauptsignal-r" y="-4325"/>
+			<use href="#ks-hauptsignal-r" y="-4525"/>
+		</g>
+		<g id="signal-ks-haupt-r-k">
+			<use href="#signal-ks-haupt"/>
+			<use href="#ks-hauptsignal-r" y="-4525"/>
+			<use href="#ks-hauptsignal-k" y="-4525"/>
 		</g>
 		<g id="signal-ks-vor">
-			<use href="#mast-schmal-5"         y="-4375"/>
-			<use href="#ks-vorsignal"          y="-3975"/>
-			<use href="#vorsignal-tafel-klein" y="-1300"/>
+			<use href="#mast-schmal-5"         y="-4575"/>
+			<use href="#ks-vorsignal"          y="-4175"/>
+			<use href="#vorsignal-tafel-klein" y="-1325"/>
 		</g>
 		<g id="signal-ks-mehrabschnitt">
 			<use href="#mast-schmal-4"                 y="-4000"/>
-			<use href="#ks-mehrabschnittssignal"       y="-4325"/>
-			<use href="#ks-schild-mehrabschnittsignal" y="-1300"/>
+			<use href="#ks-mehrabschnittssignal"       y="-4525"/>
+			<use href="#ks-schild-mehrabschnittsignal" y="-1250"/>
 		</g>
 		<g id="signal-ks-mehrabschnitt-v">
 			<use href="#signal-ks-mehrabschnitt"/>
-			<use href="#ks-mehrabschnittssignal-v"     y="-4325"/>
+			<use href="#ks-mehrabschnittssignal-v"     y="-4525"/>
 		</g>
 		<g id="signal-ks-sperr-klein">
 			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,0.5)"/>
 			<use href="#ks-sperrsignal-klein"  y="-500"/>
-			<use href="#hv-schild-sperrsignal" y="-285" x="150"/>
+			<use href="#hv-schild-sperrsignal" y="-275" x="150"/>
 		</g>
 
 		<g id="signal-ks-zs3-6">
 			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-6"  y="-5150"/>
+			<use href="#zs3-schild-6"  y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3-10">
 			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-10" y="-5150"/>
+			<use href="#zs3-schild-10" y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3-11">
 			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-11" y="-5150"/>
+			<use href="#zs3-schild-11" y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3m">
 			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#ks-zs3-matrix" y="-5100"/>
+			<use href="#ks-zs3-matrix" y="-5300"/>
 		</g>
 		<g id="signal-ks-zs6">
-			<use href="#ks-zs3-matrix" y="-3000"/>
+			<use href="#ks-zs3-matrix" y="-3200"/>
 		</g>
 		<g id="signal-ks-zs3vm">
-			<use href="#ks-zs3v-matrix" y="-3000"/>
+			<use href="#ks-zs3v-matrix" y="-3200"/>
 		</g>
 		<g id="signal-ks-zs3v-6">
-			<use href="#zs3v-schild-6" y="-2950"/>
+			<use href="#zs3v-schild-6" y="-3150"/>
 		</g>
 		<g id="signal-ks-zs3v-10">
-			<use href="#zs3v-schild-10" y="-2950"/>
+			<use href="#zs3v-schild-10" y="-3150"/>
 		</g>
 
 		<g id="signal-ks-vor-zs3vm">
@@ -1768,13 +1922,17 @@
 			<use href="#signal-ks-vor"/>
 			<use href="#signal-ks-zs3v-10"/>
 		</g>
-		<g id="signal-ks-zs3-6-haupt-k">
+		<g id="signal-ks-zs3-6-haupt">
 			<use href="#signal-ks-zs3-6"/>
-			<use href="#signal-ks-haupt-k"/>
+			<use href="#signal-ks-haupt"/>
 		</g>
-		<g id="signal-ks-zs3-10-haupt-k">
+		<g id="signal-ks-zs3-6-haupt-zs1">
+			<use href="#signal-ks-zs3-6"/>
+			<use href="#signal-ks-haupt-zs1"/>
+		</g>
+		<g id="signal-ks-zs3-10-haupt-zs1">
 			<use href="#signal-ks-zs3-10"/>
-			<use href="#signal-ks-haupt-k"/>
+			<use href="#signal-ks-haupt-zs1"/>
 		</g>
 		<g id="signal-ks-zs3-6-haupt-r">
 			<use href="#signal-ks-zs3-6"/>
@@ -1785,17 +1943,9 @@
 			<use href="#signal-ks-haupt-r"/>
 			<use href="#signal-ks-zs6"/>
 		</g>
-		<g id="signal-ks-zs3m-haupt-r-zs6">
-			<use href="#signal-ks-zs3m"/>
-			<use href="#signal-ks-haupt-r"/>
-			<use href="#signal-ks-zs6"/>
-		</g>
-		<g id="signal-ks-zs3m-haupt-k">
-			<use href="#signal-ks-zs3m"/>
-			<use href="#signal-ks-haupt-k"/>
-		</g>
-		<g id="signal-ks-zs3m-haupt-k-zs6">
-			<use href="#signal-ks-zs3m-haupt-k"/>
+		<g id="signal-ks-zs3-6-haupt-r-k-zs6">
+			<use href="#signal-ks-zs3-6"/>
+			<use href="#signal-ks-haupt-r-k"/>
 			<use href="#signal-ks-zs6"/>
 		</g>
 		<g id="signal-ks-zs3-6-haupt-k-zs6">
@@ -1803,9 +1953,45 @@
 			<use href="#signal-ks-haupt-k"/>
 			<use href="#signal-ks-zs6"/>
 		</g>
-		<g id="signal-ks-zs3-10-haupt-k-zs6">
-			<use href="#signal-ks-zs3-10"/>
+		<g id="signal-ks-zs3m-haupt-r-zs6">
+			<use href="#signal-ks-zs3m"/>
+			<use href="#signal-ks-haupt-r"/>
+			<use href="#signal-ks-zs6"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt-r-k-zs6">
+			<use href="#signal-ks-zs3m"/>
+			<use href="#signal-ks-haupt-r-k"/>
+			<use href="#signal-ks-zs6"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt-k-zs6">
+			<use href="#signal-ks-zs3m"/>
 			<use href="#signal-ks-haupt-k"/>
+			<use href="#signal-ks-zs6"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt">
+			<use href="#signal-ks-zs3m"/>
+			<use href="#signal-ks-haupt"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt-k">
+			<use href="#signal-ks-zs3m"/>
+			<use href="#signal-ks-haupt-k"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt-zs1">
+			<use href="#signal-ks-zs3m"/>
+			<use href="#signal-ks-haupt-zs1"/>
+		</g>
+		<g id="signal-ks-zs3m-haupt-zs1-zs6">
+			<use href="#signal-ks-zs3m-haupt-zs1"/>
+			<use href="#signal-ks-zs6"/>
+		</g>
+		<g id="signal-ks-zs3-6-haupt-zs1-zs6">
+			<use href="#signal-ks-zs3-6"/>
+			<use href="#signal-ks-haupt-zs1"/>
+			<use href="#signal-ks-zs6"/>
+		</g>
+		<g id="signal-ks-zs3-10-haupt-zs1-zs6">
+			<use href="#signal-ks-zs3-10"/>
+			<use href="#signal-ks-haupt-zs1"/>
 			<use href="#signal-ks-zs6"/>
 		</g>
 		<g id="signal-ks-zs3-11-mehrabschnitt-v-zs3v-6">
@@ -1825,67 +2011,60 @@
 	
 	</defs>
 
-	<g transform="translate(0,-29697)">
+	<g transform="translate(0,-34386)">
 		<g transform="scale(0.177,0.177)">
 			<!-- Form-Signale -->
-<text x="4500" y="-5000" font-family="DIN1451" font-size="270" text-anchor="middle">Form Signale</text>
+<text x="1000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">Form Signale</text>
 
 <use href="#lichtraumprofil-elva" x="0"/>
 <use href="#lichtraumprofil-elva" x="1920"/>
 <use href="#lichtraumprofil-elva" x="3840"/>
-<use href="#lichtraumprofil-elva" x="5760"/>
+<use href="#lichtraumprofil-elva" x="5500"/>
 
-<!-- <use href="#fs-hauptsignal-1-fahrt"     y="-5800"/> -->
-<use href="#fs-hauptsignal-1-halt"      y="-5350"/>
-<use href="#fs-sperrsignal-klein-fahrt" y="-500"/>
+<use href="#signal-fs-haupt-1-zs1-halt"/>
+<use href="#signal-fs-vor-1-halt"   x="225"/>
+<use href="#signal-fs-sperr-klein-halt"/>
 
-<use href="#fs-vorsignal-1-fahrt" x="0" y="-2350"/>
+<use href="#tafel-entfernung-5"           x="600"/>
+<use href="#tafel-entfernung-4"          x="1000"/>
+<use href="#tafel-entfernung-3-bremsweg" x="1400"/>
 
-<use href="#fs-vorsignal-entfernung-bremsweg-3" x="0" y="-575"/>
+<use href="#signal-fs-haupt-2-zs1-fahrt" x="1920"/>
+<use href="#signal-fs-sperr-fahrt"      x="1920"/>
 
-<!-- <use href="#fs-hauptsignal-2-langsamfahrt" x="1400" y="-5800"/> -->
-<use href="#fs-hauptsignal-2-halt" x="1920" y="-6700"/>
-<use href="#fs-ersatzsignal"       x="1920" y="-4555"/>
 
-<use href="#mast-schmal-1"         x="1920" y="-500"/>
-<use href="#vorsignal-tafel-klein" x="1920" y="-500"/>
+<use href="#tafel-entfernung-2"  x="2300"/>
+<use href="#signal-fs-vor-2-fahrt" x="2880"/>
+<use href="#tafel-entfernung-1"  x="3320"/>
 
-<use href="#fs-vorsignal-2-langsamfahrt" x="1920" y="-3700"/>
+<!-- 3D gedruckter Erhöher für Signalsockel -->
+<g transform="translate(3840,-1610)">
+<rect x="-184" width="368" height="1610" fill="#4c4c4c" stroke="black" stroke-width="8" rx="10"/>
+<use href="#signal-fs-haupt-2-langsamfahrt"/>
+<use href="#signal-fs-vor-2-langsamfahrt"/>
+</g>
+<use href="#tafel-vor-klein-bremsweg" x="3840"/>
 
-<use href="#fs-hauptsignal-2-langsamfahrt"     x="3840" y="-5350"/>
-<use href="#fs-ersatzsignal"           x="3840" y="-3205"/>
-<use href="#fs-sperrsignal-klein-halt" x="3050" y="-500"/>
-
-<use href="#fs-vorsignal-2-halt" x="3840" y="-2350"/>
-
-<use href="#vorsignal-tafel-bremsweg-klein" x="4075" y="-500"/>
-
-<use href="#fs-sperrsignal-fahrt"    x="4550" y="-2200"/>
-<use href="#fs-schutz-rueckstrahler" x="4550" y="-500"/>
-
-<use href="#fs-vorsignal-entfernung-5" x="4975" y="-575"/>
-
-<use href="#fs-sperrsignal-halt"     x="5760" y="-2200"/>
-<use href="#fs-schutz-rueckstrahler" x="5760" y="-500"/>
-
-<use href="#signal-hv-zs3-haupt-51-zs1-sperr" x="5760"/>
+<use href="#signal-hv-zs3-haupt-51-zs1-sperr" x="5500"/>
 
 <g visibility="hidde" stroke="black" stroke-width="2">
-<line  x1="1400" x2="20000" y1="-3425" y2="-3425"/>
-<line  x1="2900" x2="20000" y1="-3300" y2="-3300"/>
-<line x1="-1000" x2="20000" y1="-2200" y2="-2200"/>
-<line x1="-1000" x2="20000" y1="-1300" y2="-1300"/>
-<line x1="-1000" x2="20000" y1="-1050" y2="-1050"/>
-<line x1="-1000" x2="20000"  y1="-800"  y2="-800"/>
+<line x1="-1000" x2="20000" y1="-3625" y2="-3625"/>
+<line x1="-1000" x2="20000" y1="-3500" y2="-3500"/>
+<line x1="-1000" x2="20000" y1="-3140" y2="-3140"/>
+<line x1="-1000" x2="20000" y1="-3015" y2="-3015"/>
+<line x1="-1000" x2="20000" y1="-2400" y2="-2400"/>
+<line x1="-1000" x2="20000" y1="-2015" y2="-2015"/>
+<line x1="-1000" x2="20000" y1="-1890" y2="-1890"/>
+<line x1="-1000" x2="20000" y1="-1325" y2="-1325"/>
 <line x1="-1000" x2="20000"  y1="-500"  y2="-500"/>
-<line x1="-1000" x2="20000"  y1="-100"  y2="-100"/>
+<line x1="-1000" x2="20000"  y1="-125"  y2="-125"/>
 </g>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-28134)">
+	<g transform="translate(0,-32823)">
 		<g transform="scale(0.177,0.177)">
 			<!-- H/V Signale -->
 <text x="3200" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">H/V Signale</text>
@@ -1910,26 +2089,26 @@
 
 <use href="#signal-hv-sperr-51" x="425"/>
 
-<use href="#hv-vorsignal-w" y="-4145" x="850"/>
+<use href="#hv-vorsignal-w" y="-4345" x="850"/>
 <use href="#signal-hv-vor-zs3vm"      x="850"/>
 
 <use href="#signal-hv-sperr-klein-51" x="1225"/>
 
 <!-- Special -->
-<use href="#mast-schmal-6"               x="1700" y="-5300"/>
-<use href="#zs3-schild-8"                x="1700" y="-5400"/>
-<use href="#hv-selbstblock-alt"          x="1700" y="-4675"/>
-<use href="#hv-ersatzsignal-alt"         x="1700" y="-3205"/>
-<use href="#hv-vorsignal-alt-w"          x="1700" y="-2550"/>
-<use href="#hv-vorsignal"                x="1700" y="-2550"/>
-<use href="#zs3v-schild-4"               x="1700" y="-1350"/>
-<use href="#hv-schild-hauptsignal-klein" x="1700" y="-450"/>
+<use href="#mast-schmal-6"               x="1700" y="-5500"/>
+<use href="#zs3-schild-8"                x="1700" y="-5600"/>
+<use href="#hv-selbstblock-alt"          x="1700" y="-4875"/>
+<use href="#hv-ersatzsignal-alt"         x="1700" y="-3405"/>
+<use href="#hv-vorsignal-alt-w"          x="1700" y="-2745"/>
+<use href="#hv-vorsignal"                x="1700" y="-2745"/>
+<use href="#zs3v-schild-4"               x="1700" y="-1540"/>
+<use href="#hv-schild-hauptsignal-klein" x="1700" y="-475"/>
 
 <!-- Special -->
-<use href="#mast-schmal-5"             x="2400" y="-4405"/>
-<use href="#hv-hauptsperrsignal-alt-k" x="2400" y="-4405"/>
-<use href="#hv-ersatzsignal-alt"       x="2400" y="-3205"/>
-<use href="#hv-schild-hauptsignal"     x="2400" y="-1300"/>
+<use href="#mast-schmal-5"             x="2400" y="-4605"/>
+<use href="#hv-hauptsperrsignal-alt-k" x="2400" y="-4605"/>
+<use href="#hv-ersatzsignal-alt"       x="2400" y="-3405"/>
+<use href="#hv-schild-hauptsignal"     x="2400" y="-1250"/>
 
 <!-- Bauform 1969 -->
 <!-- <use href="#signal-hv-haupt-zs1" x="3100"/> -->
@@ -1940,35 +2119,36 @@
 <use href="#signal-hv-sperr" x="3400"/>
 
 <use href="#signal-hv-hauptsperr-zs1" x="3850"/>
-<use href="#hv-hauptsperrsignal-k"    x="3850" y="-4330"/>
+<use href="#hv-hauptsperrsignal-k"    x="3850" y="-4530"/>
 
 <!-- Kompaktsignal -->
 <use href="#signal-hvk-zs3m-mehrabschnitt-zs3v-4" x="4600"/>
-<use href="#hv-hauptsignal-kompakt-k"        x="4600" y="-4225"/>
-<use href="#hv-hauptsignal-kompakt-r"        x="4600" y="-4225"/>
-<use href="#hv-hauptsignal-kompakt-zs1"      x="4600" y="-4225"/>
-<use href="#zs3v-schild-4"                   x="4600" y="-1825"/>
+<use href="#hv-hauptsignal-kompakt-k"        x="4600" y="-4425"/>
+<use href="#hv-hauptsignal-kompakt-r"        x="4600" y="-4425"/>
+<use href="#hv-hauptsignal-kompakt-zs1"      x="4600" y="-4425"/>
 
 <use href="#signal-hvk-vor-zs3vm"            x="5350"/>
 </g>
 
 
 <g visibility="hidde" stroke="black" stroke-width="2" transform="translate(-6350,0)">
-<line  x1="6400"  x2="8000" y1="-5050" y2="-5050"/>
-<line  x1="6400"  x2="9000" y1="-4925" y2="-4925"/>
-<line  x1="1400" x2="20000" y1="-3425" y2="-3425"/>
-<line  x1="2900" x2="20000" y1="-3300" y2="-3300"/>
-<line x1="-1000" x2="20000" y1="-2200" y2="-2200"/>
-<line  x1="6400" x2="20000" y1="-1600" y2="-1600"/>
+<line  x1="6400"  x2="8000" y1="-5250" y2="-5250"/>
+<line  x1="6400"  x2="9000" y1="-5125" y2="-5125"/>
+<line  x1="1400" x2="20000" y1="-3625" y2="-3625"/>
+<line  x1="2900" x2="20000" y1="-3500" y2="-3500"/>
+<line  x1="2900" x2="20000" y1="-3140" y2="-3140"/>
+<line  x1="2900" x2="20000" y1="-3015" y2="-3015"/>
+<line x1="-1000" x2="20000" y1="-2400" y2="-2400"/>
+<line  x1="6400" x2="20000" y1="-1625" y2="-1625"/>
 <line x1="-1000" x2="20000"  y1="-500"  y2="-500"/>
-<line x1="-1000" x2="20000"  y1="-100"  y2="-100"/>
+<line x1="-1000" x2="20000"  y1="-125"  y2="-125"/>
 </g>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-26571)">
+	<g transform="translate(0,-31260)">
 		<g transform="scale(0.177,0.177)">
 			<!-- Ks Signale -->
 
@@ -1978,63 +2158,151 @@
 <use href="#lichtraumprofil-elva" x="2525"/>
 <use href="#lichtraumprofil-elva" x="3505"/>
 
-<use href="#signal-ks-zs3m-haupt-k" x="0"/>
+<use href="#signal-ks-zs3m-haupt-zs1" x="0"/>
 
 <use href="#signal-ks-vor-zs3vm" x="800"/>
 
 <use href="#signal-ks-zs3-11-mehrabschnitt-v-zs3v-6" x="1600"/>
 
-<use href="#mast-schmal-2"         x="2075" y="-2000"/>
-<use href="#ks-sperrsignal"        x="2075" y="-2200"/>
-<use href="#hv-schild-hauptsignal" x="2075" y="-850"/>
+<use href="#mast-schmal-3"         x="2075" y="-2400"/>
+<use href="#ks-sperrsignal"        x="2075" y="-2400"/>
+<use href="#hv-schild-hauptsignal" x="2075" y="-1250"/>
 
 <use href="#mast-schmal-1"         x="2525" y="-500"/>
 <use href="#ks-sperrsignal"        x="2525" y="-500"/>
-<use href="#hv-schild-sperrsignal" x="2750" y="-285"/>
+<use href="#hv-schild-sperrsignal" x="2750" y="-275"/>
 
-<use href="#mast-schmal-1"         x="2600" y="-3500"/>
-<use href="#ks-mast-ausleger-kurz" x="2600" y="-2550"/>
-<use href="#ks-hauptsignal"        x="2600" y="-4325"/>
-<use href="#ks-hauptsignal-r"      x="2600" y="-4325"/>
-<use href="#ks-schild-hauptsignal" x="3010" y="-1300"/>
+<use href="#mast-schmal-1"         x="2600" y="-3700"/>
+<use href="#ks-mast-ausleger-kurz" x="2600" y="-2750"/>
+<use href="#ks-hauptsignal"        x="2600" y="-4525"/>
+<use href="#ks-hauptsignal-r"      x="2600" y="-4525"/>
+<use href="#ks-hauptsignal-k"      x="2600" y="-4525"/>
+<use href="#ks-schild-hauptsignal" x="3010" y="-1250"/>
 
 <use href="#mast-schmal-1"         x="3505" y="-500"/>
 <use href="#ks-sperrsignal-klein"  x="3505" y="-500"/>
-<use href="#hv-schild-sperrsignal" x="3655" y="-285"/>
+<use href="#hv-schild-sperrsignal" x="3655" y="-275"/>
 
-<use href="#mast-schmal-1"             transform="translate(3600,    -5000) scale(1,2.55)"/>
-<use href="#ks-mast-ausleger-kurz"                       x="3600" y="-2550"/>
-<use href="#ks-zs3-matrix"                               x="3600" y="-5100"/>
+<use href="#mast-schmal-1"             transform="translate(3600,    -5200) scale(1,2.55)"/>
+<use href="#ks-mast-ausleger-kurz"                       x="3600" y="-2750"/>
+<use href="#ks-zs3-matrix"                               x="3600" y="-5300"/>
 
-<use href="#ks-mehrabschnittssignal"                     x="3600" y="-4325"/>
-<use href="#ks-mehrabschnittssignal-r"                   x="3600" y="-4325"/>
-<use href="#ks-mehrabschnittssignal-v"                   x="3600" y="-4325"/>
-<use href="#ks-mehrabschnittssignal-b"                   x="3600" y="-4325"/>
-<use href="#ks-schild-mehrabschnittsignal-ausleger-kurz" x="3600" y="-1300"/>
+<use href="#ks-mehrabschnittssignal"                     x="3600" y="-4525"/>
+<use href="#ks-mehrabschnittssignal-r"                   x="3600" y="-4525"/>
+<use href="#ks-mehrabschnittssignal-v"                   x="3600" y="-4525"/>
+<use href="#ks-mehrabschnittssignal-k"                   x="3600" y="-4525"/>
+<use href="#ks-schild-mehrabschnittsignal-ausleger-kurz" x="3600" y="-1250"/>
 
-<use href="#mast-schmal-1"         x="4400" y="-3500"/>
-<use href="#ks-mast-ausleger-kurz" x="4400" y="-2550"/>
-<use href="#ks-vorsignal"          x="4400" y="-3975"/>
-<use href="#ks-vorsignal-b"        x="4400" y="-3975"/>
-<use href="#ks-zs3v-matrix"        x="4400" y="-3000"/>
-<use href="#vorsignal-tafel-klein" x="4810" y="-1300"/>
+<use href="#mast-schmal-1"         x="4400" y="-3700"/>
+<use href="#ks-mast-ausleger-kurz" x="4400" y="-2750"/>
+<use href="#ks-vorsignal"          x="4400" y="-4175"/>
+<use href="#ks-vorsignal-b"        x="4400" y="-4175"/>
+<use href="#ks-zs3v-matrix"        x="4400" y="-3200"/>
+<use href="#vorsignal-tafel-klein" x="4810" y="-1325"/>
 
-<use href="#mast-schmal-5"  x="5200" y="-3975"/>
-<use href="#ks-vorsignal"   x="5200" y="-3975"/>
-<use href="#ks-vorsignal-w" x="5200" y="-3975"/>
-<use href="#zs3v-schild-5"  x="5200" y="-2950"/>
+<use href="#mast-schmal-5"  x="5200" y="-4175"/>
+<use href="#ks-vorsignal"   x="5200" y="-4175"/>
+<use href="#ks-vorsignal-w" x="5200" y="-4175"/>
+<use href="#zs3v-schild-5"  x="5200" y="-3150"/>
 
 <g visibility="hidde" stroke="black" stroke-width="2" transform="translate(-12800,0)">
-<line x1="10900" x2="16500" y1="-4800" y2="-4800"/>
-<line x1="10900" x2="16500" y1="-4675" y2="-4675"/>
-<line  x1="1400" x2="20000" y1="-3425" y2="-3425"/>
-<line  x1="2900" x2="20000" y1="-3300" y2="-3300"/>
-<line x1="14400" x2="20000" y1="-2600" y2="-2600"/>
-<line x1="-1000" x2="20000" y1="-2200" y2="-2200"/>
-<line  x1="6400" x2="20000" y1="-1600" y2="-1600"/>
+<line x1="10900" x2="16500" y1="-5000" y2="-5000"/>
+<line x1="10900" x2="16500" y1="-4875" y2="-4875"/>
+<line  x1="1400" x2="20000" y1="-3625" y2="-3625"/>
+<line  x1="2900" x2="20000" y1="-3500" y2="-3500"/>
+<line x1="14400" x2="20000" y1="-2800" y2="-2800"/>
+<line x1="-1000" x2="20000" y1="-2400" y2="-2400"/>
+<line  x1="6400" x2="20000" y1="-1625" y2="-1625"/>
 <line x1="-1000" x2="20000"  y1="-500"  y2="-500"/>
-<line x1="-1000" x2="20000"  y1="-100"  y2="-100"/>
+<line x1="-1000" x2="20000"  y1="-125"  y2="-125"/>
 </g>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-29697)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 1</text>
+
+
+<!-- Einfahrsignal A -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">A</text>
+<use href="#signal-fs-haupt-2-zs1-halt" x="100"/>
+<use href="#signal-fs-vor-2-halt"       x="100"/>
+<use href="#tafel-vor-klein"            x="625"/>
+
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="1150">a</text>
+<use href="#signal-fs-vor-2-halt" x="1150"/>
+<use href="#tafel-vor-klein"      x="1675"/>
+
+<!-- Einfahrsignal K -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2600">K</text>
+<use href="#signal-fs-haupt-2-zs1-halt" x="2200"/>
+<use href="#signal-fs-vor-2-halt"       x="2200"/>
+<use href="#tafel-vor-klein"            x="2725"/>
+
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="3250">k</text>
+<use href="#signal-fs-vor-2-halt" x="3250"/>
+<use href="#tafel-vor-klein"      x="3775"/>
+
+<!-- Einfahrsignal L -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="4700">L</text>
+<use href="#signal-fs-haupt-2-zs1-halt" x="4300"/>
+<use href="#signal-fs-vor-2-halt"       x="4300"/>
+<use href="#tafel-vor-klein"            x="4825"/>
+
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="5350">l</text>
+<use href="#signal-fs-vor-2-halt" x="5350"/>
+<use href="#tafel-vor-klein"      x="5725"/>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-28134)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 2</text>
+
+<!-- Ausfahrsignal B -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">B</text>
+<use href="#signal-fs-haupt-1-halt" x="100"/>
+
+<!-- Ausfahrsignal C -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2520">C</text>
+<use href="#signal-fs-haupt-2-halt" x="2020"/>
+<use href="#signal-fs-sperr-halt"   x="2020"/>
+
+<!-- Ausfahrsignal D -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="4440">D</text>
+<use href="#signal-fs-haupt-2-halt" x="3940"/>
+<use href="#signal-fs-sperr-halt"   x="3940"/>
+
+<!-- Hs11-12 -->
+<text y="-3000" font-family="DIN1451" font-size="270" text-anchor="middle" x="5000">Hs11-12</text>
+<use href="#signal-fs-sperr-halt" x="5000"/>
+
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-26571)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 3</text>
+
+<!-- Ausfahrsignal J -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">J</text>
+<use href="#signal-fs-haupt-1-halt" x="100"/>
+
+<!-- Ausfahrsignal H -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2520">H</text>
+<use href="#signal-fs-haupt-2-halt" x="2020"/>
+
+<!-- Ausfahrsignal G -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="4440">G</text>
+<use href="#signal-fs-haupt-2-halt" x="3940"/>
+
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2042,66 +2310,24 @@
 
 	<g transform="translate(0,-25008)">
 		<g transform="scale(0.177,0.177)">
-			<text x="1500" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 1</text>
-
-<!-- Hauptsignal A -->
-<use href="#fs-hauptsignal-2-halt"     x="0" y="-6200"/>
-<use href="#fs-ersatzsignal"           x="0" y="-3500"/>
-<use href="#mast-name-A"               x="0" y="-1050"/>
-
-<!-- Vorsignal b -->
-<use href="#fs-vorsignal-2-halt"   x="700" y="-2600"/>
-<use href="#mast-name-a"           x="700" y="-365"/>
-
-<g transform="translate(0,-7500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Berg</text>
 
 
-<!-- Vorsignal h/g -->
-<use href="#fs-vorsignal-2-halt" x="1800" y="-2600"/>
-<g transform="translate(1800,-365)">
-	<rect x="-200" y="-145" width="400" height="290" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="67" font-family="DIN1451" font-size="270" text-anchor="middle">jhg</text>
-</g>
-<g transform="translate(700,-7500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+<!-- Blocksignal A -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">A</text>
+<use href="#signal-fs-haupt-1-halt" x="100"/>
 
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="900">a</text>
+<use href="#signal-fs-vor-1-halt" x="900"/>
+<use href="#tafel-vor-klein"      x="1300"/>
 
-<!-- Hauptsignal B -->
-<use href="#fs-hauptsignal-1-fahrt" x="2600" y="-6200"/>
-<use href="#mast-name-B"            x="2600" y="-1050"/>
+<!-- Blocksignal B -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2700">B</text>
+<use href="#signal-fs-haupt-1-halt" x="2200"/>
 
-<!-- Vorsignal b -->
-<use href="#fs-vorsignal-1-fahrt"   x="3400" y="-2600"/>
-<use href="#mast-name-b"           x="3400" y="-365"/>
-
-<g transform="translate(1400,-7500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
-
-
-<!-- Hauptsignal K -->
-<use href="#fs-hauptsignal-2-langsamfahrt" x="4250" y="-6200"/>
-<use href="#fs-ersatzsignal"               x="4250" y="-3500"/>
-<use href="#mast-name-K"                   x="4250" y="-1050"/>
-
-<!-- Vorsignal k -->
-<use href="#fs-vorsignal-2-langsamfahrt"   x="5200" y="-2600"/>
-<use href="#mast-name-k"                   x="5200" y="-365"/>
-
-<g transform="translate(2100,-7500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">b</text>
+<use href="#signal-fs-vor-1-halt" x="3000"/>
+<use href="#tafel-vor-klein"      x="3400"/>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2109,60 +2335,32 @@
 
 	<g transform="translate(0,-23445)">
 		<g transform="scale(0.177,0.177)">
-			<text x="1500" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 2</text>
-<!-- Hauptsignal L -->
-<use href="#fs-hauptsignal-2-fahrt" x="0" y="-6200"/>
-<use href="#fs-ersatzsignal"        x="0" y="-3500"/>
-<use href="#mast-name-L"            x="0" y="-1050"/>
-
-<!-- Vorsignal l -->
-<use href="#fs-vorsignal-2-fahrt"  x="700" y="-2600"/>
-<use href="#mast-name-l"           x="700" y="-365"/>
-
-<g transform="translate(0,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Heim</text>
 
 
-<!-- Vorsignal c/d -->
-<use href="#fs-vorsignal-2-halt" x="1800" y="-2600"/>
-<g transform="translate(1800,-365)">
-	<rect x="-150" y="-135" width="300" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">cd</text>
-</g>
+<!-- Signal A -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">A</text>
+<use href="#signal-fs-haupt-1-halt" x="100"/>
 
-<g transform="translate(1500,-5500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="900">a</text>
+<use href="#signal-fs-vor-1-halt" x="900"/>
+<use href="#tafel-vor-klein"      x="1300"/>
 
-<!-- Hauptsignal J -->
-<use href="#fs-hauptsignal-1-halt" x="2550" y="-8200"/>
-<use href="#mast-name-J"           x="2550" y="-3050"/>
-<line x1="-200" x2="200" transform="translate(2550,-2000)" stroke="black" stroke-width="2"/>
+<!-- Signal B -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2700">B</text>
+<use href="#signal-fs-haupt-2-halt" x="2200"/>
 
-<!-- Hauptsignal C -->
-<use href="#fs-hauptsignal-2-halt" x="3300" y="-7200"/>
-<use href="#mast-name-C"           x="3300" y="-2050"/>
-<line x1="-200" x2="200" transform="translate(3300,-1000)" stroke="black" stroke-width="2"/>
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">b</text>
+<use href="#signal-fs-vor-2-halt" x="3000"/>
+<use href="#tafel-vor-klein"      x="3400"/>
 
-<!-- Hauptsignal D -->
-<use href="#fs-hauptsignal-2-halt" x="4050" y="-6200"/>
-<use href="#mast-name-D"           x="4050" y="-1050"/>
+<!-- Signal C -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">C</text>
+<use href="#signal-fs-haupt-2-halt" x="4300"/>
 
-
-<!-- Sperrsignal C -->
-<use href="#fs-sperrsignal-fahrt"    x="4600" y="-2600"/>
-<use href="#fs-schutz-rueckstrahler" x="4600" y="-650"/>
-<use href="#mast-name-C"             x="4600" y="-1050"/>
-
-<!-- Sperrsignal D -->
-<use href="#fs-sperrsignal-halt"     x="5400" y="-2600"/>
-<use href="#fs-schutz-rueckstrahler" x="5400" y="-650"/>
-<use href="#mast-name-D"             x="5400" y="-1050"/>
+<text y="-3100" font-family="DIN1451" font-size="270" text-anchor="middle" x="5100">c</text>
+<use href="#signal-fs-vor-2-halt" x="5100"/>
+<use href="#tafel-vor-klein"      x="5500"/>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2170,60 +2368,32 @@
 
 	<g transform="translate(0,-21882)">
 		<g transform="scale(0.177,0.177)">
-			
-<text x="1200" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Berg</text>
-<text x="5200" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 3</text>
-<!-- Hauptsignal A -->
-<use href="#fs-hauptsignal-1-halt" x="0" y="-6200"/>
-<use href="#mast-name-A"           x="0" y="-1050"/>
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 1</text>
 
-<!-- Vorsignal a -->
-<use href="#fs-vorsignal-1-halt"   x="700" y="-2600"/>
-<use href="#mast-name-a"           x="700" y="-365"/>
 
-<g transform="translate(0,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+<!-- Einfahrsignal F -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">F</text>
+<use href="#signal-fs-haupt-2-zs1-halt" x="100"/>
+<use href="#signal-fs-vor-2-halt"       x="100"/>
+<use href="#tafel-vor-klein"            x="625"/>
 
-<!-- Vorsignal b -->
-<use href="#fs-vorsignal-1-halt"   x="1800" y="-2600"/>
-<use href="#mast-name-b"           x="1800" y="-365"/>
+<text y="-3200" font-family="DIN1451" font-size="270" text-anchor="middle" x="1150">f</text>
+<use href="#signal-fs-vor-2-halt" x="1150"/>
+<use href="#tafel-vor-klein"      x="1675"/>
 
-<g transform="translate(1000,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
+<!-- Einfahrsignal G -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2600">G</text>
+<use href="#signal-fs-haupt-1-zs1-halt" x="2200"/>
+<use href="#signal-fs-vor-1-halt"       x="2200"/>
+<use href="#tafel-vor-klein"            x="2725"/>
 
-<!-- Hauptsignal B -->
-<use href="#fs-hauptsignal-1-halt" x="2550" y="-8200"/>
-<use href="#mast-name-B"           x="2550" y="-3050"/>
-<line x1="-200" x2="200" transform="translate(2550,-2000)" stroke="black" stroke-width="2"/>
+<text y="-3200" font-family="DIN1451" font-size="270" text-anchor="middle" x="3250">g</text>
+<use href="#signal-fs-vor-1-halt" x="3250"/>
+<use href="#tafel-vor-klein"      x="3775"/>
 
-<!-- Hauptsignal G -->
-<use href="#fs-hauptsignal-2-halt" x="3300" y="-7200"/>
-<use href="#mast-name-G"           x="3300" y="-2050"/>
-<line x1="-200" x2="200" transform="translate(3300,-1000)" stroke="black" stroke-width="2"/>
-
-<!-- Hauptsignal H -->
-<use href="#fs-hauptsignal-2-halt" x="4050" y="-6200"/>
-<use href="#mast-name-H"           x="4050" y="-1050"/>
-
-<!-- Sperrsignal Hs -->
-<use href="#fs-sperrsignal-halt" x="5200" y="-2600"/>
-<g transform="translate(5200,-1050)">
-	<rect x="-175" y="-135" width="350" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">Hs</text>
-</g>
-
-<!-- Sperrsignal Gs -->
-<use href="#fs-sperrsignal-klein-fahrt" x="4600" y="-500"/>
-<g transform="translate(4600,-1050)">
-	<rect x="-175" y="-135" width="350" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">Gs</text>
-</g>
+<!-- Ausfahrsignal N5 -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="5000">N5 (Hp0)</text>
+<use href="#signal-fs-haupt-1-halt" x="4300"/>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2231,56 +2401,21 @@
 
 	<g transform="translate(0,-20319)">
 		<g transform="scale(0.177,0.177)">
-			<text x="2400" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Heim</text>
-<text x="4800" y="-4000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 1</text>
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 2</text>
 
-<!-- Hauptsignal A -->
-<use href="#fs-hauptsignal-1-halt"     x="0" y="-8200"/>
-<use href="#mast-name-A"               x="0" y="-3050"/>
-<line x1="-200" x2="200" transform="translate(0,-2000)" stroke="black" stroke-width="2"/>
+<!-- Ausfahrsignal B -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle"  x="500">N1</text>
+<use href="#signal-fs-haupt-1-halt" x="100"/>
+<use href="#signal-fs-sperr-halt"   x="100"/>
 
-<!-- Hauptsignal B -->
-<use href="#fs-hauptsignal-2-halt" x="600" y="-7200"/>
-<use href="#mast-name-B"           x="600" y="-2050"/>
-<line x1="-200" x2="200" transform="translate(600,-1000)" stroke="black" stroke-width="2"/>
+<!-- Ausfahrsignal C -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="2520">N2</text>
+<use href="#signal-fs-haupt-2-halt" x="2020"/>
 
-<!-- Hauptsignal C -->
-<use href="#fs-hauptsignal-2-halt" x="1350" y="-6200"/>
-<use href="#mast-name-C"           x="1350" y="-1050"/>
+<!-- Ausfahrsignal D -->
+<text y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle" x="4440">N3</text>
+<use href="#signal-fs-haupt-1-halt" x="3940"/>
 
-<!-- Vorsignal a -->
-<use href="#fs-vorsignal-1-halt"   x="2050" y="-2600"/>
-<use href="#mast-name-a"           x="2050" y="-365"/>
-<g transform="translate(3300,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
-
-<!-- Vorsignal b -->
-<use href="#fs-vorsignal-2-halt"   x="3150" y="-2600"/>
-<use href="#mast-name-b"           x="3150" y="-365"/>
-<g transform="translate(4000,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
-
-<!-- Hauptsignal N5 -->
-<use href="#fs-hauptsignal-1-halt" x="3875" y="-6200"/>
-<g transform="translate(3875,-1050)">
-	<rect x="-175" y="-135" width="350" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">N5</text>
-</g>
-
-<!-- Vorsignal c -->
-<use href="#fs-vorsignal-2-halt"   x="4600" y="-2600"/>
-<use href="#mast-name-c"           x="4600" y="-365"/>
-<g transform="translate(4700,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2288,86 +2423,16 @@
 
 	<g transform="translate(0,-18756)">
 		<g transform="scale(0.177,0.177)">
-			<text x="2250" y="-4500" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 2</text>
+			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 3</text>
 
-<!-- Hauptsignal G -->
-<use href="#fs-hauptsignal-1-halt"     x="0" y="-8200"/>
-<use href="#mast-name-G"               x="0" y="-3050"/>
-<line x1="-200" x2="200" transform="translate(0,-2000)" stroke="black" stroke-width="2"/>
-
-<!-- Hauptsignal N1 -->
-<use href="#fs-hauptsignal-1-halt" x="600" y="-7200"/>
-<g transform="translate(600,-2050)">
-	<rect x="-150" y="-135" width="300" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">N1</text>
-</g>
-<line x1="-200" x2="200" transform="translate(600,-1000)" stroke="black" stroke-width="2"/>
-
-<!-- Hauptsignal F -->
-<use href="#fs-hauptsignal-2-halt" x="1200" y="-6200"/>
-<use href="#fs-ersatzsignal"       x="1200" y="-3500"/>
-<use href="#mast-name-F"           x="1200" y="-1050"/>
-
-<!-- Vorsignal f -->
-<use href="#fs-vorsignal-1-halt"   x="1900" y="-2600"/>
-<use href="#mast-name-f"           x="1900" y="-365"/>
-<g transform="translate(5200,-7800)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
-
-
-<!-- Sperrsignal N1 -->
-<use href="#fs-sperrsignal-halt"     x="2650" y="-3600"/>
-<use href="#fs-schutz-rueckstrahler" x="2650" y="-1650"/>
-<g transform="translate(2650,-2050)">
-	<rect x="-150" y="-135" width="300" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">N1</text>
-</g>
-<line x1="-200" x2="200" transform="translate(2650,-1000)" stroke="black" stroke-width="2"/>
-
-
-<!-- Hauptsignal N3 -->
-<use href="#fs-hauptsignal-1-fahrt" x="3300" y="-7200"/>
-<g transform="translate(3300,-2050)">
-	<rect x="-175" y="-135" width="350" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">N3</text>
-</g>
-<line x1="-200" x2="200" transform="translate(3300,-1000)" stroke="black" stroke-width="2"/>
-
-<!-- Hauptsignal N2 -->
-<use href="#fs-hauptsignal-2-halt" x="3900" y="-6200"/>
-<g transform="translate(3900,-1050)">
-	<rect x="-175" y="-135" width="350" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
-	<text x="2" y="94" font-family="DIN1451" font-size="270" text-anchor="middle">N2</text>
-</g>
-
-<!-- Vorsignal g -->
-<use href="#fs-vorsignal-1-halt"   x="4600" y="-2600"/>
-<use href="#mast-name-g"           x="4600" y="-365"/>
-<g transform="translate(5200,-4500)">
-	<use href="#mast-schmal-1"         x="0" y="-450"/>
-	<use href="#vorsignal-tafel-klein" x="0" y="-450"/>
-	<line x1="-200" x2="200" stroke="black" stroke-width="2"/>
-</g>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-17193)">
-		<g transform="scale(0.177,0.177)">
-			<text x="2100" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 3</text>
+<!-- Hauptsperrsignal/1951 P1/Ls1 -->
+<use href="#signal-hv-haupt-hp0-51-sperr" x="0"/>
 
 <!-- Hauptsperrsignal/1951 P4 -->
-<use href="#signal-hv-haupt-51-zs1-sperr" x="0"/>
-
-<!-- Hauptsperrsignal/1951 P5 -->
 <use href="#signal-hv-haupt-51-zs1-sperr" x="750"/>
 
-<!-- Hauptsperrsignal/1951 1 -->
-<use href="#signal-hv-haupt-hp0-51-sperr" x="1500"/>
+<!-- Hauptsperrsignal/1951 P5 -->
+<use href="#signal-hv-haupt-51-zs1-sperr" x="1500"/>
 
 <!-- Hauptsignal/1951 A -->
 <use href="#signal-hv-haupt-51-zs1-vor" x="2400"/>
@@ -2386,20 +2451,20 @@
 
 
 <!-- Namen -->
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">P4</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="750">P5</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">Ls1</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="2400">A</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="3300">a</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4300">B</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="5200">b</text>
-<text y="-6750" font-family="DIN1451" font-size="270" text-anchor="middle" x="4600">Ls11</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">P1/Ls1</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="750">P4</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">P5</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="2400">A</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="3300">a</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="4300">B</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="5200">b</text>
+<text y="-6850" font-family="DIN1451" font-size="270" text-anchor="middle" x="4600">Ls11</text>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-15630)">
+	<g transform="translate(0,-17193)">
 		<g transform="scale(0.177,0.177)">
 			<text x="4000" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">D-Stadt 1</text>
 
@@ -2419,14 +2484,49 @@
 
 
 <!-- Namen -->
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="100">f</text>
-<text y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle" x="1000">F</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="1900">a</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="2800">A</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="3600">De1</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4300">De2</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls3</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="5500">Ls4</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="100">f</text>
+<text y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle" x="1000">F</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="1900">a</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="2800">A</text>
+<text y="-2600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3600">De1</text>
+<text y="-2600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4300">De2</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls3</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5500">Ls4</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-15630)">
+		<g transform="scale(0.177,0.177)">
+			<text x="2100" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">D-Stadt 2</text>
+
+<use href="#signal-hv-hauptsperr-zs1-vor"  x="100"/>
+<use href="#signal-hv-hauptsperr-zs1-vor" x="1100"/>
+<use href="#signal-hv-hauptsperr-zs1-vor" x="2100"/>
+<use href="#signal-hv-hauptsperr-zs1-vor" x="3100"/>
+<use href="#signal-hv-hauptsperr-zs1-vor" x="4100"/>
+<use href="#signal-hv-hauptsperr-zs1-vor" x="5100"/>
+
+<use href="#signal-hv-sperr" x="600"/>
+<use href="#signal-hv-sperr" x="1600"/>
+<use href="#signal-hv-sperr" x="2600"/>
+<use href="#signal-hv-sperr" x="3600"/>
+<use href="#signal-hv-sperr" x="4600"/>
+
+<!-- Namen -->
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle"  x="100">P1</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="1100">P2</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="2100">N1</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="3100">N2</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="4100">N3</text>
+<text y="-5350" font-family="DIN1451" font-size="270" text-anchor="middle" x="5100">N4</text>
+
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="600">Ls32</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1600">Ls22</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2600">Ls13</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3600">Ls14</text>
+<text y="-800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4600">Ls16</text>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
@@ -2434,284 +2534,7 @@
 
 	<g transform="translate(0,-14067)">
 		<g transform="scale(0.177,0.177)">
-			<text x="2100" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">D-Stadt 2</text>
-
-<use href="#signal-hv-hauptsperr-zs1" x="0"/>
-<use href="#signal-hv-hauptsperr-zs1" x="800"/>
-<use href="#signal-hv-hauptsperr-zs1" x="1600"/>
-<use href="#signal-hv-hauptsperr-zs1" x="2400"/>
-<use href="#signal-hv-hauptsperr-zs1" x="3200"/>
-<use href="#signal-hv-hauptsperr-zs1" x="4000"/>
-
-<use href="#signal-hv-sperr" x="4800" y="-6000"/>
-<use href="#signal-hv-sperr" x="4800" y="-4500"/>
-<use href="#signal-hv-sperr" x="4800" y="-3000"/>
-<use href="#signal-hv-sperr" x="4800" y="-1500"/>
-<use href="#signal-hv-sperr" x="4800"/>
-
-<!-- Namen -->
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">P1</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="800">P2</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="1600">N1</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="2400">N2</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="3200">N3</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4000">N4</text>
-
-<text y="-6750" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls32</text>
-<text y="-5250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls22</text>
-<text y="-3750" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls13</text>
-<text y="-2250" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls14</text>
-<text  y="-750" font-family="DIN1451" font-size="270" text-anchor="middle" x="4800">Ls16</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-12504)">
-		<g transform="scale(0.177,0.177)">
-			<text x="2100" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City West</text>
-<use href="#signal-ks-zs3m-haupt-k-zs6" x="0"/>
-<use href="#signal-ks-vor-zs3vm"        x="750"/>
-<use href="#signal-ks-haupt-k"          x="1500"/>
-<use href="#signal-ks-vor"              x="2250"/>
-<use href="#signal-ks-zs3-10-haupt-k"   x="3000"/>
-<use href="#signal-ks-vor-zs3v-10"      x="3750"/>
-
-<text x="5000" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">E-City Ost 1</text>
-<use href="#signal-ks-haupt-k"        x="4600"/>
-<use href="#signal-ks-vor"            x="5350"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">FF</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">ff</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4600">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5350">a</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-10941)">
-		<g transform="scale(0.177,0.177)">
-			<text x="1500" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City Ost 2</text>
-<use href="#signal-ks-zs3m-haupt-k-zs6" x="0"/>
-<use href="#signal-ks-vor-zs3vm"        x="750"/>
-<use href="#signal-ks-zs3-10-haupt-k"   x="1500"/>
-<use href="#signal-ks-vor-zs3v-10"      x="2250"/>
-
-<text x="4500" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Tal 1</text>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="3100"/>
-<use href="#signal-ks-vor-zs3vm"                    x="3850"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="4600"/>
-<use href="#signal-ks-vor-zs3vm"                    x="5350"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">f</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">AA</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">aa</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3100">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3850">a</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4600">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5350">f</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-9378)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Tal 2</text>
-<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
-<use href="#signal-ks-vor-zs3vm"            x="750"/>
-<use href="#signal-ks-zs3-6-haupt-k"        x="1500"/>
-<use href="#signal-ks-haupt-k"              x="2250"/>
-<use href="#signal-ks-zs3-6-haupt-k"        x="3000"/>
-<use href="#signal-ks-haupt-k"              x="3750"/>
-<use href="#signal-ks-zs3m-haupt-k"         x="4500"/>
-<use href="#signal-ks-zs3-6-haupt-k"        x="5250"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">G</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">g</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">P1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">P2</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P3</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">N1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N2</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N3</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-7815)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg</text>
-
-<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
-<use href="#signal-ks-vor-zs3vm"            x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v" x="1500"/>
-<use href="#signal-ks-vor-zs3vm"            x="2250"/>
-<use href="#signal-ks-haupt-k"              x="3000"/>
-<use href="#signal-ks-zs3-6-haupt-k"        x="3750"/>
-<use href="#signal-ks-haupt-k"              x="4500"/>
-<use href="#signal-ks-zs3-6-haupt-k"        x="5250"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N2</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-6252)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 1</text>
-
-<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="0"/>
-<use href="#signal-ks-vor-zs3vm"                  x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="1500"/>
-<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="3000"/>
-<use href="#signal-ks-vor-zs3vm"                  x="3750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="4500"/>
-<use href="#signal-ks-vor-zs3vm"                  x="5250"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">B</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">b</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">BB</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">bb</text>
-
-<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="4500"/>
-
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">21X</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">22X</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">23Y</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">42X</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-4689)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 2</text>
-
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="0"/>
-<use href="#signal-ks-vor-zs3vm"                  x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="1500"/>
-<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
-
-<use href="#signal-ks-zs3-6-haupt-r"              x="3000"/>
-<use href="#signal-ks-haupt-r"                    x="3750"/>
-<use href="#signal-ks-zs3-6-haupt-r-zs6"          x="4500"/>
-<use href="#signal-ks-zs3m-haupt-r-zs6"           x="5250"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">G</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">g</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">GG</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">gg</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">P4</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">P5</text>
-
-
-<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="4500"/>
-
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">52Y</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">90X</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">90Y</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">91Y</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-3126)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 3</text>
-
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="0"/>
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="750"/>
-<use href="#signal-ks-zs3-10-haupt-k-zs6" x="1500"/>
-<use href="#signal-ks-haupt-r"            x="2250"/>
-<use href="#signal-ks-zs3-6-haupt-r-zs6"  x="3000"/>
-<use href="#signal-ks-zs3m-haupt-r-zs6"   x="3750"/>
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="4500"/>
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="5250"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">P6</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">P7</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">P8</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">N3</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">N4</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">N5</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N6</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N7</text>
-
-<!-- Sperrsignale -->
-<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
-<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
-
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">92Y</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">93Y</text>
-<text y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">94Y</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-1563)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 4</text>
-
-<use href="#signal-ks-zs3-10-haupt-k-zs6" x="0"/>
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="750"/>
-<use href="#signal-ks-zs3-6-haupt-k-zs6"  x="1500"/>
-<use href="#signal-ks-zs3m-haupt-k-zs6"   x="2250"/>
-<use href="#signal-ks-zs3-6-haupt-k-zs6"  x="3000"/>
-
-<!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">N8</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">ZU5</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">ZU4</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">ZR5</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">ZR4</text>
-
-		</g>
-		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
-	</g>
-
-	<g transform="translate(0,-0)">
-		<g transform="scale(0.177,0.177)">
-			<text x="3000" y="-6100" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg (in H/V Kompakt)</text>
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg (in H/V Kompakt)</text>
 
 <use href="#signal-hvk-zs3m-mehrabschnitt-v" x="0"/>
 <use href="#signal-hvk-vor-zs3vm"            x="750"/>
@@ -2723,14 +2546,263 @@
 <use href="#signal-hvk-zs3-6-haupt-k"        x="5250"/>
 
 <!-- Namen -->
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N1</text>
-<text y="-5600" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N2</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-12504)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg (in Ks)</text>
+
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
+<use href="#signal-ks-vor-zs3vm"            x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"            x="2250"/>
+<use href="#signal-ks-haupt"                x="3000"/>
+<use href="#signal-ks-zs3-6-haupt"          x="3750"/>
+<use href="#signal-ks-haupt"                x="4500"/>
+<use href="#signal-ks-zs3-6-haupt"          x="5250"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N2</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-10941)">
+		<g transform="scale(0.177,0.177)">
+			<text x="2100" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Tal 1</text>
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="0"/>
+<use href="#signal-ks-vor-zs3vm"                    x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="1500"/>
+<use href="#signal-ks-vor-zs3vm"                    x="2250"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v"         x="3000"/>
+<use href="#signal-ks-vor-zs3vm"                    x="3750"/>
+
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">G</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">g</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-9378)">
+		<g transform="scale(0.177,0.177)">
+			<text x="2100" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Tal 2</text>
+<use href="#signal-ks-zs3-6-haupt" x="0"/>
+<use href="#signal-ks-haupt"       x="750"/>
+<use href="#signal-ks-zs3-6-haupt" x="1500"/>
+<use href="#signal-ks-haupt"       x="2250"/>
+<use href="#signal-ks-zs3m-haupt"  x="3000"/>
+<use href="#signal-ks-zs3-6-haupt" x="3750"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">P1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">P2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">P3</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">N1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">N2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">N3</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-7815)">
+		<g transform="scale(0.177,0.177)">
+			<text x="2100" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City West</text>
+<use href="#signal-ks-zs3m-haupt-zs1-zs6" x="0"/>
+<use href="#signal-ks-vor-zs3vm"          x="750"/>
+<use href="#signal-ks-haupt-zs1"          x="1500"/>
+<use href="#signal-ks-vor"                x="2250"/>
+<use href="#signal-ks-zs3-10-haupt-zs1"   x="3000"/>
+<use href="#signal-ks-vor-zs3v-10"        x="3750"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">FF</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">ff</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-6252)">
+		<g transform="scale(0.177,0.177)">
+			<text x="2100" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City Ost</text>
+<use href="#signal-ks-haupt-zs1"          x="0"/>
+<use href="#signal-ks-vor"                x="750"/>
+<use href="#signal-ks-zs3m-haupt-zs1-zs6" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"          x="2250"/>
+<use href="#signal-ks-zs3-10-haupt-zs1"   x="3000"/>
+<use href="#signal-ks-vor-zs3v-10"        x="3750"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">AA</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">aa</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-4689)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 1</text>
+
+<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="0"/>
+<use href="#signal-ks-vor-zs3vm"                  x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="1500"/>
+<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="3000"/>
+<use href="#signal-ks-vor-zs3vm"                  x="3750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="4500"/>
+<use href="#signal-ks-vor-zs3vm"                  x="5250"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">F</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">f</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">B</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">b</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">BB</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">bb</text>
+
+<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="4500"/>
+
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">21X</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">22X</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">23Y</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">42X</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-3126)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 2</text>
+
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="0"/>
+<use href="#signal-ks-vor-zs3vm"                  x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
+
+<use href="#signal-ks-zs3-6-haupt-r"              x="3000"/>
+<use href="#signal-ks-haupt-r"                    x="3750"/>
+<use href="#signal-ks-zs3-6-haupt-r-k-zs6"        x="4500"/>
+<use href="#signal-ks-zs3m-haupt-r-k-zs6"         x="5250"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">G</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">g</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">GG</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">gg</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">P1</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">P4</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">P5</text>
+
+
+<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="4500"/>
+
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">52Y</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">90X</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">90Y</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">91Y</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-1563)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 3</text>
+
+<use href="#signal-ks-zs3m-haupt-zs1-zs6"   x="0"/>
+<use href="#signal-ks-zs3m-haupt-zs1-zs6"   x="750"/>
+<use href="#signal-ks-zs3-10-haupt-zs1-zs6" x="1500"/>
+<use href="#signal-ks-haupt-r"              x="2250"/>
+<use href="#signal-ks-zs3-6-haupt-r-k-zs6"  x="3000"/>
+<use href="#signal-ks-zs3m-haupt-r-k-zs6"   x="3750"/>
+<use href="#signal-ks-zs3m-haupt-zs1-zs6"   x="4500"/>
+<use href="#signal-ks-zs3m-haupt-zs1-zs6"   x="5250"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">P6</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">P7</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">P8</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">N3</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">N4</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">N5</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N6</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N7</text>
+
+<!-- Sperrsignale -->
+<use href="#signal-ks-sperr-klein" y="-7500" x="0"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="1500"/>
+<use href="#signal-ks-sperr-klein" y="-7500" x="3000"/>
+
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="0">92Y</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">93Y</text>
+<text y="-7200" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">94Y</text>
+
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-0)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 4</text>
+
+<use href="#signal-ks-zs3-10-haupt-zs1-zs6" x="0"/>
+<use href="#signal-ks-zs3m-haupt-k-zs6"   x="750"/>
+<use href="#signal-ks-zs3-6-haupt-k-zs6"  x="1500"/>
+<use href="#signal-ks-zs3m-haupt-k-zs6"   x="2250"/>
+<use href="#signal-ks-zs3-6-haupt-k-zs6"  x="3000"/>
+
+<!-- Namen -->
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">N8</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">ZU5</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="1500">ZU4</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="2250">ZR5</text>
+<text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3000">ZR4</text>
 
 		</g>
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
