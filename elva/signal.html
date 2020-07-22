@@ -48,7 +48,7 @@ function toggleMaske(button)
 		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
 		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
 	}
-	for (i=0; i < 5; i++) {
+	for (i=0; i < 6; i++) {
 		maske = document.getElementById("transform_matrix_maske_"+i)
 		optik = document.getElementById("transform_matrix_optik_"+i)
 		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
@@ -132,7 +132,7 @@ function selectSignal(signal, zs3, zs3v)
 	zs3v_schild_typ = 0
 
 	if (signal.includes("fs_h")) {
-		mast.setAttribute("whichChoice", 8)
+		mast.setAttribute("whichChoice", 10)
 		schirm.setAttribute("whichChoice", 6)
 	}
 	else if (signal.includes("ks_h") || signal.includes("ks_m")) {
@@ -178,7 +178,7 @@ function selectSignal(signal, zs3, zs3v)
 		optik_sperr.setAttribute("whichChoice", 0)
 
 		if (signal.includes("_m")) {
-			mast.setAttribute("whichChoice", 7)
+			mast.setAttribute("whichChoice", 9)
 			mast_schild.setAttribute("whichChoice", 1)
 			tr_optik_sperr.setAttribute("translation", "0 59.375 1.6")
 		}
@@ -187,14 +187,17 @@ function selectSignal(signal, zs3, zs3v)
 		mast_index = 4
 		if (zs3v.includes("matrix")) mast_index = 3
 		if (signal.includes("_hb")) mast_index += 1
-		if (signal.includes("_k")) mast_index = 0
+		if (signal.includes("_k")) {
+			mast_index = 7
+			if (zs3v.includes("matrix")) mast_index += 1
+		}
 		if (signal.includes("_s")) mast_index = 6
 		mast.setAttribute("whichChoice", mast_index)
 
 		mast_schild_index = 0
 		if (signal.includes("_hb") || signal.includes("_s")) {
 			if (!signal.includes("_k")) mast_schild_index = 1
-			if (zs3v.includes("schild")) mast_schild_index += 1
+			if (zs3v.includes("schild") || zs3v.includes("matrix")) mast_schild_index += 1
 		}
 		mast_schild.setAttribute("whichChoice", mast_schild_index)
 
@@ -286,7 +289,7 @@ function selectSignal(signal, zs3, zs3v)
 		optik_sperr.setAttribute("whichChoice", optik_index)
 
 		if (signal.includes("_m")) {
-			mast.setAttribute("whichChoice", 7)
+			mast.setAttribute("whichChoice", 9)
 			mast_schild.setAttribute("whichChoice", 1)
 			tr_optik_sperr.setAttribute("translation", "0 59.375 1.6")
 		}
@@ -368,7 +371,7 @@ document.onload = function() {
   <option value="hv_d_m">H/V Deckungssignal (Hoch)</option>
 
   <option value="hv_v_k">H/V Vorsignal (Kompakt)</option>
-  <option value="hv_hb_k">H/V Blocksignal (Kompakt)</option>
+  <option value="hv_hb_k" selected>H/V Blocksignal (Kompakt)</option>
   <option value="hv_h_k">H/V Hauptsignal (Kompakt)</option>
 
   <option value="ks_v">Ks Vorsignal</option>
@@ -376,7 +379,7 @@ document.onload = function() {
   <option value="ks_m">Ks Mehrabschnittsignal</option>
   <option value="ks_h">Ks Hauptsignal</option>
   <option value="ks_s">Ks Sperrsignal</option>
-  <option value="ks_s_m" selected>Ks Sperrsignal (Hoch)</option>
+  <option value="ks_s_m">Ks Sperrsignal (Hoch)</option>
 
 </select>
 </td><td>
@@ -643,6 +646,64 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 			<inline url="schirm_fs_zs1.x3d"></inline>
 		</transform>
 	</group>
+	<!-- Hv Kompakt Mast ohne Zs3v -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_k_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_k_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_7">
+				<inline url="mast_hv_k_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Kompakt Mast mit Zs3v -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_stecker.x3d"></inline>
+		</transform>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_k_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_k_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_8">
+				<inline url="mast_hv_k_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="12.9 64.84375 0">
+			<inline url="schirm_matrix_logic.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="13.95 64.84375 0">
+			<inline url="schirm_matrix_bridge.x3d"></inline>
+		</transform>
+		<switch whichChoice="0" id="switch_matrix_0">
+			<transform rotation="0 1 0 1.5708" translation="15.1 64.84375 0">
+				<transform rotation="0 0 1 3.1416">
+					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+				</transform>
+			</transform>
+		</switch>
+
+		<transform rotation="0 1 0 1.5708" translation="12.5 64.84375 0">
+			<transform translation="0 0 0" id="transform_matrix_maske_5">
+				<inline url="maske_ks_matrix.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="16.7 64.84375 0">
+			<transform translation="0 0 0" id="transform_matrix_optik_5">
+				<inline url="optik_hv_matrix.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
 	<!-- Mast mit Sperrsignal -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
@@ -783,9 +844,9 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0.4 0 0">
 	<transform translation="0 113.28125 1.5" id="transform_schirm_vor">
 		<switch whichChoice="-1" id="switch_schirm_vor">
-			<!-- <inline url="schirm_ks_vor.x3d"></inline>
+			<inline url="schirm_ks_vor.x3d"></inline>
 			<inline url="schirm_hv_vor_w.x3d"></inline>
-			<inline url="schirm_hv_k_vor.x3d"></inline> -->
+			<inline url="schirm_hv_k_vor.x3d"></inline>
 		</switch>
 		<switch whichChoice="-1" id="switch_zs3v_schild">
 			<inline url="schirm_ks_schild_zs3.x3d"></inline>
@@ -1227,13 +1288,13 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="-1" id="signal_switch_optik_zs1">
 			<group> <!-- Alt -->
 				<transform translation="0 8.3125 0">
-					<inline url="optik_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 				</transform>
 				<transform translation="-3.125 2.90625 0">
-					<inline url="optik_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 				</transform>
 				<transform translation="3.125 2.90625 0">
-					<inline url="optik_klein_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 				</transform>
 			</group>
 			<group> <!-- Neu -->
@@ -1292,7 +1353,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 					<inline url="optik_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
 				</transform>
 				<transform translation="-10.4375 22.5 0">
-					<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+					<inline url="optik_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 				</transform>
 			</group>
 			<!-- H/V Vorsignal mit Wiederholer -->
@@ -1310,7 +1371,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
 				</transform>
 				<transform translation="-10.4375 22.5 0">
-					<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+					<inline url="optik_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 				</transform>
 			</group>
 			<!-- H/V Vorsignal Kompakt -->
@@ -1531,13 +1592,13 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 			</transform>
 
 			<transform translation="-4.375 20.78125 0">
-				<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				<inline url="optik_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
 			<transform translation="4.375 20.78125 0">
-				<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				<inline url="optik_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
 			<transform translation="-4.375 12.65625 0">
-				<inline url="optik_hv_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				<inline url="optik_mittel.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
 		</transform>
 		<!-- H/V Haupt-/Sperrsignal 1951 -->
@@ -1559,10 +1620,10 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 			</transform>
 
 			<transform translation="-4.375 12.65625 0">
-				<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				<inline url="optik_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
 			<transform translation="4.375 20.78125 0">
-				<inline url="optik_hv_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				<inline url="optik_mittel_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
 		</transform>
 		<!-- H/V Hauptsignal Kompakt -->

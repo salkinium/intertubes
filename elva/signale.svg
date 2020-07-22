@@ -2,8 +2,8 @@
 <svg version="1.1"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	width="1150" height="35949"
-	viewBox="-80 -35949 1150 35949">
+	width="1150" height="37512"
+	viewBox="-80 -37512 1150 37512">
 
 	<defs>
 
@@ -531,7 +531,7 @@
 				"/>
 		</g>
 		<g id="ks-schutzschirm-klein" fill="#4c4c4c" stroke="black" stroke-width="10">
-			<rect x="-212.5" y="-100" width="425" height="380" rx="20"/>
+			<rect x="-212.5" y="-100" width="425" height="380" rx="26"/>
 		</g>
 
 		<g id="ks-lampe-gross" stroke="black" stroke-width="4" fill-opacity="0">
@@ -2035,6 +2035,10 @@
 			<use href="#signal-hvk-haupt"/>
 			<!-- <use href="#hv-hauptsignal-kompakt-k" y="-4425"/> -->
 		</g>
+		<g id="signal-hvk-haupt-zs1">
+			<use href="#signal-hvk-haupt"/>
+			<use href="#hv-hauptsignal-kompakt-zs1" y="-4425"/>
+		</g>
 		<g id="signal-hvk-haupt-v">
 			<use href="#signal-hvk-haupt"/>
 			<use href="#hv-hauptsignal-kompakt-v" y="-4425"/>
@@ -2042,6 +2046,11 @@
 		<g id="signal-hvk-zs3-6-haupt-k">
 			<use href="#signal-ks-zs3-6"/>
 			<use href="#signal-hvk-haupt-k"/>
+		</g>
+		<g id="signal-hvk-zs3-6-haupt-zs1">
+			<use href="#signal-ks-zs3-6"/>
+			<use href="#signal-hvk-haupt-k"/>
+			<use href="#hv-hauptsignal-kompakt-zs1" y="-4425"/>
 		</g>
 		<g id="signal-hvk-zs3m-mehrabschnitt-v">
 			<use href="#mast-schmal-1"          y="-5000"/>
@@ -2231,7 +2240,7 @@
 	
 	</defs>
 
-	<g transform="translate(0,-34386)">
+	<g transform="translate(0,-35949)">
 		<g transform="scale(0.177,0.177)">
 			<!-- Form-Signale -->
 <text x="1000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">Form Signale</text>
@@ -2284,7 +2293,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-32823)">
+	<g transform="translate(0,-34386)">
 		<g transform="scale(0.177,0.177)">
 			<!-- H/V Signale -->
 <text x="3200" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">H/V Signale</text>
@@ -2346,6 +2355,7 @@
 <use href="#hv-hauptsignal-kompakt-k"        x="4600" y="-4425"/>
 <use href="#hv-hauptsignal-kompakt-r"        x="4600" y="-4425"/>
 <use href="#hv-hauptsignal-kompakt-zs1"      x="4600" y="-4425"/>
+<use href="#hv-zs3v-matrix-kompakt"          x="4600" y="-2105"/>
 
 <use href="#signal-hvk-vor-zs3vm"            x="5350"/>
 
@@ -2377,7 +2387,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-31260)">
+	<g transform="translate(0,-32823)">
 		<g transform="scale(0.177,0.177)">
 			<!-- Ks Signale -->
 
@@ -2388,6 +2398,8 @@
 <use href="#lichtraumprofil-elva" x="3505"/>
 
 <use href="#signal-ks-zs3m-haupt-zs1" x="0"/>
+<use href="#ks-zs3-matrix"            x="0" y="-3200"/>
+<use href="#ks-zs3-matrix"            x="0" y="-2475"/>
 
 <use href="#signal-ks-vor-zs3vm" x="800"/>
 
@@ -2452,7 +2464,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-29697)">
+	<g transform="translate(0,-31260)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 1</text>
 
@@ -2491,7 +2503,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-28134)">
+	<g transform="translate(0,-29697)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 2</text>
 
@@ -2518,7 +2530,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-26571)">
+	<g transform="translate(0,-28134)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Dorf 3</text>
 
@@ -2539,7 +2551,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-25008)">
+	<g transform="translate(0,-26571)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Berg</text>
 
@@ -2564,7 +2576,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-23445)">
+	<g transform="translate(0,-25008)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">M-Heim</text>
 
@@ -2597,7 +2609,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-21882)">
+	<g transform="translate(0,-23445)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 1</text>
 
@@ -2629,7 +2641,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-20319)">
+	<g transform="translate(0,-21882)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 2</text>
 
@@ -2651,7 +2663,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-18756)">
+	<g transform="translate(0,-20319)">
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-7000" font-family="DIN1451" font-size="270" text-anchor="middle">E-Hausen 3</text>
 
@@ -2694,7 +2706,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-17193)">
+	<g transform="translate(0,-18756)">
 		<g transform="scale(0.177,0.177)">
 			<text x="4000" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">D-Stadt 1</text>
 
@@ -2727,7 +2739,7 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-15630)">
+	<g transform="translate(0,-17193)">
 		<g transform="scale(0.177,0.177)">
 			<text x="2100" y="-6000" font-family="DIN1451" font-size="270" text-anchor="middle">D-Stadt 2</text>
 
@@ -2762,19 +2774,18 @@
 		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
 	</g>
 
-	<g transform="translate(0,-14067)">
+	<g transform="translate(0,-15630)">
 		<g transform="scale(0.177,0.177)">
-			<!--
-<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg (in H/V Kompakt)</text>
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg (in H/V Kompakt)</text>
 
 <use href="#signal-hvk-zs3m-mehrabschnitt-v" x="0"/>
 <use href="#signal-hvk-vor-zs3vm"            x="750"/>
 <use href="#signal-hvk-zs3m-mehrabschnitt-v" x="1500"/>
 <use href="#signal-hvk-vor-zs3vm"            x="2250"/>
-<use href="#signal-hvk-haupt-k"              x="3000"/>
-<use href="#signal-hvk-zs3-6-haupt-k"        x="3750"/>
-<use href="#signal-hvk-haupt-k"              x="4500"/>
-<use href="#signal-hvk-zs3-6-haupt-k"        x="5250"/>
+<use href="#signal-hvk-haupt-zs1"            x="3000"/>
+<use href="#signal-hvk-zs3-6-haupt-zs1"      x="3750"/>
+<use href="#signal-hvk-haupt-zs1"            x="4500"/>
+<use href="#signal-hvk-zs3-6-haupt-zs1"      x="5250"/>
 
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"  x="750">a</text>
@@ -2784,9 +2795,14 @@
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="3750">P2</text>
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="4500">N1</text>
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle" x="5250">N2</text>
--->
 
-<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg</text>
+		</g>
+		<rect width="1150" height="1563" x="-80" y="0" fill="white"/>
+	</g>
+
+	<g transform="translate(0,-14067)">
+		<g transform="scale(0.177,0.177)">
+			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Berg</text>
 
 <use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
 <use href="#signal-ks-vor-zs3vm"            x="750"/>
