@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>ELVA Signalmast-Löthilfe</title>
+<script type="text/javascript" src="https://www.x3dom.org/release/x3dom-full.js"> </script>
+<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/release/x3dom.css"></link>
+<style>
+x3d
+{
+    border:2px solid black;
+    width: 95%;
+    height: 90%;
+}
+</style>
+<script>
+function toggleSteckerSchild(button)
+{
+	stecker = document.getElementById("switch_mast_stecker")
+	config = parseInt(stecker.getAttribute("whichChoice"))
+	stecker.setAttribute("whichChoice", -(config + 1))
+
+	schild = document.getElementById("switch_mast_schild")
+	config = parseInt(schild.getAttribute("whichChoice"))
+	schild.setAttribute("whichChoice", -(config + 1))
+}
+function toggleMast(button)
+{
+	for (i=0; i <= 8; i++) {
+		mast = document.getElementById("transform_mast_links_"+i)
+		mast.setAttribute("translation", mast.getAttribute("translation") == "0 0 0" ? "30 0 0" : "0 0 0")
+	}
+}
+function configure()
+{
+	signal = document.getElementById("input_signaltyp").value
+	mast = document.getElementById("switch_mast")
+	mast_schild = document.getElementById("switch_mast_schild")
+
+	mast_index = 0
+	mast_schild_index = 0
+
+	if (signal.includes("ks_")) mast_index = 0
+	if (signal.includes("hv_")) mast_index = 2
+	if (signal.includes("hvk_")) mast_index = 7
+
+	if (signal.includes("_zs3v")) {
+		mast_index += 1
+		mast_schild_index = 2
+	}
+	if (signal.includes("_zs1"))
+		mast_index += 2
+	if (signal.includes("_vor")) {
+		mast_index += 1
+		mast_schild_index = 1
+	}
+	if (signal.includes("_sperr")) {
+		mast_index += 2
+		mast_schild_index = 1
+	}
+
+	mast.setAttribute("whichChoice", mast_index)
+	if (mast_schild.getAttribute("whichChoice") < 0)
+		mast_schild_index = -(mast_schild_index + 1)
+	mast_schild.setAttribute("whichChoice", mast_schild_index)
+}
+
+document.onload = configure
+</script>
+</head>
+<body>
+
+<center>
+<table>
+<tr><td>
+<select id="input_signaltyp" size="9" onchange="configure()">
+  <option value="ks_n" selected>Ks Mast</option>
+  <option value="ks_zs3v" selected>Ks Mast Zs3v</option>
+  <option value="hvk_n">H/V Kompakt Mast Block</option>
+  <option value="hvk_zs3v">H/V Kompakt Mast Block+Zs3v</option>
+  <option value="hv_n">H/V Mast</option>
+  <option value="hv_zs3v">H/V Mast Zs3v</option>
+  <option value="hv_zs1">H/V Mast Zs1</option>
+  <option value="hv_zs1_sperr">H/V Mast Zs1+Sperr</option>
+  <option value="hv_zs1_vor">H/V Mast Zs1+Block</option>
+</select>
+</td><td>
+<button onclick="toggleMast(this)">Mast auf/zu</button></br>
+<button onclick="toggleSteckerSchild(this)">Stecker+Mastschild an/ab</button></br>
+</td>
+<td>
+Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!
+</td>
+</tr>
+</table>
+
+
+<x3d>
+<scene>
+
+<Viewpoint position="218.20319 136.05609 100.05485" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
+
+<switch whichChoice="0" id="switch_mast_halter">
+	<group>
+		<transform translation="-11.5 0 -10.8">
+			<inline url="mast_halter_rail.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-26.8 0 0">
+			<inline url="mast_halter_rail.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 1.5708" translation="-11.5 2 0">
+			<inline url="mast_halter_clip.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 1.5708" translation="-11.5 14.5 0">
+			<inline url="mast_halter_clip.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 1.5708" translation="-11.5 47.5 0">
+			<inline url="mast_halter_clip.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 1.5708" translation="-11.5 86.5 0">
+			<inline url="mast_halter_clip.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 1.5708" translation="-11.5 125.5 0">
+			<inline url="mast_halter_clip.x3d"></inline>
+		</transform>
+		<transform rotation="1 0 0 -1.5708" translation="-11.5 140.5 0">
+			<transform rotation="0 0 1 3.142">
+				<inline url="mast_halter_clip.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+</switch>
+
+<switch whichChoice="-1" id="switch_mast">
+	<!-- Ks Mast ohne Zs3v -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_ks_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_ks_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_0">
+				<inline url="mast_ks_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Ks Mast mit Zs3v -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_ks_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_ks_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_1">
+				<inline url="mast_ks_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast ohne Zs1 -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_2">
+				<inline url="mast_hv_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs3v -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_3">
+				<inline url="mast_hv_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs1 -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs1.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs1.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_4">
+				<inline url="mast_hv_links_zs1.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs1 und Vorsignal -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs1_block.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs1_block.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_5">
+				<inline url="mast_hv_links_zs1_block.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Mast mit Zs1 und Sperrsignal -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_rechts_zs1_sperr.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_mitte_zs1_sperr.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_6">
+				<inline url="mast_hv_links_zs1_sperr.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Kompakt Mast ohne Zs3v -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_k_rechts.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_k_mitte.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_7">
+				<inline url="mast_hv_k_links.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<!-- Hv Kompakt Mast mit Zs3v -->
+	<group>
+		<transform translation="0 0 -1.2">
+			<inline url="mast_hv_k_rechts_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 0">
+			<inline url="mast_hv_k_mitte_zs3v.x3d"></inline>
+		</transform>
+		<transform translation="0 0 1.2">
+			<transform translation="0 0 0" id="transform_mast_links_8">
+				<inline url="mast_hv_k_links_zs3v.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+</switch>
+<switch whichChoice="-1" id="switch_mast_schild">
+	<!-- Hauptsignal oben -->
+	<transform rotation="0 1 0 1.5708" translation="0.4 39.0625 0">
+		<inline url="mast_schild.x3d"></inline>
+	</transform>
+	<!-- Hauptsignal unten -->
+	<transform rotation="0 1 0 1.5708" translation="0.4 27.34375 0">
+		<inline url="mast_schild.x3d"></inline>
+	</transform>
+	<!-- Vorsignaltafel -->
+	<transform rotation="0 1 0 -1.5708" translation="0.4 41.40625 0">
+		<inline url="mast_tafel_vor.x3d"></inline>
+	</transform>
+</switch>
+
+<switch whichChoice="-1" id="switch_mast_stecker">
+	<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+		<inline url="mast_stecker.x3d"></inline>
+	</transform>
+</switch>
+
+</scene>
+</x3d>
+</center>
+
+</body>
+</html>

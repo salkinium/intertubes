@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<title>ELVA Form-Signale</title>
+<script type="text/javascript" src="https://www.x3dom.org/release/x3dom-full.js"> </script>
+<link rel="stylesheet" type="text/css" href="https://www.x3dom.org/release/x3dom.css"></link>
+<style>
+x3d
+{
+    border:2px solid black;
+    width: 95%;
+    height: 90%;
+}
+</style>
+<script>
+function toggleAbdeckung(button)
+{
+	abdeckung = document.getElementById("switch_mast_abdeckung")
+	choice = abdeckung.getAttribute("whichChoice")
+	abdeckung.setAttribute("whichChoice", choice == 0 ? -1 : 0)
+
+	document.getElementById("switch_schirm").setAttribute("whichChoice", -1)
+	document.getElementById("switch_schirm_vor").setAttribute("whichChoice", -1)
+	document.getElementById("switch_schirm_sperr").setAttribute("whichChoice", -1)
+	if (choice == 0) configure();
+}
+
+function toggleMast(button)
+{
+	for (i=0; i < 10; i++) {
+		mast = document.getElementById("transform_mast_links_"+i)
+		mast.setAttribute("translation", mast.getAttribute("translation") == "0 0 0" ? "-30 0 0" : "0 0 0")
+	}
+}
+function toggleMatrix(button)
+{
+	for (i=0; i < 10; i++) {
+		matrix = document.getElementById("switch_matrix_"+i)
+		choice = matrix.getAttribute("whichChoice")
+		matrix.setAttribute("whichChoice", choice == 0 ? -1 : 0)
+	}
+}
+function toggleMaske(button)
+{
+	for (i=0; i < 4; i++) {
+		maske = document.getElementById("transform_maske_"+i)
+		optik = document.getElementById("transform_optik_"+i)
+		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
+		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
+	}
+	for (i=0; i < 6; i++) {
+		maske = document.getElementById("transform_matrix_maske_"+i)
+		optik = document.getElementById("transform_matrix_optik_"+i)
+		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
+		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 30" : "0 0 0")
+	}
+}
+function configure()
+{
+	signal = document.getElementById("input_signaltyp").value
+
+	mast = document.getElementById("switch_mast")
+	mast_schild = document.getElementById("switch_mast_schild")
+	schirm = document.getElementById("switch_schirm")
+	schirm_vor = document.getElementById("switch_schirm_vor")
+	schirm_sperr = document.getElementById("switch_schirm_sperr")
+	maske = document.getElementById("signal_switch_maske")
+	maske_zs1 = document.getElementById("signal_switch_maske_zs1")
+	maske_vor = document.getElementById("signal_switch_maske_vor")
+	maske_sperr = document.getElementById("signal_switch_maske_sperr")
+	optik = document.getElementById("signal_switch_optik")
+	optik_zs1 = document.getElementById("signal_switch_optik_zs1")
+	optik_vor = document.getElementById("signal_switch_optik_vor")
+	optik_sperr = document.getElementById("signal_switch_optik_sperr")
+
+	mast.setAttribute("whichChoice", -1)
+	mast_schild.setAttribute("whichChoice", -1)
+	schirm.setAttribute("whichChoice", -1)
+	schirm_vor.setAttribute("whichChoice", -1)
+	schirm_sperr.setAttribute("whichChoice", -1)
+	maske.setAttribute("whichChoice", -1)
+	maske_vor.setAttribute("whichChoice", -1)
+	maske_sperr.setAttribute("whichChoice", -1)
+	maske_zs1.setAttribute("whichChoice", -1)
+	optik.setAttribute("whichChoice", -1)
+	optik_vor.setAttribute("whichChoice", -1)
+	optik_sperr.setAttribute("whichChoice", -1)
+	optik_zs1.setAttribute("whichChoice", -1)
+
+	tr_schirm_vor = document.getElementById("transform_schirm_vor")
+	tr_maske_vor = document.getElementById("transform_maske_vor")
+	tr_optik_vor = document.getElementById("transform_optik_vor")
+	tr_optik_sperr = document.getElementById("transform_optik_sperr")
+
+	tr_schirm_vor.setAttribute("translation", "0 113.28125 1.5")
+	tr_maske_vor.setAttribute("translation", "0 113.28125 1.5")
+	tr_optik_vor.setAttribute("translation", "0 113.28125 1.5")
+	tr_optik_sperr.setAttribute("translation", "0 0 0")
+
+	zs3_schild_typ = 0
+	zs3v_schild_typ = 0
+
+	if (signal.includes("fs_h"))
+	{
+		mast.setAttribute("whichChoice", 0)
+		schirm.setAttribute("whichChoice", 0)
+		mast_schild.setAttribute("whichChoice", 0)
+		optik_zs1.setAttribute("whichChoice", 0)
+		maske_zs1.setAttribute("whichChoice", 0)
+	}
+}
+
+function setColor(element, color)
+{
+	color = {
+		"rot": "1 0 0",
+		"gruen": "0 1 0",
+		"gelb": "1 1 0",
+		"weiss": ".7 .7 .7",
+	}[color]
+	element.getElementsByTagName("Material")[0].setAttribute("emissiveColor", color)
+}
+
+document.onload = configure
+</script>
+</head>
+<body>
+
+<center>
+<table>
+<tr>
+	<th>Typ</th>
+</tr>
+<tr><td>
+<select id="input_signaltyp" size="3" onchange="configure()">
+  <option value="fs_h" selected>Form Hauptsignal</option>
+  <option value="fs_v">Form Vorsignal</option>
+  <option value="fs_s">Form Sperrsignal</option>
+</select>
+</td><td>
+<button onclick="toggleMast(this)">Mast auf/zu</button></br>
+<button onclick="toggleMaske(this)">Maske auf/zu</button>
+</td>
+<td>
+Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
+</td>
+</tr>
+</table>
+
+
+<x3d>
+<scene>
+
+<Viewpoint position="241.25605 149.93322 108.38398" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
+
+<switch whichChoice="0" id="switch_mast">
+	<!-- Fs Mast Haupt -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_fs_haupt.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.6 165.625 -5.46875">
+			<!-- <transform rotation="0 0 1 -0.6109"> -->
+			<transform rotation="0 0 1 0.6109">
+				<inline url="mast_fs_blende_haupt_oben.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.6 118.75 -5.78125">
+			<!-- <transform rotation="0 0 1 -0.6109"> -->
+			<transform rotation="0 0 1 0.6109">
+				<inline url="mast_fs_blende_haupt_unten.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="8.2125 97.9375 0">
+			<inline url="schirm_fs_zs1.x3d"></inline>
+		</transform>
+	</group>
+</switch>
+
+<switch whichChoice="-1" id="switch_mast_schild">
+	<!-- Fs-Hauptsignal-2-zs1 -->
+	<group>
+		<transform rotation="0 1 0 -1.5708" translation="0.4 0 0">
+			<inline url="mast_fs_haupt_schild.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0.9 97.03125 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_haupt_gross_2_zs1.png"></ImageTexture>
+				</appearance>
+				<plane size="6.09375,140.625"></plane>
+			</shape>
+		</transform>
+	</group>
+</switch>
+
+<transform rotation="0 1 0 1.5708" translation="0.4 0 0">
+	<transform translation="0 113.28125 1.5" id="transform_schirm_vor">
+		<switch whichChoice="-1" id="switch_schirm_vor">
+			<inline url="schirm_fs_vor_1.x3d"></inline>
+			<inline url="schirm_fs_vor_2.x3d"></inline>
+		</switch>
+	</transform>
+</transform>
+
+<switch whichChoice="-1" id="switch_schirm_sperr">
+	<!-- Fs-Sperrsignal -->
+	<group>
+	</group>
+</switch>
+
+<switch whichChoice="-1" id="switch_schirm">
+	<!-- Form Fluegel -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="4 175 0">
+			<transform rotation="0 0 1 0.7854">
+				<inline url="schirm_fs_fluegel_gross.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="4.41 175 0">
+			<transform rotation="0 0 1 0.7854">
+				<transform translation="18.28125 0 0">
+					<shape>
+						<appearance>
+							<ImageTexture url="druck_fs_fluegel_gross_vorne.png"></ImageTexture>
+						</appearance>
+						<plane size="57.1875,14.0625"></plane>
+					</shape>
+				</transform>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 -1.5708" translation="3.59 175 0">
+			<transform rotation="0 0 1 2.3562">
+				<transform translation="18.28125 0 0">
+						<shape>
+							<appearance>
+								<ImageTexture url="druck_fs_fluegel_gross_hinten.png"></ImageTexture>
+							</appearance>
+							<plane size="57.1875,14.0625"></plane>
+						</shape>
+				</transform>
+			</transform>
+		</transform>
+
+		<transform rotation="0 1 0 1.5708" translation="4 123.4375 0">
+			<transform rotation="0 0 1 -0.7854">
+				<inline url="schirm_fs_fluegel_klein.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="4.41 123.4375 0">
+			<transform rotation="0 0 1 -0.7854">
+				<transform translation="0 15.15625 0">
+					<shape>
+						<appearance>
+							<ImageTexture url="druck_fs_fluegel_klein_vorne.png"></ImageTexture>
+						</appearance>
+						<plane size="13.125,50.9375"></plane>
+					</shape>
+				</transform>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 -1.5708" translation="3.59 123.4375 0">
+			<transform rotation="0 0 1 0.7854">
+				<transform translation="0 15.15625 0">
+						<shape>
+							<appearance>
+								<ImageTexture url="druck_fs_fluegel_klein_hinten.png"></ImageTexture>
+							</appearance>
+							<plane size="13.125,50.9375"></plane>
+						</shape>
+				</transform>
+			</transform>
+		</transform>
+	</group>
+</switch>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_0">
+	<transform translation="0 97.9375 7.8125">
+		<switch whichChoice="-1" id="signal_switch_maske_zs1">
+			<inline url="maske_fs_zs1.x3d"></inline>
+		</switch>
+	</transform>
+</transform>
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_1">
+	<transform translation="0 113.28125 1.5" id="transform_maske_vor">
+		<switch whichChoice="-1" id="signal_switch_maske_vor">
+			<inline url="maske_fs_vor.x3d"></inline>
+		</switch>
+	</transform>
+</transform>
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_2">
+	<switch whichChoice="-1" id="signal_switch_maske_sperr">
+		<!-- Fs Sperr -->
+		<group>
+			<transform translation="0 6.875 -1.6">
+				<inline url="maske_fs_sperr.x3d"></inline>
+			</transform>
+			<transform translation="4.6875 8.59375 1.85">
+				<shape>
+					<appearance>
+						<ImageTexture url="druck_schild_sperr.png"></ImageTexture>
+					</appearance>
+					<plane size="2.625,9.5"></plane>
+				</shape>
+			</transform>
+		</group>
+		<transform translation="0 66.25 0">
+			<inline url="maske_fs_sperr_h.x3d"></inline>
+		</transform>
+	</switch>
+</transform>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_3">
+	<transform translation="0 113.28125 1.5">
+		<switch whichChoice="-1" id="signal_switch_maske">
+			<!-- Fs-Hauptsignal -->
+			<inline url="maske_fs_haupt_1.x3d"></inline>
+			<inline url="maske_fs_haupt_2.x3d"></inline>
+		</switch>
+	</transform>
+</transform>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_0">
+	<transform translation="0 97.9375 7.8125">
+		<switch whichChoice="-1" id="signal_switch_optik_zs1">
+			<group> <!-- Alt -->
+				<transform translation="0 8.3125 0">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 2.90625 0">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="3.125 2.90625 0">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</group>
+		</switch>
+	</transform>
+</transform>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_1">
+	<transform translation="0 113.28125 1.5" id="transform_optik_vor">
+		<switch whichChoice="-1" id="signal_switch_optik_vor">
+			<!-- Fs-Vorsignal 1 -->
+			<group>
+				<transform translation="-4.6875 26.5625 0">
+					<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-4.6875 17.1875 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="4.6875 17.1875 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
+			<!-- Fs-Vorsignal 2 -->
+			<group>
+				<transform translation="-4.6875 26.5625 0">
+					<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-4.6875 17.1875 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="4.6875 17.1875 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
+		</switch>
+	</transform>
+</transform>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_2">
+	<transform translation="0 0 0" id="transform_optik_sperr">
+		<switch whichChoice="-1" id="signal_switch_optik_sperr">
+			<!-- Fs-Sperrsignal -->
+			<group>
+				<transform translation="3.125 15.625 -1.6">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="-3.125 15.625 -1.6">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+				</transform>
+				<transform translation="-3.125 9.375 -1.6">
+					<inline url="optik_sperr.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+			</group>
+		</switch>
+	</transform>
+</transform>
+
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_3">
+	<switch whichChoice="-1" id="signal_switch_optik">
+		<!-- Fs-Hauptsignal -->
+		<transform translation="0 113.28125 1.5">
+			<transform translation="-4.6875 34.375 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="0 28.125 0">
+				<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'rot')"></inline>
+			</transform>
+			<transform translation="0 20.3125 0">
+				<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+			</transform>
+			<transform translation="0 13.28125 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+			<transform translation="-3.125 13.28125 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="3.125 13.28125 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="0 7.8125 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+			</transform>
+			<transform translation="-6.25 7.8125 0">
+				<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+			</transform>
+		</transform>
+	</switch>
+</transform>
+
+</group>
+
+</scene>
+</x3d>
+</center>
+
+</body>
+</html>
