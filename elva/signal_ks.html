@@ -35,15 +35,17 @@ function toggleMaske(button)
 	for (i=0; i < 10; i++) {
 		maske = document.getElementById("transform_maske_"+i)
 		if (!maske) continue
-		optik = document.getElementById("transform_optik_"+i)
 		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
+		optik = document.getElementById("transform_optik_"+i)
+		if (!optik) continue
 		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
 	}
 	for (i=0; i < 10; i++) {
 		maske = document.getElementById("transform_matrix_maske_"+i)
 		if (!maske) continue
-		optik = document.getElementById("transform_matrix_optik_"+i)
 		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
+		optik = document.getElementById("transform_matrix_optik_"+i)
+		if (!optik) continue
 		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 30" : "0 0 0")
 	}
 }
@@ -285,11 +287,11 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 				<inline url="maske_ks_matrix.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="16.5 100 0">
+		<!-- <transform rotation="0 1 0 1.5708" translation="16.5 100 0">
 			<transform translation="0 0 0" id="transform_matrix_optik_0">
 				<inline url="optik_ks_matrix.x3d"></inline>
 			</transform>
-		</transform>
+		</transform> -->
 	</group>
 	<!-- Mast mit Sperrsignal -->
 	<group>
@@ -461,11 +463,11 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 				<inline url="maske_ks_matrix.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="5.5 165.625 0">
+		<!-- <transform rotation="0 1 0 1.5708" translation="5.5 165.625 0">
 			<transform translation="0 0 0" id="transform_matrix_optik_2">
 				<inline url="optik_ks_matrix.x3d"></inline>
 			</transform>
-		</transform>
+		</transform> -->
 	</group>
 </switch>
 

@@ -28,7 +28,8 @@ function toggleAbdeckung(button)
 function toggleMast(button)
 {
 	for (i=0; i < 10; i++) {
-		mast = document.getElementById("transform_mast_links_"+i)
+		mast = document.getElementById("transform_mast_"+i)
+		if (!mast) continue;
 		mast.setAttribute("translation", mast.getAttribute("translation") == "0 0 0" ? "-30 0 0" : "0 0 0")
 	}
 }
@@ -42,17 +43,12 @@ function toggleMatrix(button)
 }
 function toggleMaske(button)
 {
-	for (i=0; i < 4; i++) {
+	for (i=0; i < 10; i++) {
 		maske = document.getElementById("transform_maske_"+i)
+		if (!maske) continue;
 		optik = document.getElementById("transform_optik_"+i)
 		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
 		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
-	}
-	for (i=0; i < 6; i++) {
-		maske = document.getElementById("transform_matrix_maske_"+i)
-		optik = document.getElementById("transform_matrix_optik_"+i)
-		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
-		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 30" : "0 0 0")
 	}
 }
 function rotateFluegel(slider, type)
@@ -96,7 +92,8 @@ function configure()
 
 	if (signal.includes("fs_h"))
 	{
-		mast.setAttribute("whichChoice", signal.includes("_2") ? 0 : 1)
+		mast.setAttribute("whichChoice", signal.includes("_2") ? 1 : 0)
+		maske.setAttribute("whichChoice", signal.includes("_2") ? 1 : 0)
 		hp_fluegel_1.setAttribute("whichChoice", 0)
 		schild_index = 0
 		if (signal.includes("_zs1")) {
@@ -170,7 +167,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 		<inline url="mast_fs_haupt.x3d"></inline>
 	</transform>
 	<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-		<inline url="mast_fs_haupt_1.x3d"></inline>
+		<inline url="mast_fs_haupt_hp2.x3d"></inline>
 	</transform>
 </switch>
 
@@ -260,12 +257,12 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 <switch whichChoice="-1" id="switch_hp_fluegel_1">
 	<!-- Form Fluegel Oben -->
 	<group>
-		<transform rotation="0 1 0 1.5708" translation="4 175 0">
+		<transform rotation="0 1 0 1.5708" translation="3.7 175 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_hp1_1" tr_offset="0" tr_scale="0.7854">
-				<inline url="schirm_fs_fluegel_gross.x3d"></inline>
+				<inline url="schirm_fs_fluegel_hp0.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="4.41 175 0">
+		<transform rotation="0 1 0 1.5708" translation="4.12 175 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_hp1_2" tr_offset="0" tr_scale="0.7854">
 				<transform translation="18.28125 0 0">
 					<shape>
@@ -277,7 +274,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 -1.5708" translation="3.59 175 0">
+		<transform rotation="0 1 0 -1.5708" translation="3.29 175 0">
 			<transform rotation="0 0 1 3.1416" id="transform_fluegel_hp1_3" tr_offset="3.1416" tr_scale="-0.7854">
 				<transform translation="18.28125 0 0">
 						<shape>
@@ -289,22 +286,25 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="1.6 165.625 -5.46875">
+		<transform rotation="0 1 0 1.5708" translation="1.2 165.625 -5.46875">
 			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_hp1_4" tr_offset="-0.6109" tr_scale="1.2218">
-				<inline url="mast_fs_blende_haupt_oben.x3d"></inline>
+				<inline url="schirm_fs_blende_haupt_oben.x3d"></inline>
 			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 165.625 -12.5">
+			<inline url="schirm_fs_lampe.x3d"></inline>
 		</transform>
 	</group>
 </switch>
 <switch whichChoice="-1" id="switch_hp_fluegel_2">
 	<!-- Form Fluegel Unten -->
 	<group>
-		<transform rotation="0 1 0 1.5708" translation="4 123.4375 0">
+		<transform rotation="0 1 0 1.5708" translation="3.7 123.4375 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_1" tr_offset="0" tr_scale="-0.7854">
-				<inline url="schirm_fs_fluegel_klein.x3d"></inline>
+				<inline url="schirm_fs_fluegel_hp2.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="4.41 123.4375 0">
+		<transform rotation="0 1 0 1.5708" translation="4.12 123.4375 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_2" tr_offset="0" tr_scale="-0.7854">
 				<transform translation="0 15.15625 0">
 					<shape>
@@ -316,7 +316,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 -1.5708" translation="3.59 123.4375 0">
+		<transform rotation="0 1 0 -1.5708" translation="3.29 123.4375 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_3" tr_offset="0" tr_scale="0.7854">
 				<transform translation="0 15.15625 0">
 						<shape>
@@ -328,10 +328,13 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="1.6 118.75 -5.78125">
+		<transform rotation="0 1 0 1.5708" translation="1.2 115.625 -5.78125">
 			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_hp2_4" tr_offset="-0.6109" tr_scale="1.2218">
-				<inline url="mast_fs_blende_haupt_unten.x3d"></inline>
+				<inline url="schirm_fs_blende_haupt_unten.x3d"></inline>
 			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 115.625 -12.8125">
+			<inline url="schirm_fs_lampe.x3d"></inline>
 		</transform>
 	</group>
 </switch>
@@ -372,11 +375,11 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 	</switch>
 </transform>
 
-<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_3">
-	<transform translation="0 113.28125 1.5">
+<transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_mast_0">
+	<transform translation="0 0 0">
 		<switch whichChoice="-1" id="signal_switch_maske">
 			<!-- Fs-Hauptsignal -->
-			<inline url="maske_fs_haupt_1.x3d"></inline>
+			<inline url="maske_fs_haupt.x3d"></inline>
 			<inline url="maske_fs_haupt_2.x3d"></inline>
 		</switch>
 	</transform>
