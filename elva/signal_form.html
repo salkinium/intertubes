@@ -51,10 +51,9 @@ function toggleMaske(button)
 		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
 	}
 }
-function rotateFluegel(slider, type)
+function rotateFluegelType(type, value)
 {
-	value = slider.value / 30.0
-	for (i=0; i < 6; i++)
+	for (i=0; i < 10; i++)
 	{
 		transform = document.getElementById("transform_fluegel_"+type+"_"+i)
 		if (!transform) continue;
@@ -66,6 +65,17 @@ function rotateFluegel(slider, type)
 	}
 }
 
+function rotateFluegel()
+{
+	slider1 = document.getElementById("range_fluegel_1")
+	slider2 = document.getElementById("range_fluegel_2")
+	value1 = slider1.value / slider1.max
+	value2 = slider2.value / slider2.max
+	rotateFluegelType('1', value1)
+	rotateFluegelType('2', value2)
+	rotateFluegelType('3', Math.max(value1, value2))
+}
+
 function configure()
 {
 	signal = document.getElementById("input_signaltyp").value
@@ -74,6 +84,8 @@ function configure()
 	mast_schild = document.getElementById("switch_mast_schild")
 	hp_fluegel_1 = document.getElementById("switch_hp_fluegel_1")
 	hp_fluegel_2 = document.getElementById("switch_hp_fluegel_2")
+	vr_fluegel_1 = document.getElementById("switch_vr_fluegel_1")
+	vr_fluegel_2 = document.getElementById("switch_vr_fluegel_2")
 	zs1 = document.getElementById("switch_schirm_zs1")
 	maske = document.getElementById("signal_switch_maske")
 	maske_zs1 = document.getElementById("signal_switch_maske_zs1")
@@ -85,6 +97,8 @@ function configure()
 	zs1.setAttribute("whichChoice", -1)
 	hp_fluegel_1.setAttribute("whichChoice", -1)
 	hp_fluegel_2.setAttribute("whichChoice", -1)
+	vr_fluegel_1.setAttribute("whichChoice", -1)
+	vr_fluegel_2.setAttribute("whichChoice", -1)
 	maske.setAttribute("whichChoice", -1)
 	maske_zs1.setAttribute("whichChoice", -1)
 	optik.setAttribute("whichChoice", -1)
@@ -107,6 +121,12 @@ function configure()
 			schild_index += 2
 		}
 		mast_schild.setAttribute("whichChoice", schild_index)
+	}
+	if (signal.includes("fs_v"))
+	{
+		mast.setAttribute("whichChoice", signal.includes("_2") ? 3 : 2)
+		vr_fluegel_1.setAttribute("whichChoice", 0)
+		if (signal.includes("_2")) vr_fluegel_2.setAttribute("whichChoice", 0)
 	}
 }
 
@@ -133,21 +153,22 @@ document.onload = configure
 </tr>
 <tr><td>
 <select id="input_signaltyp" size="3" onchange="configure()">
-  <option value="fs_h_1" selected>Form Hauptsignal</option>
-  <option value="fs_h_1_zs1" selected>Form Hauptsignal (Zs1)</option>
-  <option value="fs_h_2" selected>Form Hauptsignal (Doppelfl&uuml;gel)</option>
-  <option value="fs_h_2_zs1" selected>Form Hauptsignal (Doppelfl&uuml;gel, Zs1)</option>
-  <!-- <option value="fs_v">Form Vorsignal</option>
-  <option value="fs_s">Form Sperrsignal</option> -->
+  <option value="fs_h_1">Form Hauptsignal</option>
+  <option value="fs_h_1_zs1">Form Hauptsignal (Zs1)</option>
+  <option value="fs_h_2">Form Hauptsignal (Hp2)</option>
+  <option value="fs_h_2_zs1">Form Hauptsignal (Hp2, Zs1)</option>
+  <option value="fs_v_1">Form Vorsignal</option>
+  <option value="fs_v_2" selected>Form Vorsignal (Vr2)</option>
+  <!-- <option value="fs_s">Form Sperrsignal</option> -->
 </select>
 </td><td>
 <button onclick="toggleMast(this)">Mast auf/zu</button></br>
 <button onclick="toggleMaske(this)">Maske auf/zu</button>
 </td><td>
 Fl&uuml;gel 1:</br>
-<input oninput="rotateFluegel(this, 'hp1')" type="range" min="0" max="30" value="0"></br>
+<input id="range_fluegel_1" oninput="rotateFluegel()" type="range" min="0" max="30" value="0"></br>
 Fl&uuml;gel 2:</br>
-<input oninput="rotateFluegel(this, 'hp2')" type="range" min="0" max="30" value="0">
+<input id="range_fluegel_2" oninput="rotateFluegel()" type="range" min="0" max="30" value="0">
 </td>
 <td>
 Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
@@ -159,16 +180,93 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 <x3d>
 <scene>
 
-<Viewpoint position="241.25605 149.93322 108.38398" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
+<Viewpoint position="118.26137 66.95874 58.67632" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
+<!-- <Viewpoint position="241.25605 149.93322 108.38398" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint> -->
 
 <switch whichChoice="0" id="switch_mast">
 	<!-- Fs Mast Haupt -->
-	<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-		<inline url="mast_fs_haupt.x3d"></inline>
-	</transform>
-	<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-		<inline url="mast_fs_haupt_hp2.x3d"></inline>
-	</transform>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_fs_haupt.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 165.625 -12.5">
+			<inline url="schirm_fs_lampe.x3d"></inline>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_fs_haupt_hp2.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 165.625 -12.5">
+			<inline url="schirm_fs_lampe.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 115.625 -12.5">
+			<inline url="schirm_fs_lampe.x3d"></inline>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_fs_vor.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0 0 2.55">
+			<transform rotation="0 1 0 1.5708">
+				<inline url="mast_fs_vor_links.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 58.75 -7.375">
+			<inline url="schirm_fs_lampe.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 29.625 7.375">
+			<transform rotation="0 0 1 3.1416">
+				<inline url="schirm_fs_lampe.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.2 32.875 0">
+			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_6" tr_offset="3.1416" tr_scale="0.9425">
+				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.2 55 0">
+			<transform rotation="0 0 1 0" id="transform_fluegel_1_7" tr_offset="0" tr_scale="0.9425">
+				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
+			<inline url="mast_fs_vor_vr2.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0 0 2.55">
+			<transform rotation="0 1 0 -1.5708">
+				<inline url="mast_fs_vor_links_vr2.x3d"></inline>
+			</transform>
+		</transform>
+		<transform translation="0 0 0" id="transform_mast_0">
+			<transform rotation="0 1 0 1.5708" translation="0 0 -2.55">
+				<transform rotation="0 1 0 -1.5708">
+					<inline url="mast_fs_vor_rechts_vr2.x3d"></inline>
+				</transform>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 58.75 -7.375">
+			<inline url="schirm_fs_lampe.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="-3.6 29.125 7.375">
+			<transform rotation="0 0 1 3.1416">
+				<inline url="schirm_fs_lampe.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.2 32.875 0">
+			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_8" tr_offset="3.1416" tr_scale="0.9425">
+				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.2 55 0">
+			<transform rotation="0 0 1 0" id="transform_fluegel_3_0" tr_offset="0" tr_scale="0.9425">
+				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
 </switch>
 
 <switch whichChoice="-1" id="switch_mast_schild">
@@ -177,7 +275,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 		<transform rotation="0 1 0 -1.5708" translation="0.4 0 0">
 			<inline url="mast_fs_haupt_schild.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="0.9 97.03125 0">
+		<transform rotation="0 1 0 1.5708" translation="0.82 97.03125 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_haupt_gross_1.png"></ImageTexture>
@@ -191,7 +289,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 		<transform rotation="0 1 0 -1.5708" translation="0.4 0 0">
 			<inline url="mast_fs_haupt_schild_zs1.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="0.9 97.03125 0">
+		<transform rotation="0 1 0 1.5708" translation="0.82 97.03125 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_haupt_gross_1_zs1.png"></ImageTexture>
@@ -205,7 +303,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 		<transform rotation="0 1 0 -1.5708" translation="0.4 0 0">
 			<inline url="mast_fs_haupt_schild_hp2.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="0.9 97.03125 0">
+		<transform rotation="0 1 0 1.5708" translation="0.82 97.03125 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_haupt_gross_2.png"></ImageTexture>
@@ -219,7 +317,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 		<transform rotation="0 1 0 -1.5708" translation="0.4 0 0">
 			<inline url="mast_fs_haupt_schild_hp2_zs1.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="0.9 97.03125 0">
+		<transform rotation="0 1 0 1.5708" translation="0.82 97.03125 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_haupt_gross_2_zs1.png"></ImageTexture>
@@ -258,16 +356,16 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 	<!-- Form Fluegel Oben -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="3.7 175 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_hp1_1" tr_offset="0" tr_scale="0.7854">
+			<transform rotation="0 0 1 0" id="transform_fluegel_1_1" tr_offset="0" tr_scale="0.7854">
 				<inline url="schirm_fs_fluegel_hp0.x3d"></inline>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="4.12 175 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_hp1_2" tr_offset="0" tr_scale="0.7854">
+			<transform rotation="0 0 1 0" id="transform_fluegel_1_2" tr_offset="0" tr_scale="0.7854">
 				<transform translation="18.28125 0 0">
 					<shape>
 						<appearance>
-							<ImageTexture url="druck_fs_fluegel_gross_vorne.png"></ImageTexture>
+							<ImageTexture url="druck_fs_fluegel_hp0_vorne.png"></ImageTexture>
 						</appearance>
 						<plane size="57.1875,14.0625"></plane>
 					</shape>
@@ -275,11 +373,11 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 -1.5708" translation="3.29 175 0">
-			<transform rotation="0 0 1 3.1416" id="transform_fluegel_hp1_3" tr_offset="3.1416" tr_scale="-0.7854">
+			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_3" tr_offset="3.1416" tr_scale="-0.7854">
 				<transform translation="18.28125 0 0">
 						<shape>
 							<appearance>
-								<ImageTexture url="druck_fs_fluegel_gross_hinten.png"></ImageTexture>
+								<ImageTexture url="druck_fs_fluegel_hp0_hinten.png"></ImageTexture>
 							</appearance>
 							<plane size="57.1875,14.0625"></plane>
 						</shape>
@@ -287,12 +385,9 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="1.2 165.625 -5.46875">
-			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_hp1_4" tr_offset="-0.6109" tr_scale="1.2218">
-				<inline url="schirm_fs_blende_haupt_oben.x3d"></inline>
+			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_1_4" tr_offset="-0.6109" tr_scale="1.2218">
+				<inline url="schirm_fs_blende_hp0.x3d"></inline>
 			</transform>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="-3.6 165.625 -12.5">
-			<inline url="schirm_fs_lampe.x3d"></inline>
 		</transform>
 	</group>
 </switch>
@@ -300,16 +395,16 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 	<!-- Form Fluegel Unten -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="3.7 123.4375 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_1" tr_offset="0" tr_scale="-0.7854">
+			<transform rotation="0 0 1 0" id="transform_fluegel_2_1" tr_offset="0" tr_scale="-0.7854">
 				<inline url="schirm_fs_fluegel_hp2.x3d"></inline>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="4.12 123.4375 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_2" tr_offset="0" tr_scale="-0.7854">
+			<transform rotation="0 0 1 0" id="transform_fluegel_2_2" tr_offset="0" tr_scale="-0.7854">
 				<transform translation="0 15.15625 0">
 					<shape>
 						<appearance>
-							<ImageTexture url="druck_fs_fluegel_klein_vorne.png"></ImageTexture>
+							<ImageTexture url="druck_fs_fluegel_hp2_vorne.png"></ImageTexture>
 						</appearance>
 						<plane size="13.125,50.9375"></plane>
 					</shape>
@@ -317,11 +412,11 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 -1.5708" translation="3.29 123.4375 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_hp2_3" tr_offset="0" tr_scale="0.7854">
+			<transform rotation="0 0 1 0" id="transform_fluegel_2_3" tr_offset="0" tr_scale="0.7854">
 				<transform translation="0 15.15625 0">
 						<shape>
 							<appearance>
-								<ImageTexture url="druck_fs_fluegel_klein_hinten.png"></ImageTexture>
+								<ImageTexture url="druck_fs_fluegel_hp2_hinten.png"></ImageTexture>
 							</appearance>
 							<plane size="13.125,50.9375"></plane>
 						</shape>
@@ -329,15 +424,58 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			</transform>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="1.2 115.625 -5.78125">
-			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_hp2_4" tr_offset="-0.6109" tr_scale="1.2218">
-				<inline url="schirm_fs_blende_haupt_unten.x3d"></inline>
+			<transform rotation="0 0 1 -0.6109" id="transform_fluegel_2_4" tr_offset="-0.6109" tr_scale="1.2218">
+				<inline url="schirm_fs_blende_hp2.x3d"></inline>
 			</transform>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="-3.6 115.625 -12.8125">
-			<inline url="schirm_fs_lampe.x3d"></inline>
 		</transform>
 	</group>
 </switch>
+
+<switch whichChoice="-1" id="switch_vr_fluegel_1">
+	<!-- Form Scheibe -->
+	<group>
+		<transform translation="-3.28 78.59375 0">
+			<transform rotation="0 0 1 0" id="transform_fluegel_1_5" tr_offset="0" tr_scale="1.5708">
+				<transform rotation="0 1 0 1.5708" translation="6.98 0 0">
+					<inline url="schirm_fs_fluegel_vr0.x3d"></inline>
+				</transform>
+				<transform rotation="0 1 0 1.5708" translation="7.4 0 0">
+					<shape>
+						<appearance>
+							<ImageTexture url="druck_fs_fluegel_vr0.png"></ImageTexture>
+						</appearance>
+						<plane size="31.25,31.25"></plane>
+					</shape>
+				</transform>
+				<transform translation="0 0 4.15">
+					<inline url="schirm_fs_fluegel_vr0_links.x3d"></inline>
+				</transform>
+				<transform translation="0 0 -6.45">
+					<inline url="schirm_fs_fluegel_vr0_rechts.x3d"></inline>
+				</transform>
+			</transform>
+		</transform>
+	</group>
+</switch>
+<switch whichChoice="-1" id="switch_vr_fluegel_2">
+	<!-- Form Fluegel Vor -->
+	<group>
+		<transform rotation="0 1 0 1.5708" translation="3.7 36.875 0">
+			<transform rotation="0 0 1 0" id="transform_fluegel_2_5" tr_offset="0" tr_scale="0.7854">
+				<inline url="schirm_fs_fluegel_vr2.x3d"></inline>
+				<transform translation="0 0.46875 0.42">
+					<shape>
+						<appearance>
+							<ImageTexture url="druck_fs_fluegel_vr2.png"></ImageTexture>
+						</appearance>
+						<plane size="7.5,43.4375"></plane>
+					</shape>
+				</transform>
+			</transform>
+		</transform>
+	</group>
+</switch>
+
 
 <transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_0">
 	<transform translation="0 97.9375 7.8125">

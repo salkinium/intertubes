@@ -1272,8 +1272,8 @@
 			<use href="#fs-fluegel-gross-outline" stroke-width="10" fill-opacity="0"/>
 			<circle cx="0" cy="0" r="20" stroke-width="15" fill-opacity="0"/>
 		</g>
-		<use id="pcb-fs-fluegel-gross-vorne" href="#fs-fluegel-gross-background-red" clip-path="url(#fs-fluegel-gross-clippath)"/>
-		<use id="pcb-fs-fluegel-gross-hinten" href="#fs-fluegel-gross-background-black" clip-path="url(#fs-fluegel-gross-clippath)"/>
+		<use id="pcb-fs-fluegel-hp0-vorne" href="#fs-fluegel-gross-background-red" clip-path="url(#fs-fluegel-gross-clippath)"/>
+		<use id="pcb-fs-fluegel-hp0-hinten" href="#fs-fluegel-gross-background-black" clip-path="url(#fs-fluegel-gross-clippath)"/>
 
 		<clipPath id="fs-fluegel-klein-clippath">
 			<path id="fs-fluegel-klein-outline" d="
@@ -1306,14 +1306,22 @@
 			<use href="#fs-fluegel-klein-outline" stroke-width="10" fill-opacity="0"/>
 			<circle cx="0" cy="0" r="20" stroke-width="15" fill-opacity="0"/>
 		</g>
-		<use id="pcb-fs-fluegel-klein-vorne" href="#fs-fluegel-klein-background-red" transform="rotate(-90)" clip-path="url(#fs-fluegel-klein-clippath)"/>
-		<use id="pcb-fs-fluegel-klein-hinten" href="#fs-fluegel-klein-background-black" transform="rotate(-90)" clip-path="url(#fs-fluegel-klein-clippath)"/>
+		<use id="pcb-fs-fluegel-hp2-vorne" href="#fs-fluegel-klein-background-red" transform="rotate(-90)" clip-path="url(#fs-fluegel-klein-clippath)"/>
+		<use id="pcb-fs-fluegel-hp2-hinten" href="#fs-fluegel-klein-background-black" transform="rotate(-90)" clip-path="url(#fs-fluegel-klein-clippath)"/>
 
-		<g id="fs-scheibe-halt" stroke="black">
-			<circle cx="0" cy="0" r="500" stroke-width="10" fill="white"/>
-			<circle cx="0" cy="0" r="430" stroke-width="0" fill="black"/>
-			<circle cx="0" cy="0" r="380" stroke-width="0" fill="#fcb931"/>
+		<clipPath id="pcb-fs-fluegel-vr0-clippath">
+			<circle id="fs-scheibe-outline" r="500"/>
+		</clipPath>
+		<g id="fs-scheibe-background">
+			<circle r="550" fill="white"/>
+			<circle r="430" fill="black"/>
+			<circle r="380" fill="#fcb931"/>
 		</g>
+		<g id="fs-scheibe-halt" stroke="black">
+			<use href="#fs-scheibe-background" clip-path="url(#pcb-fs-fluegel-vr0-clippath)"/>
+			<use href="#fs-scheibe-outline" stroke-width="10" fill-opacity="0"/>
+		</g>
+		<use id="pcb-fs-fluegel-vr0" href="#fs-scheibe-background" clip-path="url(#pcb-fs-fluegel-vr0-clippath)"/>
 		<g id="fs-scheibe-fahrt">
 			<path fill="black" d="
 				M -430, -70
@@ -1404,16 +1412,24 @@
 				"/>
 			<circle cx="0" cy="0" r="20" stroke-width="15" fill-opacity="0"/>
 		</g> -->
-		<g id="fs-fluegel-vor" stroke="black">
-			<path stroke-width="10" stroke-linejoin="round" fill="white" d="
-				M -120,-710
-				L  120,-710
-				L  120, 560
-				L    0, 680
-				L -120, 560
+		<clipPath id="pcb-fs-fluegel-vr2-clippath">
+			<path id="fs-fluegel-vr2-outline" d="
+				M -120  ,-694
+				A   16  ,  16 0 0 1 -104  ,-710
+				L  104  ,-710
+				A   16  ,  16 0 0 1  120  ,-694
+				L  120  , 560
+				A   16  ,  16 0 0 1  115.3, 571.3
+				L   11.3, 675.3
+				A   16  ,  16 0 0 1  -11.3, 675.3
+				L -115.3, 571.3
+				A   16  ,  16 0 0 1 -120  , 560
 				Z
 				"/>
-			<path stroke-width="30" fill="#fcb931" d="
+		</clipPath>
+		<g id="fs-fluegel-vr2-background">
+			<rect x="-150" y="-750" width="300" height="1500" fill="white"/>
+			<path stroke-width="30" stroke="black" fill="#fcb931" d="
 				M  -65,-655
 				L   65,-655
 				L   65, 542.5
@@ -1421,8 +1437,13 @@
 				L  -65, 542.5
 				Z
 				"/>
-			<circle cx="0" cy="0" r="20" stroke-width="15" fill-opacity="0"/>
 		</g>
+		<g id="fs-fluegel-vor">
+			<use href="#fs-fluegel-vr2-background" clip-path="url(#pcb-fs-fluegel-vr2-clippath)"/>
+			<use href="#fs-fluegel-vr2-outline" stroke="black" stroke-width="10" fill-opacity="0"/>
+			<circle cx="0" cy="0" r="20" stroke="black" stroke-width="15" fill-opacity="0"/>
+		</g>
+		<use id="pcb-fs-fluegel-vr2" href="#fs-fluegel-vr2-background" clip-path="url(#pcb-fs-fluegel-vr2-clippath)"/>
 		<g id="fs-schutz-rueckstrahler" transform="rotate(45)">
 			<rect x="-110" y="-110" width="220" height="220" stroke="black" fill="black" stroke-width="6" rx="10"/>
 			<rect x="-70" y="-70" width="140" height="140" fill="white"/>
@@ -1598,19 +1619,19 @@
 
 		<g id="fs-vorsignal-leuchten">
 			<circle cx="236" cy="635" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
-			<circle cx="-236" cy="1455" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
+			<circle cx="-236" cy="1583" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
 		</g>
 		<g id="fs-vorsignal-1-halt">
 			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" y="755"/>
-			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(180)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-halt"/>
 		</g>
 		<g id="fs-vorsignal-1-fahrt">
 			<use href="#mast-mittel-1" transform="translate(0,-70) scale(1,2.585)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
-			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(126)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(126)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-fahrt"/>
 		</g>
@@ -1626,7 +1647,7 @@
 		<g id="fs-vorsignal-2-langsamfahrt">
 			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
-			<use href="#fs-blende-vor" transform="translate(0,1335) rotate(180)"/>
+			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-halt"/>
 			<use href="#fs-fluegel-vor" transform="translate(0,1335) rotate(-45)"/>
