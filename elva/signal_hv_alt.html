@@ -210,9 +210,12 @@ function selectSignal(signal, zs3, zs3v)
 
 	if (signal.includes("hv_v") || signal.includes("hv_hb"))
 	{
-		schirm_vor.setAttribute("whichChoice", 0)
-		maske_vor.setAttribute("whichChoice", 0)
-		optik_vor.setAttribute("whichChoice", 0)
+		schirm_vor.setAttribute("whichChoice", signal.includes("_w") ? 1 : 0)
+		mask_index = 0
+		if (signal.includes("_w")) mask_index += 1
+		if (zs3v.includes("schild")) mask_index += 2
+		maske_vor.setAttribute("whichChoice", mask_index)
+		optik_vor.setAttribute("whichChoice", signal.includes("_w") ? 1 : 0)
 		zs3v_schild_typ = 0
 	}
 
@@ -246,7 +249,8 @@ document.onload = configure
 </tr>
 <tr><td>
 <select id="input_signaltyp" size="8" onchange="configure()">
-  <option value="hv_v_w_a">H/V Vorsignal</option>
+  <option value="hv_v_a">H/V Vorsignal</option>
+  <option value="hv_v_w_a">H/V Vorsignal (Bremsweg)</option>
   <option value="hv_hb_a" selected>H/V Blocksignal</option>
   <option value="hv_h_a">H/V Hauptsignal</option>
   <option value="hv_h_s_a">H/V Haupt- mit Sperrsignal</option>
@@ -290,7 +294,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hv Mast ohne Zs1 -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_stecker.x3d"></inline>
+			<inline url="mast_stecker_a.x3d"></inline>
 		</transform>
 		<transform translation="0 0 -1.2">
 			<inline url="mast_hv_rechts.x3d"></inline>
@@ -307,7 +311,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hv Mast mit Zs3v -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_stecker.x3d"></inline>
+			<inline url="mast_stecker_a.x3d"></inline>
 		</transform>
 		<transform translation="0 0 -1.2">
 			<inline url="mast_hv_rechts_zs3v.x3d"></inline>
@@ -329,7 +333,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="0" id="switch_matrix_1">
 			<transform rotation="0 1 0 1.5708" translation="15.1 101.15625 0">
 				<transform rotation="0 0 1 3.1416">
-					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+					<inline url="schirm_hv_matrix.x3d"></inline>
 				</transform>
 			</transform>
 		</switch>
@@ -348,7 +352,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hv Mast mit Zs1 -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_stecker.x3d"></inline>
+			<inline url="mast_stecker_a.x3d"></inline>
 		</transform>
 		<transform translation="0 0 -1.2">
 			<inline url="mast_hv_rechts_zs1.x3d"></inline>
@@ -368,7 +372,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hv Mast mit Zs1 und Vorsignal -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_stecker.x3d"></inline>
+			<inline url="mast_stecker_a.x3d"></inline>
 		</transform>
 		<transform translation="0 0 -1.2">
 			<inline url="mast_hv_rechts_zs1_block.x3d"></inline>
@@ -388,7 +392,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hv Mast mit Zs1 und Sperrsignal -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_stecker.x3d"></inline>
+			<inline url="mast_stecker_a.x3d"></inline>
 		</transform>
 		<transform translation="0 0 -1.2">
 			<inline url="mast_hv_rechts_zs1_sperr.x3d"></inline>
@@ -408,7 +412,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Mast mit Sperrsignal -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
-			<inline url="mast_sperr.x3d"></inline>
+			<inline url="mast_sperr_a.x3d"></inline>
 		</transform>
 	</group>
 </switch>
@@ -416,7 +420,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hauptsignal oben -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="0.4 39.0625 0">
-			<inline url="mast_schild.x3d"></inline>
+			<inline url="mast_schild_a.x3d"></inline>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="0.9 39.0625 0">
 			<shape>
@@ -430,7 +434,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hauptsignal unten -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="0.4 27.34375 0">
-			<inline url="mast_schild.x3d"></inline>
+			<inline url="mast_schild_a.x3d"></inline>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="0.9 27.34375 0">
 			<shape>
@@ -444,7 +448,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Hauptsignal unten klein -->
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="0.4 27.34375 0">
-			<inline url="mast_schild.x3d"></inline>
+			<inline url="mast_schild_a.x3d"></inline>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="0.9 14.84375 0">
 			<shape>
@@ -458,7 +462,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 	<!-- Vorsignaltafel -->
 	<group>
 		<transform rotation="0 1 0 -1.5708" translation="0.4 41.40625 0">
-			<inline url="mast_tafel_vor.x3d"></inline>
+			<inline url="mast_tafel_vor_a.x3d"></inline>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="0.9 41.40625 0">
 			<shape>
@@ -472,7 +476,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="30 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="30.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="30.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_1.png"></ImageTexture>
@@ -484,7 +488,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="60 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="60.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="60.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_2.png"></ImageTexture>
@@ -496,7 +500,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="90 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="90.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="90.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_3.png"></ImageTexture>
@@ -510,6 +514,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0.4 0 0">
 	<transform translation="0 113.28125 1.5" id="transform_schirm_vor">
 		<switch whichChoice="-1" id="switch_schirm_vor">
+			<inline url="schirm_hv_vor.x3d"></inline>
 			<inline url="schirm_hv_vor_w.x3d"></inline>
 		</switch>
 		<switch whichChoice="-1" id="switch_zs3v_schild">
@@ -574,7 +579,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="0" id="switch_matrix_3">
 			<transform rotation="0 1 0 1.5708" translation="4.1 169.9375 0">
 				<transform rotation="0 0 1 3.1416">
-					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+					<inline url="schirm_hv_matrix.x3d"></inline>
 				</transform>
 			</transform>
 		</switch>
@@ -617,7 +622,10 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_1">
 	<transform translation="0 113.28125 1.5" id="transform_maske_vor">
 		<switch whichChoice="-1" id="signal_switch_maske_vor">
+			<inline url="maske_hv_vor_a.x3d"></inline>
 			<inline url="maske_hv_vor_w_a.x3d"></inline>
+			<inline url="maske_hv_vor_3v_a.x3d"></inline>
+			<inline url="maske_hv_vor_w_3v_a.x3d"></inline>
 		</switch>
 	</transform>
 </transform>
@@ -691,6 +699,21 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_1">
 	<transform translation="0 113.28125 1.5" id="transform_optik_vor">
 		<switch whichChoice="-1" id="signal_switch_optik_vor">
+			<!-- H/V Vorsignal 1951 -->
+			<group>
+				<transform translation="-10.4375 6.875 0">
+					<inline url="optik_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-5.1875 6.875 0">
+					<inline url="optik_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="10.4375 22.5 0">
+					<inline url="optik_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="5.1875 22.5 0">
+					<inline url="optik_gross_a.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
 			<!-- H/V Vorsignal 1951 mit Wiederholer -->
 			<group>
 				<transform translation="-10.4375 6.875 0">

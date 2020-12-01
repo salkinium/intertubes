@@ -183,10 +183,15 @@ function selectSignal(signal, zs3, zs3v)
 		zs3v_schild_typ = 0
 
 		mask_index = 0
-		if (zs3v.includes("schild")) mask_index += 1
+		if (signal.includes("_b")) mask_index += 1
+		if (signal.includes("_2")) mask_index += 2
+		if (zs3v.includes("schild")) mask_index += 4
 		maske_vor.setAttribute("whichChoice", mask_index)
 
-		optik_vor.setAttribute("whichChoice", 0)
+		optik_index = 0
+		if (signal.includes("_b")) optik_index += 1
+		if (signal.includes("_2")) optik_index += 2
+		optik_vor.setAttribute("whichChoice", optik_index)
 	}
 
 	zs3_schild.setAttribute("whichChoice", zs3.includes("schild") ? zs3_schild_typ : -1)
@@ -219,9 +224,11 @@ document.onload = configure
 </tr>
 <tr><td>
 <select id="input_signaltyp" size="6" onchange="configure()">
-  <option value="hv_v_k">H/V Vorsignal (Kompakt)</option>
-  <option value="hv_hb_k" selected>H/V Blocksignal (Kompakt)</option>
-  <option value="hv_h_k">H/V Hauptsignal (Kompakt)</option>
+  <option value="hv_v_2">H/V Vorsignal</option>
+  <option value="hv_v">H/V Vorsignal (ohne Vr1)</option>
+  <option value="hv_v_b">H/V Vorsignal (ohne Vr1, Bremsweg)</option>
+  <option value="hv_hb_b_2" selected>H/V Blocksignal</option>
+  <option value="hv_h">H/V Hauptsignal</option>
   <option value="hv_s">H/V Sperrsignal</option>
   <option value="hv_s_m">H/V Sperrsignal (Hoch)</option>
   <option value="hv_d_m">H/V Deckungssignal (Hoch)</option>
@@ -300,7 +307,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="0" id="switch_matrix_0">
 			<transform rotation="0 1 0 1.5708" translation="15.1 100 0">
 				<transform rotation="0 0 1 3.1416">
-					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+					<inline url="schirm_hv_matrix.x3d"></inline>
 				</transform>
 			</transform>
 		</switch>
@@ -358,7 +365,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="0" id="switch_matrix_1">
 			<transform rotation="0 1 0 1.5708" translation="15.1 64.84375 0">
 				<transform rotation="0 0 1 3.1416">
-					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+					<inline url="schirm_hv_matrix.x3d"></inline>
 				</transform>
 			</transform>
 		</switch>
@@ -428,7 +435,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="30 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="30.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="30.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_1.png"></ImageTexture>
@@ -440,7 +447,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="60 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="60.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="60.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_2.png"></ImageTexture>
@@ -452,7 +459,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="90 0 0">
 			<inline url="tafel_entfernung.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="90.9 18.75 0">
+		<transform rotation="0 1 0 1.5708" translation="90.52 18.75 0">
 			<shape>
 				<appearance>
 					<ImageTexture url="druck_schild_entfernung_3.png"></ImageTexture>
@@ -522,7 +529,7 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<switch whichChoice="0" id="switch_matrix_2">
 			<transform rotation="0 1 0 1.5708" translation="4.1 165.625 0">
 				<transform rotation="0 0 1 3.1416">
-					<inline url="schirm_hv_matrix_leds_1005.x3d"></inline>
+					<inline url="schirm_hv_matrix.x3d"></inline>
 				</transform>
 			</transform>
 		</switch>
@@ -560,8 +567,14 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_maske_0">
 	<transform translation="0 113.28125 1.5" id="transform_maske_vor">
 		<switch whichChoice="-1" id="signal_switch_maske_vor">
+			<inline url="maske_hv_vor_kompakt.x3d"></inline>
 			<inline url="maske_hv_vor_kompakt_b.x3d"></inline>
+			<inline url="maske_hv_vor_kompakt_2.x3d"></inline>
+			<inline url="maske_hv_vor_kompakt_b_2.x3d"></inline>
+			<inline url="maske_hv_vor_kompakt_3v.x3d"></inline>
 			<inline url="maske_hv_vor_kompakt_b_3v.x3d"></inline>
+			<inline url="maske_hv_vor_kompakt_2_3v.x3d"></inline>
+			<inline url="maske_hv_vor_kompakt_b_2_3v.x3d"></inline>
 		</switch>
 	</transform>
 </transform>
@@ -604,7 +617,49 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 <transform rotation="0 1 0 1.5708" translation="0 0 0" id="transform_optik_0">
 	<transform translation="0 113.28125 1.5" id="transform_optik_vor">
 		<switch whichChoice="-1" id="signal_switch_optik_vor">
-			<!-- H/V Vorsignal Kompakt -->
+			<!-- H/V Vorsignal Kompakt ohne Bremsweg ohne Vr2 -->
+			<group>
+				<transform translation="6.25 25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="6.25 18.75 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-6.25 6.25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
+			<!-- H/V Vorsignal Kompakt mit Bremsweg ohne Vr2 -->
+			<group>
+				<transform translation="-6.25 25 0">
+					<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
+				</transform>
+				<transform translation="6.25 25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="6.25 18.75 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-6.25 6.25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
+			<!-- H/V Vorsignal Kompakt ohne Bremsweg mit Vr2 -->
+			<group>
+				<transform translation="6.25 25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="6.25 18.75 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+				<transform translation="-6.25 12.5 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+				</transform>
+				<transform translation="-6.25 6.25 0">
+					<inline url="optik_gross.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+				</transform>
+			</group>
+			<!-- H/V Vorsignal Kompakt mit Bremsweg mit Vr2 -->
 			<group>
 				<transform translation="-6.25 25 0">
 					<inline url="optik_klein.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
