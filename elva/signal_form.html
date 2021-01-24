@@ -1,3 +1,10 @@
+<!-- Copyright (c) 2020-2021, Niklas Hauser
+
+This file is part of the RWTH VIA ELVA project.
+
+This Source Code Form is subject to the terms of the MIT License.
+If a copy of the MIT License was not distributed with this file,
+you can obtain one at https://opensource.org/licenses/MIT. -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -47,6 +54,161 @@ function rotateFluegelType(type, value)
 		transform.setAttribute("rotation", transtext + rotation)
 	}
 }
+function moveMotorType(type, value)
+{
+	for (i=0; i < 20; i++)
+	{
+		transform = document.getElementById("transform_motor_"+type+"_"+i)
+		if (!transform) continue;
+		offset = parseFloat(transform.getAttribute("tr_offset"))
+		scale = parseFloat(transform.getAttribute("tr_scale"))
+		axis = parseInt(transform.getAttribute("tr_axis"))
+		translation = [0,0,0]
+		translation[axis] = offset + scale * value
+		transform.setAttribute("translation", translation.join(" "))
+	}
+}
+function rotateLink(from, to)
+{
+	fromVector = new x3dom.fields.SFVec3f(0, 1, 0)
+	toVector = new x3dom.fields.SFVec3f(to[0]-from[0], to[1]-from[1], to[2]-from[2])
+	qDir = x3dom.fields.Quaternion.rotateFromTo(fromVector, toVector)
+	rot = qDir.toAxisAngle()
+	return [rot[0].x, rot[0].y, rot[0].z, rot[1]].join(" ")
+}
+
+fl_x = 2.75
+bl_x = 1.2
+function transformLinkHp0()
+{
+	m_hp0 = document.getElementById("transform_motor_1_0")
+	m_hp0_y = parseFloat(m_hp0.getAttribute("translation").split(" ")[1])
+	m_hp0 = [-5, 31.5+m_hp0_y, 4.5]
+
+	fl_hp0 = document.getElementById("transform_fluegel_1_1")
+	fl_hp0_r = parseFloat(fl_hp0.getAttribute("rotation").split(" ")[3])
+	fl_hp0 = [fl_x, 175-7.5*Math.sin(fl_hp0_r-15.47/180*Math.PI),
+						7.5*Math.cos(fl_hp0_r-15.47/180*Math.PI)]
+	fl_bl0 = [fl_x, 175+5.2*Math.sin(fl_hp0_r),
+					   -5.2*Math.cos(fl_hp0_r)]
+
+	bl_bl0 = document.getElementById("transform_fluegel_1_4")
+	bl_bl0_r = parseFloat(bl_bl0.getAttribute("rotation").split(" ")[3])
+	bl_bl0 = [bl_x+.4, 165.62+3.5*Math.sin(bl_bl0_r+10/180*Math.PI),
+					 -5.47-3.5*Math.cos(bl_bl0_r+10/180*Math.PI)]
+
+	link_hp0 = document.getElementById("transform_link_hp0")
+	link_hp0.setAttribute("translation", m_hp0.join(" "))
+	link_hp0.setAttribute("rotation", rotateLink(m_hp0, fl_hp0))
+
+	link_bl0 = document.getElementById("transform_link_hp0_bl0")
+	link_bl0.setAttribute("translation", bl_bl0.join(" "))
+	link_bl0.setAttribute("rotation", rotateLink(bl_bl0, fl_bl0))
+}
+function transformLinkHp2()
+{
+	m_hp2 = document.getElementById("transform_motor_2_0")
+	m_hp2_y = parseFloat(m_hp2.getAttribute("translation").split(" ")[1])
+	m_hp2 = [-5, 65+m_hp2_y, 4.5]
+
+	fl_hp2 = document.getElementById("transform_fluegel_2_1")
+	fl_hp2_r = parseFloat(fl_hp2.getAttribute("rotation").split(" ")[3])
+	fl_hp2 = [fl_x, 123.44-8*Math.sin(fl_hp2_r+55/180*Math.PI),
+						   8*Math.cos(fl_hp2_r+55/180*Math.PI)]
+	fl_bl2 = [fl_x, 123.44+5.65*Math.sin(fl_hp2_r+64.86/180*Math.PI),
+					      -5.65*Math.cos(fl_hp2_r+64.86/180*Math.PI)]
+
+	bl_bl2 = document.getElementById("transform_fluegel_2_4")
+	bl_bl2_r = parseFloat(bl_bl2.getAttribute("rotation").split(" ")[3])
+	bl_bl2 = [bl_x+.4, 115.62+2.75*Math.sin(bl_bl2_r+Math.PI),
+					 -5.78-2.75*Math.cos(bl_bl2_r+Math.PI)]
+
+	link_hp2 = document.getElementById("transform_link_hp2")
+	link_hp2.setAttribute("translation", m_hp2)
+	link_hp2.setAttribute("rotation", rotateLink(m_hp2, fl_hp2))
+
+	link_bl2 = document.getElementById("transform_link_hp2_bl2")
+	link_bl2.setAttribute("translation", bl_bl2)
+	link_bl2.setAttribute("rotation", rotateLink(bl_bl2, fl_bl2))
+}
+vr_y = -1.6-1.68
+function transformLinkVr0()
+{
+	m_vr0 = document.getElementById("transform_motor_1_1")
+	m_vr0_y = parseFloat(m_vr0.getAttribute("translation").split(" ")[1])
+	m_vr0 = [-12.5+m_vr0_y*Math.sin(7/180*Math.PI),
+			  24  +m_vr0_y*Math.cos(7/180*Math.PI), -0.5]
+
+	vr_l = 5
+	fl_vr0 = document.getElementById("transform_fluegel_1_5")
+	fl_vr0_r = parseFloat(fl_vr0.getAttribute("rotation").split(" ")[3])
+	fl_vr0 = [ vr_y+4.5*Math.sin(fl_vr0_r+20/180*Math.PI),
+			  78.59-4.5*Math.cos(fl_vr0_r+20/180*Math.PI), vr_l+.6]
+	fl_bl0 = [ vr_y-3*Math.sin(fl_vr0_r+80/180*Math.PI),
+			  78.59+3*Math.cos(fl_vr0_r+80/180*Math.PI), vr_l-.6]
+
+	bl_bl0 = document.getElementById("transform_fluegel_1_6")
+	bl_bl0_r = parseFloat(bl_bl0.getAttribute("rotation").split(" ")[3])
+	bl_bl0 = [bl_x-.4, 32.88-4.1*Math.sin(bl_bl0_r-27/180*Math.PI),
+							 4.1*Math.cos(bl_bl0_r-27/180*Math.PI)]
+
+	vr_r = -5.65
+	if (document.getElementById("input_signaltyp").value.includes("_2")) {
+		bl_bl2 = document.getElementById("transform_fluegel_3_0")
+		bl_bl2_r = parseFloat(bl_bl2.getAttribute("rotation").split(" ")[3])
+		bl_bl2 = [bl_x-.4, 55+4.1*Math.sin(bl_bl2_r-27/180*Math.PI),
+							 -4.1*Math.cos(bl_bl2_r-27/180*Math.PI)]
+		fl_bl2 = [ vr_y+2.6*Math.sin(fl_vr0_r+45/180*Math.PI),
+				  78.59-2.6*Math.cos(fl_vr0_r+45/180*Math.PI), vr_r+1.2]
+	}
+	else {
+		bl_bl2 = document.getElementById("transform_fluegel_1_7")
+		bl_bl2_r = parseFloat(bl_bl2.getAttribute("rotation").split(" ")[3])
+		bl_bl2 = [bl_x-.4, 55-4.1*Math.sin(bl_bl2_r-27/180*Math.PI),
+							  4.1*Math.cos(bl_bl2_r-27/180*Math.PI)]
+		fl_bl2 = [ vr_y+2.6*Math.sin(fl_vr0_r+45/180*Math.PI),
+				  78.59-2.6*Math.cos(fl_vr0_r+45/180*Math.PI), vr_r+.6]
+	}
+
+	link_vr0 = document.getElementById("transform_link_vr0")
+	link_vr0.setAttribute("translation", m_vr0.join(" "))
+	link_vr0.setAttribute("rotation", rotateLink(m_vr0, fl_vr0))
+
+	link_bl0 = document.getElementById("transform_link_vr0_bl0")
+	link_bl0.setAttribute("translation", bl_bl0.join(" "))
+	link_bl0.setAttribute("rotation", rotateLink(bl_bl0, fl_bl0))
+
+	link_vr0_bl2 = document.getElementById("transform_link_vr0_bl2")
+	link_vr0_bl2.setAttribute("translation", bl_bl2.join(" "))
+	link_vr0_bl2.setAttribute("rotation", rotateLink(bl_bl2, fl_bl2))
+}
+function transformLinkVr2()
+{
+	m_vr2 = document.getElementById("transform_motor_2_1")
+	m_vr2_y = parseFloat(m_vr2.getAttribute("translation").split(" ")[1])
+	m_vr2 = [-10.75+m_vr2_y*Math.sin(2.8/180*Math.PI),
+			  65.5 +m_vr2_y*Math.cos(2.8/180*Math.PI), -0.5]
+
+	fl_vr2 = document.getElementById("transform_fluegel_2_5")
+	fl_vr2_r = parseFloat(fl_vr2.getAttribute("rotation").split(" ")[3])
+	fl_vr2 = [fl_x, 36.88-4.88*Math.cos(fl_vr2_r+45/180*Math.PI),
+						 -4.88*Math.sin(fl_vr2_r+45/180*Math.PI)]
+	fl_bl2 = [fl_x, 36.88-3.73*Math.sin(fl_vr2_r-22.5/180*Math.PI),
+						  3.73*Math.cos(fl_vr2_r-22.5/180*Math.PI)]
+
+	bl_bl2 = document.getElementById("transform_fluegel_3_0")
+	bl_bl2_r = parseFloat(bl_bl2.getAttribute("rotation").split(" ")[3])
+	bl_bl2 = [bl_x+.4, 55-3.35*Math.sin(bl_bl2_r-10/180*Math.PI),
+						  3.35*Math.cos(bl_bl2_r-10/180*Math.PI)]
+
+	link_vr2 = document.getElementById("transform_link_vr2")
+	link_vr2.setAttribute("translation", m_vr2.join(" "))
+	link_vr2.setAttribute("rotation", rotateLink(m_vr2, fl_vr2))
+
+	link_bl2 = document.getElementById("transform_link_vr2_bl2")
+	link_bl2.setAttribute("translation", bl_bl2.join(" "))
+	link_bl2.setAttribute("rotation", rotateLink(bl_bl2, fl_bl2))
+}
 
 function rotateFluegel()
 {
@@ -57,6 +219,12 @@ function rotateFluegel()
 	rotateFluegelType('1', value1)
 	rotateFluegelType('2', value2)
 	rotateFluegelType('3', Math.max(value1, value2))
+	moveMotorType('1', value1)
+	moveMotorType('2', value2)
+	transformLinkHp0()
+	transformLinkHp2()
+	transformLinkVr0()
+	transformLinkVr2()
 }
 
 function configure()
@@ -113,6 +281,7 @@ function configure()
 	else if (signal.includes("fs_v"))
 	{
 		mast.setAttribute("whichChoice", signal.includes("_2") ? 3 : 2)
+		mast_schild.setAttribute("whichChoice", 4)
 		vr_fluegel_1.setAttribute("whichChoice", 0)
 		if (signal.includes("_2")) vr_fluegel_2.setAttribute("whichChoice", 0)
 		maske.setAttribute("whichChoice", 2)
@@ -125,15 +294,20 @@ function configure()
 		sperr_fluegel.setAttribute("whichChoice", 0)
 		optik.setAttribute("whichChoice", 3)
 	}
+	rotateFluegel()
 }
 
 function setColor(element, color)
 {
 	color = {
-		"rot": "1 0 0",
-		"gruen": "0 1 0",
-		"gelb": "1 1 0",
-		"weiss": ".7 .7 .7",
+		"rot": "1 0.435 0",
+		// "rot": "0.669 0.301 0",
+		"gruen": "0 1 0.620",
+		// "gruen": "0 0.617 0.383",
+		"gelb": "1 0.863 0",
+		// "gelb": "0.537 0.463 0",
+		"weiss": "1 1 1",
+		// "weiss": ".667 .667 .667",
 	}[color]
 	element.getElementsByTagName("Material")[0].setAttribute("emissiveColor", color)
 }
@@ -177,12 +351,20 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 <x3d>
 <scene>
 
-<!-- <Viewpoint position="53.94458 76.99002 143.49523" orientation="-0.36536 0.93083 0.00807 0.25679"></Viewpoint> -->
-<!-- <Viewpoint position="-73.98298 43.84457 1.58558" orientation="-0.17677 -0.96907 -0.17218 1.62241"></Viewpoint> -->
-<!-- <Viewpoint position="6.23997 98.67947 7.57409" orientation="0.66143 0.43326 0.61220 4.03721"></Viewpoint> -->
-<!-- <Viewpoint position="-21.74568 162.41807 -45.82450" orientation="-0.04316 0.99817 -0.04244 3.68751"></Viewpoint> -->
-<!-- <Viewpoint position="49.76325 79.67116 -23.64112" orientation="0.68325 0.58018 0.44335 2.54020"></Viewpoint> -->
-<!-- <Viewpoint position="125.51388 51.75118 39.29944" orientation="-0.07315 0.99662 0.03731 1.27371"></Viewpoint> -->
+<!-- <Viewpoint position="70.86669 86.70722 -50.12642" orientation="-0.01015 0.99912 0.04062 2.16770" -->
+<!-- <Viewpoint position="-53.80718 74.82338 -92.84876" orientation="0.03657 0.98677 0.15797 3.58560" -->
+<!-- <Viewpoint position="-73.63609 43.16639 88.61341" orientation="0.00224 -0.99656 0.08282 0.70823" -->
+<!-- <Viewpoint position="53.94458 76.99002 143.49523" orientation="-0.36536 0.93083 0.00807 0.25679" -->
+<!-- <Viewpoint position="-73.98298 43.84457 1.58558" orientation="-0.17677 -0.96907 -0.17218 1.62241" -->
+<!-- <Viewpoint position="6.23997 98.67947 7.57409" orientation="0.66143 0.43326 0.61220 4.03721" -->
+<!-- <Viewpoint position="-21.74568 162.41807 -45.82450" orientation="-0.04316 0.99817 -0.04244 3.68751" -->
+<!-- <Viewpoint position="49.76325 79.67116 -23.64112" orientation="0.68325 0.58018 0.44335 2.54020" -->
+<!-- <Viewpoint position="125.51388 51.75118 39.29944" orientation="-0.07315 0.99662 0.03731 1.27371" -->
+<!-- <Viewpoint position="-70.18608 189.38214 3.01231" orientation="-0.10274 -0.99324 -0.05402 1.54875" -->
+<!-- <Viewpoint position="-21.89291 140.51805 93.74618" orientation="-0.50074 -0.84839 -0.17176 0.27223"></Viewpoint> -->
+<!-- <Viewpoint position="-14.48249 64.55083 -48.68393" orientation="0.01615 0.98654 0.16271 3.45502" ></Viewpoint> -->
+<!-- <Viewpoint position="12.22053 65.84127 -29.56313" orientation="0.47617 0.87872 -0.03327 2.72496" ></Viewpoint> -->
+
 <Viewpoint position="241.25605 149.93322 108.38398" orientation="-0.13073 0.98775 0.08519 1.13458"></Viewpoint>
 
 <switch whichChoice="0" id="switch_mast">
@@ -235,79 +417,18 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				<inline url="schirm_fs_lampe.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="1.2 32.875 0">
-			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_6" tr_offset="3.1416" tr_scale="0.9425">
-				<inline url="schirm_fs_blende_vr0.x3d"></inline>
-				<transform translation="0 0 0" id="transform_optik_2">
-					<transform translation="7.375 3.75 -0.41">
-						<inline url="optik_fs_blende_m.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
-					</transform>
-					<transform translation="7.375 -3.75 -0.41">
-						<inline url="optik_fs_blende_k.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
-					</transform>
-				</transform>
-			</transform>
-		</transform>
 		<transform rotation="0 1 0 1.5708" translation="1.2 55 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_1_7" tr_offset="0" tr_scale="0.9425">
+			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_7" tr_offset="3.1416" tr_scale="0.9425">
 				<inline url="schirm_fs_blende_vr0.x3d"></inline>
 				<transform translation="0 0 0" id="transform_optik_3">
-					<transform translation="7.375 3.75 -0.41">
+					<transform translation="-7.375 -3.75 -0.41">
 						<inline url="optik_fs_blende_m.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
 					</transform>
-					<transform translation="7.375 -3.75 -0.41">
+					<transform translation="-7.375 3.75 -0.41">
 						<inline url="optik_fs_blende_k.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
 					</transform>
 				</transform>
 			</transform>
-		</transform>
-		<!-- Vorsignaltafel -->
-		<transform rotation="0 1 0 1.5708" translation="30 0 0">
-			<inline url="tafel_vor.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="30.52 13.28125 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_vor.png"></ImageTexture>
-				</appearance>
-				<plane size="12.8125,18.75"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 1 -->
-		<transform rotation="0 1 0 1.5708" translation="60 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="60.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_1.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 2 -->
-		<transform rotation="0 1 0 1.5708" translation="90 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="90.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_2.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 3 -->
-		<transform rotation="0 1 0 1.5708" translation="120 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="120.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_3.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
 		</transform>
 	</group>
 	<!-- Fs Mast Vor Vr2 -->
@@ -338,22 +459,9 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				<inline url="schirm_fs_lampe.x3d"></inline>
 			</transform>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="1.2 32.875 0">
-			<transform rotation="0 0 1 3.1416" id="transform_fluegel_1_8" tr_offset="3.1416" tr_scale="0.9425">
-				<inline url="schirm_fs_blende_vr0.x3d"></inline>
-				<transform translation="0 0 0" id="transform_optik_4">
-					<transform translation="7.375 3.75 -0.41">
-						<inline url="optik_fs_blende_m.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
-					</transform>
-					<transform translation="7.375 -3.75 -0.41">
-						<inline url="optik_fs_blende_k.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
-					</transform>
-				</transform>
-			</transform>
-		</transform>
 		<transform rotation="0 1 0 1.5708" translation="1.2 55 0">
 			<transform rotation="0 0 1 0" id="transform_fluegel_3_0" tr_offset="0" tr_scale="0.9425">
-				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+				<inline url="schirm_fs_blende_vr2.x3d"></inline>
 				<transform translation="0 0 0" id="transform_optik_5">
 					<transform translation="7.375 3.75 -0.41">
 						<inline url="optik_fs_blende_m.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
@@ -364,60 +472,12 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
-		<!-- Vorsignaltafel -->
-		<transform rotation="0 1 0 1.5708" translation="30 0 0">
-			<inline url="tafel_vor.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="30.52 13.28125 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_vor.png"></ImageTexture>
-				</appearance>
-				<plane size="12.8125,18.75"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 1 -->
-		<transform rotation="0 1 0 1.5708" translation="60 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="60.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_1.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 2 -->
-		<transform rotation="0 1 0 1.5708" translation="90 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="90.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_2.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
-		</transform>
-		<!-- Entfernungsbaken 3 -->
-		<transform rotation="0 1 0 1.5708" translation="120 0 0">
-			<inline url="tafel_entfernung.x3d"></inline>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="120.52 18.75 0">
-			<shape>
-				<appearance>
-					<ImageTexture url="druck_schild_entfernung_3.png"></ImageTexture>
-				</appearance>
-				<plane size="9.375,29.6875"></plane>
-			</shape>
-		</transform>
 	</group>
 	<group>
 		<transform rotation="0 1 0 1.5708" translation="-0.8 0 0">
 			<inline url="mast_fs_sperr.x3d"></inline>
 		</transform>
-		<transform rotation="0 1 0 1.5708" translation="5.5 75 0">
+		<transform rotation="0 1 0 1.5708" translation="6 75 0">
 			<inline url="schirm_fs_sperr_l1.x3d"></inline>
 		</transform>
 		<transform rotation="0 1 0 1.5708" translation="0.4 20.78125 0">
@@ -493,6 +553,57 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			</shape>
 		</transform>
 	</group>
+	<!-- Fs-Vorsignal -->
+	<group>
+		<!-- Vorsignaltafel -->
+		<transform rotation="0 1 0 1.5708" translation="30 0 0">
+			<inline url="tafel_vor.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="30.52 13.28125 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_vor.png"></ImageTexture>
+				</appearance>
+				<plane size="12.8125,18.75"></plane>
+			</shape>
+		</transform>
+		<!-- Entfernungsbaken 1 -->
+		<transform rotation="0 1 0 1.5708" translation="60 0 0">
+			<inline url="tafel_entfernung.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="60.52 18.75 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_entfernung_1.png"></ImageTexture>
+				</appearance>
+				<plane size="9.375,29.6875"></plane>
+			</shape>
+		</transform>
+		<!-- Entfernungsbaken 2 -->
+		<transform rotation="0 1 0 1.5708" translation="90 0 0">
+			<inline url="tafel_entfernung.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="90.52 18.75 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_entfernung_2.png"></ImageTexture>
+				</appearance>
+				<plane size="9.375,29.6875"></plane>
+			</shape>
+		</transform>
+		<!-- Entfernungsbaken 3 -->
+		<transform rotation="0 1 0 1.5708" translation="120 0 0">
+			<inline url="tafel_entfernung.x3d"></inline>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="120.52 18.75 0">
+			<shape>
+				<appearance>
+					<ImageTexture url="druck_schild_entfernung_3.png"></ImageTexture>
+				</appearance>
+				<plane size="9.375,29.6875"></plane>
+			</shape>
+		</transform>
+	</group>
 </switch>
 
 <switch whichChoice="-1" id="switch_schirm_zs1">
@@ -558,6 +669,21 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
+		<transform translation="0 0 0" id="transform_motor_1_0" tr_offset="7.3" tr_scale="-5.8" tr_axis="1">
+			<transform rotation="0 1 0 -1.5708" translation="-1.6 28 -0.85">
+				<inline url="motor_lang_arm.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_hp0">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_haupt_hp0.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_hp0_bl0">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_haupt_bl0.x3d"></inline>
+			</transform>
+		</transform>
 	</group>
 </switch>
 <switch whichChoice="-1" id="switch_hp_fluegel_2">
@@ -602,6 +728,21 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
+		<transform translation="0 0 0" id="transform_motor_2_0" tr_offset="2" tr_scale="5.5" tr_axis="1">
+			<transform rotation="0 1 0 -1.5708" translation="-1.6 61.6 -0.85">
+				<inline url="motor_lang_arm.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_hp2">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_haupt_hp2.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_hp2_bl2">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_haupt_bl2.x3d"></inline>
+			</transform>
+		</transform>
 	</group>
 </switch>
 
@@ -621,12 +762,49 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 						<plane size="31.25,31.25"></plane>
 					</shape>
 				</transform>
-				<transform translation="0 0 4.15">
+				<transform translation="0 0 4.95">
 					<inline url="schirm_fs_fluegel_vr0_links.x3d"></inline>
 				</transform>
-				<transform translation="0 0 -6.45">
+				<transform translation="0 0 -5.65">
 					<inline url="schirm_fs_fluegel_vr0_rechts.x3d"></inline>
 				</transform>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0 0 2.55">
+			<transform rotation="0 1 0 1.5708" translation="-0.3 19.75 -7.6">
+				<transform rotation="0 0 1 0.1222">
+					<transform id="transform_motor_1_1" tr_offset="1.25" tr_scale="6.25" tr_axis="1">
+						<inline url="motor_lang_arm.x3d"></inline>
+					</transform>
+				</transform>
+			</transform>
+		</transform>
+		<transform rotation="0 1 0 1.5708" translation="1.2 32.875 0">
+			<transform rotation="0 0 1 0" id="transform_fluegel_1_6" tr_offset="0" tr_scale="0.9425">
+				<inline url="schirm_fs_blende_vr0.x3d"></inline>
+				<transform translation="0 0 0" id="transform_optik_2">
+					<transform translation="-7.375 -3.75 -0.41">
+						<inline url="optik_fs_blende_m.x3d" nameSpaceName="lampe" onload="setColor(this, 'gelb')"></inline>
+					</transform>
+					<transform translation="-7.375 3.75 -0.41">
+						<inline url="optik_fs_blende_k.x3d" nameSpaceName="lampe" onload="setColor(this, 'gruen')"></inline>
+					</transform>
+				</transform>
+			</transform>
+		</transform>
+		<transform id="transform_link_vr0">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_vor_vr0.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_vr0_bl0">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_vor_bl0.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_vr0_bl2">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_vor_vr0_bl2.x3d"></inline>
 			</transform>
 		</transform>
 	</group>
@@ -647,18 +825,49 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 				</transform>
 			</transform>
 		</transform>
+		<transform rotation="0 1 0 1.5708" translation="0 0 2.55">
+			<transform rotation="0 1 0 1.5708" translation="-0.3 61.31 -5.55">
+				<transform rotation="0 0 1 0.0489">
+					<transform id="transform_motor_2_1" tr_offset="2.75" tr_scale="3.5" tr_axis="1">
+						<inline url="motor_lang_arm.x3d"></inline>
+					</transform>
+				</transform>
+			</transform>
+		</transform>
+		<transform id="transform_link_vr2">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_vor_vr2.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_link_vr2_bl2">
+			<transform rotation="1 0 0 -1.5708">
+				<inline url="link_fs_vor_bl2.x3d"></inline>
+			</transform>
+		</transform>
 	</group>
 </switch>
 
 <switch whichChoice="-1" id="switch_sperr_fluegel">
 	<!-- Form Fluegel Sperr -->
-	<transform translation="0 0 0" id="transform_maske_0">
-		<transform rotation="0 1 0 1.5708" translation="6.5 75 0">
-			<transform rotation="0 0 1 0" id="transform_fluegel_1_9" tr_offset="0" tr_scale="0.7854">
-				<inline url="maske_fs_sperr_balken_m.x3d"></inline>
+	<group>
+		<transform translation="0 0 0" id="transform_maske_0">
+			<transform rotation="0 1 0 1.5708" translation="7.1 75 0">
+				<transform rotation="0 0 1 0" id="transform_fluegel_1_9" tr_offset="0" tr_scale="0.7854">
+					<inline url="maske_fs_sperr_balken_m.x3d"></inline>
+				</transform>
 			</transform>
 		</transform>
-	</transform>
+		<transform id="transform_motor_1_2" tr_offset="1.75" tr_scale="5.5" tr_axis="1">
+			<transform rotation="0 1 0 1.5708" translation="0.3 68.4 -0.8">
+					<inline url="motor_breit_arm.x3d"></inline>
+			</transform>
+		</transform>
+		<transform id="transform_motor_1_3" tr_offset="1.75" tr_scale="5.5" tr_axis="1">
+			<transform rotation="0 1 0 1.5708" translation="1.8 74.3 -6.6">
+					<inline url="maske_fs_sperr_arm.x3d"></inline>
+			</transform>
+		</transform>
+	</group>
 </switch>
 
 
@@ -806,7 +1015,7 @@ Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!</br>
 			<transform translation="6.5625 79.5625 -1.6">
 				<inline url="optik_fs_sperr_k.x3d" nameSpaceName="lampe" onload="setColor(this, 'weiss')"></inline>
 			</transform>
-			<transform translation="0 75 11.3">
+			<transform translation="0 75 11.6">
 				<transform rotation="0 0 1 0" id="transform_fluegel_1_10" tr_offset="0" tr_scale="0.7854">
 					<inline url="optik_fs_sperr_a.x3d"></inline>
 				</transform>

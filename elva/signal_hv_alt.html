@@ -1,3 +1,10 @@
+<!-- Copyright (c) 2020-2021, Niklas Hauser
+
+This file is part of the RWTH VIA ELVA project.
+
+This Source Code Form is subject to the terms of the MIT License.
+If a copy of the MIT License was not distributed with this file,
+you can obtain one at https://opensource.org/licenses/MIT. -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -227,10 +234,14 @@ function selectSignal(signal, zs3, zs3v)
 function setColor(element, color)
 {
 	color = {
-		"rot": "1 0 0",
-		"gruen": "0 1 0",
-		"gelb": "1 1 0",
-		"weiss": ".7 .7 .7",
+		"rot": "1 0.435 0",
+		// "rot": "0.669 0.301 0",
+		"gruen": "0 1 0.620",
+		// "gruen": "0 0.617 0.383",
+		"gelb": "1 0.863 0",
+		// "gelb": "0.537 0.463 0",
+		"weiss": "1 1 1",
+		// "weiss": ".667 .667 .667",
 	}[color]
 	element.getElementsByTagName("Material")[0].setAttribute("emissiveColor", color)
 }
@@ -341,11 +352,6 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="12.5 101.15625 0">
 			<transform translation="0 0 0" id="transform_matrix_maske_1">
 				<inline url="maske_hv_matrix_v.x3d"></inline>
-			</transform>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="16.7 101.15625 0">
-			<transform translation="0 0 0" id="transform_matrix_optik_1">
-				<inline url="optik_hv_matrix.x3d"></inline>
 			</transform>
 		</transform>
 	</group>
@@ -586,11 +592,6 @@ Notiz: Die LED-Matrix verlangsamt das Rendering stark!
 		<transform rotation="0 1 0 1.5708" translation="1.5 169.9375 0">
 			<transform translation="0 0 0" id="transform_matrix_maske_3">
 				<inline url="maske_hv_matrix.x3d"></inline>
-			</transform>
-		</transform>
-		<transform rotation="0 1 0 1.5708" translation="5.7 169.9375 0">
-			<transform translation="0 0 0" id="transform_matrix_optik_3">
-				<inline url="optik_hv_matrix.x3d"></inline>
 			</transform>
 		</transform>
 	</transform>

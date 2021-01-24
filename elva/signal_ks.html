@@ -1,3 +1,10 @@
+<!-- Copyright (c) 2020-2021, Niklas Hauser
+
+This file is part of the RWTH VIA ELVA project.
+
+This Source Code Form is subject to the terms of the MIT License.
+If a copy of the MIT License was not distributed with this file,
+you can obtain one at https://opensource.org/licenses/MIT. -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -175,10 +182,14 @@ function selectSignal(signal, zs3, zs3v)
 function setColor(element, color)
 {
 	color = {
-		"rot": "1 0 0",
-		"gruen": "0 1 0",
-		"gelb": "1 1 0",
-		"weiss": ".7 .7 .7",
+		"rot": "1 0.435 0",
+		// "rot": "0.669 0.301 0",
+		"gruen": "0 1 0.620",
+		// "gruen": "0 0.617 0.383",
+		"gelb": "1 0.863 0",
+		// "gelb": "0.537 0.463 0",
+		"weiss": "1 1 1",
+		// "weiss": ".667 .667 .667",
 	}[color]
 	element.getElementsByTagName("Material")[0].setAttribute("emissiveColor", color)
 }

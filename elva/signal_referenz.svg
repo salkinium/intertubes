@@ -18,26 +18,45 @@
 			}
 		</style>
 
+		<!-- #bed2a4 -->
+
 		<!-- Maste und Mastzeichen -->
-		<g id="mast-schmal-1">
-			<rect  x="-50"  y="0" width="100" height="1000" fill="#b7c8b9"/>
+		<g id="mast-schmal-base">
+			<rect  x="-50"  y="0" width="100" height="1000"/>
 			<line x1="-50" y1="0" x2="-50" y2="1000" stroke="black" stroke-width="6"/>
 			<line  x1="50" y1="0"  x2="50" y2="1000" stroke="black" stroke-width="6"/>
 		</g>
-		<use id="mast-schmal-2" href="#mast-schmal-1" transform="scale(1,2)"/>
-		<use id="mast-schmal-3" href="#mast-schmal-1" transform="scale(1,3)"/>
-		<use id="mast-schmal-4" href="#mast-schmal-1" transform="scale(1,4)"/>
-		<use id="mast-schmal-5" href="#mast-schmal-1" transform="scale(1,5)"/>
-		<use id="mast-schmal-6" href="#mast-schmal-1" transform="scale(1,6)"/>
+		<use id="mast-schmal-1" href="#mast-schmal-base" transform="scale(1,1)" fill="#b7c8b9"/>
+		<use id="mast-schmal-2" href="#mast-schmal-base" transform="scale(1,2)" fill="#b7c8b9"/>
+		<use id="mast-schmal-3" href="#mast-schmal-base" transform="scale(1,3)" fill="#b7c8b9"/>
+		<use id="mast-schmal-4" href="#mast-schmal-base" transform="scale(1,4)" fill="#b7c8b9"/>
+		<use id="mast-schmal-5" href="#mast-schmal-base" transform="scale(1,5)" fill="#b7c8b9"/>
+		<use id="mast-schmal-6" href="#mast-schmal-base" transform="scale(1,6)" fill="#b7c8b9"/>
 
-		<g id="mast-mittel-1">
-			<rect  x="-80"  y="0" width="160" height="1000" fill="#b7c8b9"/>
+		<use id="mast-schmal-1-gruen" href="#mast-schmal-base" transform="scale(1,1)" fill="#bed2a4"/>
+		<use id="mast-schmal-2-gruen" href="#mast-schmal-base" transform="scale(1,2)" fill="#bed2a4"/>
+		<use id="mast-schmal-3-gruen" href="#mast-schmal-base" transform="scale(1,3)" fill="#bed2a4"/>
+		<use id="mast-schmal-4-gruen" href="#mast-schmal-base" transform="scale(1,4)" fill="#bed2a4"/>
+		<use id="mast-schmal-5-gruen" href="#mast-schmal-base" transform="scale(1,5)" fill="#bed2a4"/>
+		<use id="mast-schmal-6-gruen" href="#mast-schmal-base" transform="scale(1,6)" fill="#bed2a4"/>
+
+		<g id="mast-sperr-1">
+			<rect  x="-80"  y="0" width="160" height="1000" fill="#4c4c4c"/>
 			<line x1="-80" y1="0" x2="-80" y2="1000" stroke="black" stroke-width="6"/>
 			<line  x1="80" y1="0"  x2="80" y2="1000" stroke="black" stroke-width="6"/>
 		</g>
-		<use id="mast-mittel-2" href="#mast-mittel-1" transform="scale(1,2)"/>
-		<use id="mast-mittel-3" href="#mast-mittel-1" transform="scale(1,3)"/>
-		<use id="mast-mittel-4" href="#mast-mittel-1" transform="scale(1,4)"/>
+		<use id="mast-sperr-2" href="#mast-sperr-1" transform="scale(1,2)"/>
+		<use id="mast-sperr-3" href="#mast-sperr-1" transform="scale(1,3)"/>
+		<use id="mast-sperr-4" href="#mast-sperr-1" transform="scale(1,4)"/>
+
+		<g id="mast-vor-1">
+			<rect  x="-91"  y="0" width="182" height="1000" fill="#b7c8b9"/>
+			<line x1="-91" y1="0" x2="-91" y2="1000" stroke="black" stroke-width="6"/>
+			<line  x1="91" y1="0"  x2="91" y2="1000" stroke="black" stroke-width="6"/>
+		</g>
+		<use id="mast-vor-2" href="#mast-vor-1" transform="scale(1,2)"/>
+		<use id="mast-vor-3" href="#mast-vor-1" transform="scale(1,3)"/>
+		<use id="mast-vor-4" href="#mast-vor-1" transform="scale(1,4)"/>
 
 		<g id="mast-name-basis">
 			<rect x="-100" y="-135" width="200" height="270" fill="white" stroke="black" stroke-width="10" rx="10"/>
@@ -486,25 +505,25 @@
 		</g>
 		<use id="zs3-schild-11" href="#zs3-schild-11-basis" clip-path="url(#zs3-schild-clippath)"/>
 
-		<g id="zs3v-schild-4-basis" fill="gold">
+		<g id="zs3v-schild-4-basis" fill="#ffdc00">
 			<use href="#zs3-schild-basis" transform="scale(1,-1)"/>
 			<text x="0" y="55" font-family="DIN1451" font-size="450" text-anchor="middle">4</text>
 			<use href="#zs3-schild-outline" transform="scale(1,-1)" stroke="black" stroke-width="12" fill-opacity="0"/>
 		</g>
 		<use id="zs3v-schild-4" href="#zs3v-schild-4-basis" clip-path="url(#zs3v-schild-clippath)"/>
-		<g id="zs3v-schild-5-basis" fill="gold">
+		<g id="zs3v-schild-5-basis" fill="#ffdc00">
 			<use href="#zs3-schild-basis" transform="scale(1,-1)"/>
 			<text x="0" y="70" font-family="DIN1451" font-size="450" text-anchor="middle">5</text>
 			<use href="#zs3-schild-outline" transform="scale(1,-1)" stroke="black" stroke-width="12" fill-opacity="0"/>
 		</g>
 		<use id="zs3v-schild-5" href="#zs3v-schild-5-basis" clip-path="url(#zs3v-schild-clippath)"/>
-		<g id="zs3v-schild-6-basis" fill="gold">
+		<g id="zs3v-schild-6-basis" fill="#ffdc00">
 			<use href="#zs3-schild-basis" transform="scale(1,-1)"/>
 			<text x="0" y="70" font-family="DIN1451" font-size="450" text-anchor="middle">6</text>
 			<use href="#zs3-schild-outline" transform="scale(1,-1)" stroke="black" stroke-width="12" fill-opacity="0"/>
 		</g>
 		<use id="zs3v-schild-6" href="#zs3v-schild-6-basis" clip-path="url(#zs3v-schild-clippath)"/>
-		<g id="zs3v-schild-10-basis" fill="gold">
+		<g id="zs3v-schild-10-basis" fill="#ffdc00">
 			<use href="#zs3-schild-basis" transform="scale(1,-1)"/>
 			<text x="-10" y="30" font-family="DIN1451" font-size="425" text-anchor="middle">10</text>
 			<use href="#zs3-schild-outline" transform="scale(1,-1)" stroke="black" stroke-width="12" fill-opacity="0"/>
@@ -549,7 +568,7 @@
 
 		<!-- Kombinations-Signale Komponenten -->
 		<g id="ks-mast-ausleger-kurz">
-			<path fill="#b7c8b9" stroke="black" stroke-width="6" d="
+			<path fill="#bed2a4" stroke="black" stroke-width="6" d="
 				M  -200,    0
 				L  -120,  150
 				L   320,  150
@@ -560,7 +579,7 @@
 				"/>
 		</g>
 		<g id="ks-mast-ausleger-lang">
-			<path fill="#b7c8b9" stroke="black" stroke-width="6" d="
+			<path fill="#bed2a4" stroke="black" stroke-width="6" d="
 				M  -200,    0
 				L  -200,  150
 				L   900,  150
@@ -643,7 +662,7 @@
 			<use href="#ks-zs3-matrix-basis" fill="white"/>
 		</g>
 		<g id="ks-zs3v-matrix">
-			<use href="#ks-zs3-matrix-basis" fill="gold"/>
+			<use href="#ks-zs3-matrix-basis" fill="#ffdc00"/>
 		</g>
 
 		<g id="ks-schild-hauptsignal">
@@ -706,9 +725,9 @@
 		<!-- Kombinations-Signale -->
 		<g id="ks-mehrabschnittssignal">
 			<use href="#ks-schirm-gross"/>
-			<use href="#ks-lampe-gross" fill="red"/>
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150" y="250"/>
-			<use href="#ks-lampe-gross" fill="gold"           x="150" y="250"/>
+			<use href="#ks-lampe-gross" fill="#ff6300"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="-150" y="250"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00"           x="150" y="250"/>
 		</g>
 		<g id="ks-mehrabschnittssignal-k">
 			<use href="#ks-lampe-klein" fill="white" x="-150" y="-200"/>
@@ -721,9 +740,9 @@
 			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
 		</g>
 		<g id="ks-mehrabschnittssignal-v">
-			<use href="#ks-lampe-klein" fill="gold" x="100" y="475"/>
-			<use href="#ks-lampe-klein" fill="gold" x="-100" y="475"/>
-			<use href="#ks-lampe-klein" fill="gold" y="650"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="100" y="475"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="-100" y="475"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" y="650"/>
 		</g>
 		<g id="ks-mehrabschnittssignal-w">
 			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
@@ -734,17 +753,17 @@
 
 		<g id="ks-hauptsignal">
 			<use href="#ks-schirm-gross"/>
-			<use href="#ks-lampe-gross" fill="red"/>
-			<use href="#ks-lampe-gross" fill="mediumseagreen" y="250"/>
+			<use href="#ks-lampe-gross" fill="#ff6300"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" y="250"/>
 		</g>
 		<g id="ks-hauptsignal-r">
 			<use href="#ks-lampe-klein" fill="white" y="475"/>
 			<use href="#ks-lampe-klein" fill="white" x="-200" y="650"/>
 		</g>
 		<g id="ks-hauptsignal-v">
-			<use href="#ks-lampe-klein" fill="gold" x="100" y="475"/>
-			<use href="#ks-lampe-klein" fill="gold" x="-100" y="475"/>
-			<use href="#ks-lampe-klein" fill="gold" y="650"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="100" y="475"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="-100" y="475"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" y="650"/>
 		</g>
 		<g id="ks-hauptsignal-k">
 			<use href="#ks-lampe-klein" fill="white" x="-150" y="-200"/>
@@ -758,8 +777,8 @@
 
 		<g id="ks-vorsignal">
 			<use href="#ks-schirm-klein"/>
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150"/>
-			<use href="#ks-lampe-gross" fill="gold"           x="150"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="-150"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="150"/>
 		</g>
 		<g id="ks-vorsignal-w">
 			<use href="#ks-lampe-klein" fill="white" x="-150" y="400"/>
@@ -770,13 +789,13 @@
 
 		<g id="ks-sperrsignal-klein">
 			<use href="#ks-schutzschirm-klein"/>
-			<use href="#hv-lampe-klein" fill="red" x="-100"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="-100"/>
 			<use href="#hv-lampe-klein" fill="white" x="100"/>
 			<use href="#hv-lampe-klein" fill="white" x="-100" y="200"/>
 		</g>
 		<g id="ks-sperrsignal">
 			<use href="#ks-schutzschirm"/>
-			<use href="#hv-lampe-klein" fill="red" x="-125"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="-125"/>
 			<use href="#hv-lampe-klein" fill="white" x="75"/>
 			<use href="#hv-lampe-klein" fill="white" x="-125" y="200"/>
 		</g>
@@ -933,8 +952,8 @@
 
 
 		<g id="hv-deckungssignal-basis">
-			<use href="#hv-lampe-klein" fill="red" x="-150"/>
-			<use href="#hv-lampe-klein" fill="red" x="150"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="-150"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="150"/>
 			<use href="#hv-lampe-klein" fill="white" x="50"/>
 		</g>
 		<g id="hv-sperrsignal-basis">
@@ -942,8 +961,8 @@
 			<use href="#hv-lampe-klein" fill="white" x="-150" y="200"/>
 		</g>
 		<g id="hv-sperrsignal-alt-basis">
-			<use href="#hv-lampe-klein" fill="red" x="-175"/>
-			<use href="#hv-lampe-klein" fill="red" x="175"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="-175"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="175"/>
 			<use href="#hv-lampe-klein" fill="white" x="75"/>
 			<use href="#hv-lampe-klein" fill="white" x="-175" y="250"/>
 		</g>
@@ -1051,7 +1070,7 @@
 				L  470,-253
 				Z
 				"/>
-			<use href="#hv-zs3-matrix-basis" fill="gold" y="5"/>
+			<use href="#hv-zs3-matrix-basis" fill="#ffdc00" y="5"/>
 		</g>
 		<g id="hv-zs3-matrix-kompakt" stroke="black" stroke-width="4">
 			<rect x="-225" y="-265" width="450" height="530" rx="25" fill="#4c4c4c" stroke-width="10"/>
@@ -1059,7 +1078,7 @@
 		</g>
 		<g id="hv-zs3v-matrix-kompakt" stroke="black" stroke-width="4">
 			<rect x="-225" y="-265" width="450" height="530" rx="25" fill="#4c4c4c" stroke-width="10"/>
-			<use href="#hv-zs3-matrix-basis" fill="gold" y="5"/>
+			<use href="#hv-zs3-matrix-basis" fill="#ffdc00" y="5"/>
 		</g>
 
 		<!-- H/V Lichtsignale -->
@@ -1071,9 +1090,9 @@
 		</g>
 		<g id="hv-vorsichtsignal">
 			<use href="#hv-ersatzschirm"/>
-			<use href="#hv-lampe-klein" fill="gold" x="-100"/>
-			<use href="#hv-lampe-klein" fill="gold" x="100"/>
-			<use href="#hv-lampe-klein" fill="gold" y="173"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="-100"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="100"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00" y="173"/>
 		</g>
 		<g id="hv-ersatzsignal-alt">
 			<use href="#fs-ersatzsignal"/>
@@ -1084,13 +1103,13 @@
 
 
 		<g id="hv-hauptsignal-basis">
-			<use href="#hv-lampe-gross-links" fill="red"/>
-			<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+			<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+			<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 			<use href="#hv-schute-gross"/>
 
 			<g transform="translate(0,1000)">
-				<use href="#hv-lampe-gross-links" fill="red"/>
-				<use href="#hv-lampe-gross-rechts" fill="gold"/>
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#ffdc00"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 		</g>
@@ -1104,8 +1123,8 @@
 		</g>
 		<g id="hv-hauptsignal-alt-48">
 			<g transform="translate(0,270)">
-				<use href="#hv-lampe-gross-links" fill="red"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 		</g>
@@ -1113,8 +1132,8 @@
 			<use href="#hv-hauptschirm"/>
 
 			<g transform="translate(0,1000)">
-				<use href="#hv-lampe-gross-links" fill="red"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 		</g>
@@ -1123,63 +1142,63 @@
 			<rect x="-225" y="-112" width="450" height="224" stroke-width="4" stroke="black" fill-opacity="0"/>
 
 			<g transform="translate(0,1000)">
-				<use href="#hv-lampe-gross-links" fill="red"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 		</g>
 
 		<g id="hv-hauptsperrsignal">
 			<use href="#hv-hauptschirm" y="-270"/>
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150" y="-270"/>
-			<use href="#ks-lampe-gross" fill="red" x="-150"/>
-			<use href="#ks-lampe-gross" fill="red" x="150"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="-150" y="-270"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-150"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="150"/>
 
 			<use href="#hv-lampe-mittel" fill="white" x="140" y="240"/>
 			<use href="#hv-lampe-mittel" fill="white" x="-140" y="500"/>
 
-			<use href="#ks-lampe-gross" fill="gold" x="-150" y="730"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-150" y="730"/>
 		</g>
 		<g id="hv-hauptsperrsignal-k">
 			<use href="#hv-lampe-mittel" fill="white" x="-140" y="240"/>
 		</g>
 		<g id="hv-hauptsperrsignal-alt">
 			<use href="#hv-hauptschirm-alt" y="-270"/>
-			<use href="#ks-lampe-gross" fill="mediumseagreen" y="-270"/>
-			<use href="#ks-lampe-gross" fill="red" x="-150"/>
-			<use href="#ks-lampe-gross" fill="red" x="150"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" y="-270"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-150"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="150"/>
 
 			<use href="#hv-lampe-mittel" fill="white" x="140" y="240"/>
 			<use href="#hv-lampe-mittel" fill="white" x="-140" y="500"/>
 
-			<use href="#ks-lampe-gross" fill="gold" y="730"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" y="730"/>
 		</g>
 		<g id="hv-hauptsperrsignal-alt-k">
 			<use href="#hv-hauptschirm-alt" y="-270"/>
 			<g transform="translate(0,-270)">
 				<use href="#hv-lampe-gross-links" fill="white"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
-			<use href="#ks-lampe-gross" fill="red" x="-150"/>
-			<use href="#ks-lampe-gross" fill="red" x="150"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-150"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="150"/>
 
 			<use href="#hv-lampe-mittel" fill="white" x="140" y="240"/>
 			<use href="#hv-lampe-mittel" fill="white" x="-140" y="500"/>
 
-			<use href="#ks-lampe-gross" fill="gold" y="730"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" y="730"/>
 		</g>
 
 		<g id="hv-vorsignal">
 			<use href="#hv-vorschirm"/>
 			<g transform="translate(250,0)">
-				<use href="#hv-lampe-gross-links" fill="gold"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-links" fill="#ffdc00"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 			<g transform="translate(-250,500)">
-				<use href="#hv-lampe-gross-links" fill="gold"/>
-				<use href="#hv-lampe-gross-rechts" fill="mediumseagreen"/>
+				<use href="#hv-lampe-gross-links" fill="#ffdc00"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
 				<use href="#hv-schute-gross"/>
 			</g>
 		</g>
@@ -1214,20 +1233,11 @@
 			<use href="#ks-schirm-gross" y="-100"/>
 			<!-- red at 800 -->
 
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-150" y="-200"/>
-			<use href="#ks-lampe-gross" fill="red" x="-150"/>
-			<use href="#ks-lampe-gross" fill="red" x="150"/>
-<!--
-			<use href="#ks-lampe-klein" id="kennlicht" fill="white" x="-100" y="225"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="-150" y="-200"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-150"/>
+			<use href="#ks-lampe-gross" fill="#ff6300" x="150"/>
 
-			<use href="#ks-lampe-klein" id="schutz-1" fill="white" y="225"/>
-			<use href="#ks-lampe-klein" id="schutz-2" fill="white" x="-200" y="400"/>
-
-			<use href="#ks-lampe-klein" id="ersatz-1" fill="white" y="400"/>
-			<use href="#ks-lampe-klein" id="ersatz-2" fill="white" x="100" y="225"/>
-			<use href="#ks-lampe-klein" id="ersatz-3" fill="white" x="200" y="400"/> -->
-
-			<use href="#ks-lampe-gross" fill="gold" x="-150" y="600"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-150" y="600"/>
 		</g>
 		<g id="hv-hauptsignal-kompakt-k">
 			<use href="#ks-lampe-klein" fill="white" x="-200" y="225"/>
@@ -1242,24 +1252,207 @@
 			<use href="#ks-lampe-klein" fill="white" x="200" y="400"/>
 		</g>
 		<g id="hv-hauptsignal-kompakt-v">
-			<use href="#ks-lampe-klein" fill="gold" x="-100" y="225"/>
-			<use href="#ks-lampe-klein" fill="gold" y="400"/>
-			<use href="#ks-lampe-klein" fill="gold" x="100" y="225"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="-100" y="225"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" y="400"/>
+			<use href="#ks-lampe-klein" fill="#ffdc00" x="100" y="225"/>
 		</g>
 		<g id="hv-vorsignal-kompakt">
 			<use href="#ks-schirm-klein" y="250"/>
 			<!-- white at 800 -->
 
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="200"/>
-			<use href="#ks-lampe-gross" fill="gold" x="200" y="200"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="200"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="200" y="200"/>
 
-			<use href="#ks-lampe-gross" fill="gold" x="-200" y="600"/>
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-200" y="600"/>
 		</g>
 		<g id="hv-vorsignal-kompakt-b">
 			<use href="#ks-lampe-klein" fill="white" x="-200"/>
 		</g>
 		<g id="hv-vorsignal-kompakt-vr1">
-			<use href="#ks-lampe-gross" fill="mediumseagreen" x="-200" y="400"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e" x="-200" y="400"/>
+		</g>
+
+		<!-- Hl-Signale Komponenten -->
+		<g id="hl-hauptschirm-62">
+			<path fill="#4c4c4c" stroke="black" stroke-width="10" stroke-linejoin="round" d="
+				M -300,  -25
+				A   25,   25  0 0 0 -275   0
+				L  275,    0
+				A   25,   25  0 0 0  300 -25
+				L  300,-1700
+				L  225,-1775
+				L -225,-1775
+				L -300,-1700
+				Z
+				"/>
+		</g>
+		<g id="hl-vorschirm-62">
+			<path fill="#4c4c4c" stroke="black" stroke-width="10" stroke-linejoin="round" d="
+				M -300,  -25
+				A   25,   25  0 0 0 -275   0
+				L  275,    0
+				A   25,   25  0 0 0  300 -25
+				L  300, -925
+				L  225,-1000
+				L -225,-1000
+				L -300, -925
+				Z
+				"/>
+		</g>
+		<g id="hl-hauptschirm">
+			<path fill="#4c4c4c" stroke="black" stroke-width="10" stroke-linejoin="round" d="
+				M -300,  -25
+				A   25,   25  0 0 0 -275   0
+				L  275,    0
+				A   25,   25  0 0 0  300 -25
+				L  300,-1485
+				L  225,-1560
+				L -225,-1560
+				L -300,-1485
+				Z
+				"/>
+		</g>
+		<g id="hl-mehrabschnittschirm">
+			<path fill="#4c4c4c" stroke="black" stroke-width="10" stroke-linejoin="round" d="
+				M -300,  -25
+				A   25,   25  0 0 0 -275   0
+				L  275,    0
+				A   25,   25  0 0 0  300 -25
+				L  300,-1425
+				L  225,-1500
+				L -225,-1500
+				L -300,-1425
+				Z
+				"/>
+		</g>
+		<g id="hl-vorschirm">
+			<path fill="#4c4c4c" stroke="black" stroke-width="10" stroke-linejoin="round" d="
+				M -300,  -25
+				A   25,   25  0 0 0 -275   0
+				L  275,    0
+				A   25,   25  0 0 0  300 -25
+				L  300,-1055
+				L  225,-1130
+				L -225,-1130
+				L -300,-1055
+				Z
+				"/>
+		</g>
+		<rect id="hl-lichtstreifenschirm" x="-300" width="600" height="500" fill="#4c4c4c" stroke="black" stroke-width="10" rx="25"/>
+		<g id="hl-hauptsperr">
+			<use href="#hl-hauptschirm"/>
+
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-125" y="-405"/>
+			<use href="#ks-lampe-gross" fill="#ff6300"  x="125" y="-405"/>
+
+			<use href="#hv-lampe-klein" fill="white" x="-135" y="-700"/>
+			<use href="#ks-lampe-gross"  fill="#ff6300"        y="-865"/>
+			<use href="#hv-lampe-klein" fill="white" x="135" y="-1030"/>
+
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-125" y="-1325"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e"  x="125" y="-1325"/>
+		</g>
+		<g id="hl-hauptsperr-62">
+			<use href="#hl-hauptschirm-62"/>
+
+			<g transform="translate(0,-1450)">
+				<use href="#hv-lampe-gross-links" fill="#ffdc00"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
+				<use href="#hv-schute-gross"/>
+			</g>
+
+			<g transform="translate(0,-1175)">
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#ff6300"/>
+				<use href="#hv-schute-gross"/>
+			</g>
+
+			<use href="#hv-lampe-klein" fill="white" x="-100" y="-700"/>
+			<use href="#hv-lampe-klein" fill="white"  x="100" y="-915"/>
+
+			<use href="#ks-lampe-gross" fill="#ffdc00" y="-330"/>
+		</g>
+		<g id="hl-lichtstreifen">
+			<use href="#hl-lichtstreifenschirm"/>
+
+			<use href="#hv-lampe-klein" fill="#00ff9e" x="-225" y="120"/>
+			<use href="#hv-lampe-klein" fill="#00ff9e"  x="-75" y="120"/>
+			<use href="#hv-lampe-klein" fill="#00ff9e"   x="75" y="120"/>
+			<use href="#hv-lampe-klein" fill="#00ff9e"  x="225" y="120"/>
+
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="-225" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"  x="-75" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"   x="75" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"  x="225" y="340"/>
+		</g>
+		<g id="hl-lichtstreifen-62">
+			<use href="#hl-lichtstreifenschirm"/>
+
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="-222" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="-112.5" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"    x="0" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"  x="112.5" y="340"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00"  x="225" y="340"/>
+		</g>
+		<g id="hl-vorsignal">
+			<use href="#hl-vorschirm"/>
+
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-125" y="-405"/>
+			<use href="#ks-lampe-gross" fill="#ff6300"  x="125" y="-405"/>
+
+			<use href="#ks-lampe-gross" fill="#ffdc00" x="-125" y="-865"/>
+			<use href="#ks-lampe-gross" fill="#00ff9e"  x="125" y="-865"/>
+		</g>
+		<g id="hl-vorsignal-62">
+			<use href="#hl-vorschirm-62"/>
+
+			<g transform="translate(0,-775)">
+				<use href="#hv-lampe-gross-links" fill="#ffdc00"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
+				<use href="#hv-schute-gross"/>
+			</g>
+		</g>
+		<g id="hl-hauptsperr-klein">
+			<use href="#hl-vorschirm"/>
+
+			<use href="#hv-lampe-klein" fill="white" x="-130" y="-300"/>
+			<use href="#hv-lampe-klein" fill="white"  x="130" y="-550"/>
+
+			<use href="#ks-lampe-gross" fill="#ff6300" x="-125" y="-865"/>
+			<use href="#ks-lampe-gross" fill="#ff6300"  x="125" y="-865"/>
+		</g>
+		<g id="hl-hauptsperr-klein-62">
+			<use href="#hl-vorschirm-62"/>
+
+			<g transform="translate(0,-775)">
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#ff6300"/>
+				<use href="#hv-schute-gross"/>
+			</g>
+
+			<use href="#hv-lampe-klein" fill="white" x="-100" y="-225"/>
+			<use href="#hv-lampe-klein" fill="white"  x="100" y="-445"/>
+		</g>
+		<g id="hl-mehrabschnitt">
+			<use href="#hl-mehrabschnittschirm"/>
+
+			<g transform="translate(0,-1300)">
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
+				<use href="#hv-lampe-gross-rechts" fill="#ffdc00"/>
+				<use href="#hv-schute-gross"/>
+			</g>
+
+			<use href="#hv-lampe-klein" fill="#ff6300" x="-150" y="-1050"/>
+			<use href="#hv-lampe-klein" fill="white" x="50" y="-1050"/>
+			<use href="#hv-lampe-klein" fill="#ff6300" x="150" y="-1050"/>
+			<use href="#hv-lampe-klein" fill="white" x="-150" y="-750"/>
+			<use href="#hv-lampe-klein" fill="#ffdc00" x="50" y="-750"/>
+
+			<g transform="translate(0,-210)">
+				<use href="#hv-lampe-gross-links" fill="#ffdc00"/>
+				<use href="#hv-lampe-gross-rechts" fill="#00ff9e"/>
+				<use href="#hv-schute-gross"/>
+			</g>
 		</g>
 
 
@@ -1446,11 +1639,11 @@
 			<circle cx="185" cy="130" r="124" stroke-width="4" fill-opacity="0"/>
 		</g>
 		<g id="fs-blende-1" stroke="black" transform="rotate(35)">
-			<use href="#fs-blende-base" fill="gold"/>
+			<use href="#fs-blende-base" fill="#ffdc00"/>
 		</g>
 		<g id="fs-blende-2" stroke="black" transform="rotate(35)">
-			<use href="#fs-blende-base" fill="mediumseagreen"/>
-			<circle cx="185" cy="-130" r="112" stroke-width="4" fill="red"/>
+			<use href="#fs-blende-base" fill="#00ff9e"/>
+			<circle cx="185" cy="-130" r="112" stroke-width="4" fill="#ff6300"/>
 			<circle cx="185" cy="-130" r="124" stroke-width="4" fill-opacity="0"/>
 		</g>
 		<g id="fs-blende-vor" stroke="black">
@@ -1467,9 +1660,9 @@
 				Z
 				"/>
 
-			<circle cx="236" cy="-120" r="100" stroke-width="4" fill="gold"/>
+			<circle cx="236" cy="-120" r="100" stroke-width="4" fill="#ffdc00"/>
 			<circle cx="236" cy="-120" r="112" stroke-width="4" fill-opacity="0"/>
-			<circle cx="236" cy="120" r="92" stroke-width="4" fill="mediumseagreen"/>
+			<circle cx="236" cy="120" r="92" stroke-width="4" fill="#00ff9e"/>
 			<circle cx="236" cy="120" r="104" stroke-width="4" fill-opacity="0"/>
 		</g>
 		<!-- <g id="fs-fluegel-vor" stroke="black">
@@ -1710,14 +1903,14 @@
 			<circle cx="-236" cy="1583" r="70" stroke-dasharray="40,23" stroke-width="3" stroke="black" fill-opacity="0"/>
 		</g>
 		<g id="fs-vorsignal-1-halt">
-			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
+			<use href="#mast-vor-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" y="755"/>
 			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
 			<use href="#fs-scheibe-halt"/>
 		</g>
 		<g id="fs-vorsignal-1-fahrt">
-			<use href="#mast-mittel-1" transform="translate(0,-70) scale(1,2.585)"/>
+			<use href="#mast-vor-1" transform="translate(0,-70) scale(1,2.585)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
 			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(126)"/>
 			<use href="#fs-vorsignal-leuchten"/>
@@ -1733,7 +1926,7 @@
 			<use href="#fs-fluegel-vor" y="1335"/>
 		</g>
 		<g id="fs-vorsignal-2-langsamfahrt">
-			<use href="#mast-mittel-1" transform="scale(1,2.515)"/>
+			<use href="#mast-vor-1" transform="scale(1,2.515)"/>
 			<use href="#fs-blende-vor" transform="translate(0,755) rotate(-54)"/>
 			<use href="#fs-blende-vor" transform="translate(0,1463) rotate(180)"/>
 			<use href="#fs-vorsignal-leuchten"/>
@@ -1752,7 +1945,7 @@
 
 		<!-- Generisches Gelb-Schwarz Streifen der Sperrsignal Rueckseiten -->
 		<g id="sperrsignal-warnung">
-			<rect x="-325" y="-250" width="650" height="500" fill="gold"/>
+			<rect x="-325" y="-250" width="650" height="500" fill="#ffdc00"/>
 			<g transform="rotate(45)">
 				<line x1="-300" y1="250" x2="-300" y2="-250" stroke-width="100" stroke="black"/>
 				<line x1="-100" y1="500" x2="-100" y2="-500" stroke-width="100" stroke="black"/>
@@ -1908,7 +2101,7 @@
 		</g>
 		<use id="pcb-zs3-schild-10" href="#pcb-zs3-schild-10-basis" clip-path="url(#zs3-schild-clippath)"/>
 
-		<g id="pcb-zs3v-schild-6-basis" fill="gold">
+		<g id="pcb-zs3v-schild-6-basis" fill="#ffdc00">
 			<use href="#zs3-schild-basis" transform="scale(1,-1)"/>
 			<text x="0" y="70" font-family="DIN1451" font-size="450" text-anchor="middle">6</text>
 		</g>
@@ -1976,25 +2169,25 @@
 		<!-- Vordefinierte Baugruppen von Signalen -->
 		<!-- Form-Sperrsignale -->
 		<g id="signal-fs-sperr-halt">
-			<use href="#mast-mittel-1" transform="translate(0,-2400) scale(1,2.5)"/>
+			<use href="#mast-sperr-1" transform="translate(0,-2400) scale(1,2.5)"/>
 			<use href="#fs-sperr-kasten"       y="-2400"/>
 			<use href="#fs-sperr-balken"       y="-2400"/>
 			<use href="#fs-sperr-rueckstrahler" y="-665"/>
 		</g>
 		<g id="signal-fs-sperr-fahrt">
-			<use href="#mast-mittel-1" transform="translate(0,-2400) scale(1,2.5)"/>
+			<use href="#mast-sperr-1" transform="translate(0,-2400) scale(1,2.5)"/>
 			<use href="#fs-sperr-kasten"       y="-2400"/>
 			<use href="#fs-sperr-balken" transform="translate(0,-2400) rotate(-45)"/>
 			<use href="#fs-sperr-rueckstrahler" y="-665"/>
 		</g>
 		<g id="signal-fs-sperr-klein-halt">
-			<use href="#mast-mittel-1" transform="translate(0,-500) scale(1,0.5)"/>
+			<use href="#mast-sperr-1" transform="translate(0,-500) scale(1,0.5)"/>
 			<use href="#fs-sperr-kasten-klein"  y="-500"/>
 			<use href="#fs-sperr-balken-klein"  y="-500"/>
 			<use href="#fs-sperr-rueckstrahler" y="-125"/>
 		</g>
 		<g id="signal-fs-sperr-klein-fahrt">
-			<use href="#mast-mittel-1" transform="translate(0,-500) scale(1,0.5)"/>
+			<use href="#mast-sperr-1" transform="translate(0,-500) scale(1,0.5)"/>
 			<use href="#fs-sperr-kasten-klein"  y="-500"/>
 			<use href="#fs-sperr-balken-klein" transform="translate(0,-500) rotate(-45)"/>
 			<use href="#fs-sperr-rueckstrahler" y="-125"/>
@@ -2073,11 +2266,11 @@
 			<use href="#hv-schild-hauptsignal" y="-875"/>
 			<g transform="translate(0,-4875)">
 				<use href="#hv-hauptschirm-alt"/>
-				<use href="#hv-lampe-gross-links" fill="red"/>
+				<use href="#hv-lampe-gross-links" fill="#ff6300"/>
 				<use href="#hv-lampe-gross-rechts" fill-opacity="0"/>
 				<use href="#hv-schute-gross"/>
 				<g transform="translate(0,1000)">
-					<use href="#hv-lampe-gross-links" fill="red"/>
+					<use href="#hv-lampe-gross-links" fill="#ff6300"/>
 					<use href="#hv-lampe-gross-rechts" fill-opacity="0"/>
 					<use href="#hv-schute-gross"/>
 				</g>
@@ -2173,17 +2366,17 @@
 
 		<!-- H/V-Signale Kompakt -->
 		<g id="signal-hvk-vor">
-			<use href="#mast-schmal-4"         y="-4000"/>
-			<use href="#hv-vorsignal-kompakt"  y="-4425"/>
+			<use href="#mast-schmal-4-gruen"       y="-4000"/>
+			<use href="#hv-vorsignal-kompakt"      y="-4425"/>
 			<use href="#hv-vorsignal-kompakt-vr1"  y="-4425"/>
-			<use href="#vorsignal-tafel-klein" y="-1325"/>
+			<use href="#vorsignal-tafel-klein"     y="-1325"/>
 		</g>
 		<g id="signal-hvk-vor-zs3vm">
 			<use href="#signal-hvk-vor"/>
 			<use href="#hv-zs3v-matrix-kompakt" y="-3230"/>
 		</g>
 		<g id="signal-hvk-haupt">
-			<use href="#mast-schmal-4"          y="-4000"/>
+			<use href="#mast-schmal-4-gruen"    y="-4000"/>
 			<use href="#hv-hauptsignal-kompakt" y="-4425"/>
 			<use href="#hv-schild-hauptsignal"  y="-1250"/>
 		</g>
@@ -2209,14 +2402,14 @@
 			<use href="#hv-hauptsignal-kompakt-zs1" y="-4425"/>
 		</g>
 		<g id="signal-hvk-zs3m-mehrabschnitt-v">
-			<use href="#mast-schmal-1"          y="-5000"/>
-			<use href="#hv-zs3-matrix-kompakt"  y="-5265"/>
+			<use href="#mast-schmal-1-gruen"      y="-5000"/>
+			<use href="#hv-zs3-matrix-kompakt"    y="-5265"/>
 			<use href="#signal-hvk-haupt-v"/>
-			<use href="#hv-vorsignal-kompakt"   y="-3300"/>
-			<use href="#hv-vorsignal-kompakt-vr1"   y="-3300"/>
+			<use href="#hv-vorsignal-kompakt"     y="-3300"/>
+			<use href="#hv-vorsignal-kompakt-vr1" y="-3300"/>
 		</g>
 		<g id="signal-hvk-zs3m-mehrabschnitt-zs3v-4">
-			<use href="#mast-schmal-5"          y="-5000"/>
+			<use href="#mast-schmal-5-gruen"    y="-5000"/>
 			<use href="#hv-zs3-matrix-kompakt"  y="-5265"/>
 			<use href="#hv-hauptsignal-kompakt" y="-4425"/>
 			<use href="#hv-vorsignal-kompakt"   y="-3300"/>
@@ -2225,10 +2418,53 @@
 			<use href="#zs3v-schild-4"          y="-2025"/>
 		</g>
 
+		<!-- Hl-Signale -->
+		<g id="signal-hl-vor">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-vorsignal"          y="-3625"/>
+			<use href="#vorsignal-tafel-klein" y="-1325"/>
+		</g>
+		<g id="signal-hl-vor-62">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-vorsignal-62"       y="-3625"/>
+			<use href="#vorsignal-tafel-klein" y="-1325"/>
+		</g>
+		<g id="signal-hl-mehrabschnitt">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-mehrabschnitt"      y="-3625"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
+		</g>
+		<g id="signal-hl-hauptsperr">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-hauptsperr"   y="-3625"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
+		</g>
+		<g id="signal-hl-hauptsperr-62">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-hauptsperr-62"      y="-3625"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
+		</g>
+		<g id="signal-hl-hauptsperr-klein">
+			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#hl-hauptsperr-klein"   y="-3625"/>
+			<use href="#hv-schild-hauptsignal" y="-1250"/>
+		</g>
+		<g id="signal-hl-hauptsperr-klein-62">
+			<use href="#mast-schmal-4"          y="-4000"/>
+			<use href="#hl-hauptsperr-klein-62" y="-3625"/>
+			<use href="#hv-schild-hauptsignal"  y="-1250"/>
+		</g>
+		<g id="signal-hl-hauptsperr-lichtstreifen">
+			<use href="#hl-lichtstreifen"       y="-3625"/>
+		</g>
+		<g id="signal-hl-hauptsperr-lichtstreifen-62">
+			<use href="#hl-lichtstreifen-62"   y="-3625"/>
+		</g>
+
 
 		<!-- Ks-Signale -->
 		<g id="signal-ks-haupt">
-			<use href="#mast-schmal-4"         y="-4000"/>
+			<use href="#mast-schmal-4-gruen"   y="-4000"/>
 			<use href="#ks-hauptsignal"        y="-4525"/>
 			<use href="#ks-schild-hauptsignal" y="-1250"/>
 		</g>
@@ -2250,12 +2486,12 @@
 			<!-- <use href="#ks-hauptsignal-k" y="-4525"/> -->
 		</g>
 		<g id="signal-ks-vor">
-			<use href="#mast-schmal-5"         y="-4575"/>
+			<use href="#mast-schmal-5-gruen"   y="-4575"/>
 			<use href="#ks-vorsignal"          y="-4175"/>
 			<use href="#vorsignal-tafel-klein" y="-1325"/>
 		</g>
 		<g id="signal-ks-mehrabschnitt">
-			<use href="#mast-schmal-4"                 y="-4000"/>
+			<use href="#mast-schmal-4-gruen"           y="-4000"/>
 			<use href="#ks-mehrabschnittssignal"       y="-4525"/>
 			<use href="#ks-schild-mehrabschnittsignal" y="-1250"/>
 		</g>
@@ -2266,26 +2502,26 @@
 			<use href="#signal-ks-zs3vm"/>
 		</g>
 		<g id="signal-ks-sperr-klein">
-			<use href="#mast-schmal-1"         y="-1000" transform="scale(1,0.5)"/>
+			<use href="#mast-schmal-1-gruen"   y="-1000" transform="scale(1,0.5)"/>
 			<use href="#ks-sperrsignal-klein"  y="-500"/>
 			<use href="#hv-schild-sperrsignal" y="-275" x="150"/>
 		</g>
 
 		<g id="signal-ks-zs3-6">
-			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-6"  y="-5350"/>
+			<use href="#mast-schmal-1-gruen" y="-5000"/>
+			<use href="#zs3-schild-6"        y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3-10">
-			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-10" y="-5350"/>
+			<use href="#mast-schmal-1-gruen" y="-5000"/>
+			<use href="#zs3-schild-10"       y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3-11">
-			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#zs3-schild-11" y="-5350"/>
+			<use href="#mast-schmal-1-gruen" y="-5000"/>
+			<use href="#zs3-schild-11"       y="-5350"/>
 		</g>
 		<g id="signal-ks-zs3m">
-			<use href="#mast-schmal-1" y="-5000"/>
-			<use href="#ks-zs3-matrix" y="-5300"/>
+			<use href="#mast-schmal-1-gruen" y="-5000"/>
+			<use href="#ks-zs3-matrix"       y="-5300"/>
 		</g>
 		<g id="signal-ks-zs6">
 			<use href="#ks-zs3-matrix" y="-3200"/>
@@ -2764,12 +3000,12 @@
 	<g transform="translate(0,-12504)">
 		<g transform="scale(0.177,0.177)">
 			<text x="2100" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">ZSB-Tal 1</text>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="0"/>
-<use href="#signal-ks-vor-zs3vm"                    x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm"   x="1500"/>
-<use href="#signal-ks-vor-zs3vm"                    x="2250"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v"         x="3000"/>
-<use href="#signal-ks-vor-zs3vm"                    x="3750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
+<use href="#signal-ks-vor-zs3vm"            x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"            x="2250"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="3000"/>
+<use href="#signal-ks-vor-zs3vm"            x="3750"/>
 
 
 <!-- Namen -->
@@ -2854,12 +3090,12 @@
 		<g transform="scale(0.177,0.177)">
 			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 1</text>
 
-<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="0"/>
-<use href="#signal-ks-vor-zs3vm"                  x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v"       x="1500"/>
-<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="3000"/>
-<use href="#signal-ks-vor-zs3vm"                  x="3750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
+<use href="#signal-ks-vor-zs3vm"            x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"            x="2250"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="3000"/>
+<use href="#signal-ks-vor-zs3vm"            x="3750"/>
 
 <!-- Namen -->
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">A</text>
@@ -2878,12 +3114,12 @@
 			<text x="3000" y="-6300" font-family="DIN1451" font-size="270" text-anchor="middle">E-City 2</text>
 
 
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="0"/>
-<use href="#signal-ks-vor-zs3vm"                  x="750"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="1500"/>
-<use href="#signal-ks-vor-zs3vm"                  x="2250"/>
-<use href="#signal-ks-zs3m-mehrabschnitt-v-zs3vm" x="3000"/>
-<use href="#signal-ks-vor-zs3vm"                  x="3750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="0"/>
+<use href="#signal-ks-vor-zs3vm"            x="750"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="1500"/>
+<use href="#signal-ks-vor-zs3vm"            x="2250"/>
+<use href="#signal-ks-zs3m-mehrabschnitt-v" x="3000"/>
+<use href="#signal-ks-vor-zs3vm"            x="3750"/>
 
 <!-- Namen -->
 <text y="-5800" font-family="DIN1451" font-size="270" text-anchor="middle"    x="0">F</text>

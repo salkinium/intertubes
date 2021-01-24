@@ -1,3 +1,10 @@
+<!-- Copyright (c) 2020-2021, Niklas Hauser
+
+This file is part of the RWTH VIA ELVA project.
+
+This Source Code Form is subject to the terms of the MIT License.
+If a copy of the MIT License was not distributed with this file,
+you can obtain one at https://opensource.org/licenses/MIT. -->
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -29,6 +36,12 @@ function toggleMast(button)
 		mast = document.getElementById("transform_mast_links_"+i)
 		mast.setAttribute("translation", mast.getAttribute("translation") == "0 0 0" ? "30 0 0" : "0 0 0")
 	}
+}
+function toggleHalter(button)
+{
+	halter = document.getElementById("switch_mast_halter")
+	config = parseInt(halter.getAttribute("whichChoice"))
+	halter.setAttribute("whichChoice", -(config + 1))
 }
 function configure()
 {
@@ -86,6 +99,7 @@ document.onload = configure
 </td><td>
 <button onclick="toggleMast(this)">Mast auf/zu</button></br>
 <button onclick="toggleSteckerSchild(this)">Stecker+Mastschild an/ab</button></br>
+<button onclick="toggleHalter(this)">Halter an/aus</button></br>
 </td>
 <td>
 Tipp: Doppel-Klick um den Rotationspunkt zu versetzen!
