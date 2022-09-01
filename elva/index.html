@@ -1,10 +1,3 @@
-<!-- Copyright (c) 2020-2021, Niklas Hauser
-
-This file is part of the RWTH VIA ELVA project.
-
-This Source Code Form is subject to the terms of the MIT License.
-If a copy of the MIT License was not distributed with this file,
-you can obtain one at https://opensource.org/licenses/MIT. -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +10,80 @@ you can obtain one at https://opensource.org/licenses/MIT. -->
 </head>
 <body>
 
-Online Resourcen der <a href="http://www.via.rwth-aachen.de/elva.php">ELVA Signale</a> in ~1:32.
+<h2>ELVA German Railway Signals</h2>
 
+<p>
+The <a href="http://www.via.rwth-aachen.de/elva.php">railway lab ELVA of the Institute of Transport Science</a> was originally built from 1958-1961 and operated completely electrical, only using some (railway grade) relays to store state.
+The gauge was a non-standard 34mm (O gauge is 32mm!) with custom-built vehicles, so it could not be upgraded with commercial parts and instead had to be repaired manually.
+</p>
+<p>
+From 2015-2018 the railway lab was completely renovated and the model railway was replaced with a <a href="https://twitter.com/salkinium/status/1425145497942171655">standard H0-gauge digital control system</a>.
+The model railway has about 1200m of track (Roco), 200 switch points (using indestructible LGB motors), 400 axle counters (dual hall sensors), and 150 signals (custom design).
+Additionally, the physical interlocking systems required about 600 custom digital and analog IO connections using various MOSFET and micro-relays circuits to interface with higher DC or AC voltages.
+</p>
+<p>
+Since the cost of a commercial solution would have been too great, I designed a custom PCB that provided power and an isolated CAN connection to a STM32F4 Discovery board (later also a Nucleo-64 board) that acts as a specialized I/O expander with 24 ports that can be programmed with custom digital and analog waveforms.
+The CAN bus is connected via USB to a Qt5 application that interprets the input and converts it via a system model into the appropriate outputs. For example, an axle counter event may be interpreted as a vehicle entering a rail section, requiring the interlocking system to be informed so it does not send any new vehicles on the track.
+</p>
+<p>
+In 2019, I started the development of a modular railway signal system in approximate 1:32 scale (gauge 1), so that it can be seen from far away, since H0 scale was simply too small to be useful for such a large installation.
+We wanted to cover signals from <a href="https://de.wikipedia.org/wiki/Epochen_(Modelleisenbahn)">epoch 3-6 (so from 1945 until today)</a>, especially Formsignale (mechanical semaphores, epoch &ge;2), H/V Signale Bauform '51 (epoch &ge;3), H/V Signale Einheitsbauform '69 (epoch &ge;4), H/V Kompaktsignale (epoch &ge;4), and Ks-Signale (epoch &ge;5).
+ETCS markers are not explicitly modeled, since the track sections are completely virtual and can be remapped for research.
+</p>
+<p>
+I first created <a href="konzept.pdf">a design concept</a> where I investigated the possibility of using 2D PCBs as a 3D construction to create the mast and screen via a modular system.
+This reduced the amount of cabling and made the construction very precise since we could make use of the high CNC accuracy of the PCB outline milling for a very low cost.
+The electronics would be quite simple: A STM32G071 would drive a number of SK9822 RGB LEDs via SPI in a chain, the animations would be done in software.
+The matrix signals are controlled by a monochrome matrix driver connected over I2C.
+The mechanical semaphores are driven by a small and cheap, but high quality linear actuator from Aliexpress, which apparently was used to pull/push pop up selfie cameras in smartphones.
+The STM32 controller firmware is written with <a href="https://modm.io">modm</a> and communicates with the baseboard using a <a href="https://modm.io/reference/module/modm-communication-amnb/">CDMA protocol over half-duplex UART</a>.
+</p>
+
+<p>
+To understand how modular the system needed to be and to get an idea of the dimensions of each signal system, I created <a href="signal_konzept.svg">a 2D SVG concept</a> that showed all systems in a normalized view.
+I made some compromises by reducing the high of the mast to make the signals look better next to H0 track and rolling stock.
+I was also limited by a parallel H0 track distance of only 60mm, which gave only 10mm of clearance in between, so we had to raise the mechanical semaphores using extenders.
+The specific signal configuration of the ELVA can be seen in <a href="signal_referenz.svg">our reference map</a>.
+</p>
+
+<p>
+For reference during my design, I used the fantastic MIBA-Report Signale 1-3 by the amazing <a href="https://www.stefancarstens.de">Stefan Carstens</a> which included detailed drawings and many pictures as well as a great overview of the functionality and history of each system. I cannot recommend these books highly enough!
+We also had several original railway signals (Form-, H/V'51- and Ks'S&amp;B-Signale) in our lab so I could take direct measurements of them.
+</p>
+
+<p>
+After the concept and design phase, I started to design the first PCBs using KiCAD and lots of Python scripting for 2D import of outlines and 3D export of VRML converted to X3D to be assembled virtually and check all dimensions.
+All PCBs were custom panelized using more Python scripting and manufactured with some convincing by JLCPCB.
+The 10x14 LED matrices where SMT assembled by JLCPCB too, but due to the limitations of the design, had to be manually reworked and then sandwiched using a spacer PCB on top of the logic PCB.
+This was a lot of specialized work with plenty of testing and cursing <a href="https://twitter.com/salkinium/status/1429280125598801921">as detailed in this thread</a>.
+The screen masks were created using SolidPython, which generates OpenSCAD code, and included a custom panelizer to generate custom panels with support structures that minimized cost.
+The assembly of the clear SLA optics into the MJF prints was then done manually and then the mask was glued onto the signal screen.
+You can find the 3D models below, including all the different configurations the system can model.
+<a href="https://twitter.com/salkinium/status/1425200465504051206">The end results are spectacular!</a>
+</p>
+
+<p>
+Note that the first generation signals will not be open-sourced by request of the institute, due to a lack of technical support capabilities.
+Due to the painful assembly process of the first generation, I strongly recommend that you significantly improve the design if you plan to build your own version!
+For fun I'm <a href="https://twitter.com/salkinium/status/1430475987368697857">creating a second generation of these signals</a>, which are basically a complete redesign of the first version.
+Considering the parts shortage and my current preoccupation with other things in my life, the completion will probably be in a few years.
+</p>
+
+Overview of resources:
 <ul>
-<li><a href="konzept.pdf">Designkonzept</a></li>
-<li>2D Signale:<ul>
-<li><a href="signal_konzept.svg">Mustersignale zur Konzeptfindung</a></li>
+<li><a href="konzept.pdf">Designkonzept (Deutsch)</a></li>
+<li>2D Signale via SVG:<ul>
+<li><a href="signal_konzept.svg">Mustersignale zur Normalisierung</a></li>
 <li><a href="signal_referenz.svg">Referenzsignale der ELVA</a></li>
 </ul>
 </li>
-<li>3D Modelle:<ul>
+<li>3D Modelle via X3DOM:<ul>
 <li><a href="signal_form.html">Form-Signale</a></li>
 <li><a href="signal_hv_alt.html">H/V-Signale (51er-Bauform)</a></li>
 <li><a href="signal_hv.html">H/V-Signale (Einheitsbauform)</a></li>
 <li><a href="signal_hv_kompakt.html">H/V-Signale (Kompaktbauform)</a></li>
 <li><a href="signal_ks.html">Ks-Signale</a></li>
-<li><a href="signal_halter.html">Signalmast Löthilfe</a></li>
+<li><a href="signal_halter.html">Signalmast L&oumlthilfe</a></li>
 </ul>
 </li>
 </ul>
