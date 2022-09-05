@@ -36,7 +36,7 @@ This reduced the amount of cabling and made the construction very precise since 
 The electronics would be quite simple: A STM32G071 would drive a number of SK9822 RGB LEDs via SPI in a chain, the animations would be done in software.
 The matrix signals are controlled by a monochrome matrix driver connected over I2C.
 The mechanical semaphores are driven by a small and cheap, but high quality linear actuator from Aliexpress, which apparently was used to pull/push pop up selfie cameras in smartphones.
-The STM32 controller firmware is written with <a href="https://modm.io">modm</a> and communicates with the baseboard using a <a href="https://modm.io/reference/module/modm-communication-amnb/">CDMA protocol over half-duplex UART</a>.
+The STM32 controller firmware is written with <a href="https://modm.io">modm</a> and communicates with the baseboard using a <a href="https://modm.io/reference/module/modm-communication-amnb/">P-persistent CSMA/CD protocol over half-duplex UART</a>.
 </p>
 
 <p>
@@ -83,7 +83,7 @@ Overview of resources:
 <li><a href="signal_hv.html">H/V-Signale (Einheitsbauform)</a></li>
 <li><a href="signal_hv_kompakt.html">H/V-Signale (Kompaktbauform)</a></li>
 <li><a href="signal_ks.html">Ks-Signale</a></li>
-<li><a href="signal_halter.html">Signalmast L&oumlthilfe</a></li>
+<li><a href="signal_halter.html">Signalmast L&ouml;thilfe</a></li>
 </ul>
 </li>
 </ul>
