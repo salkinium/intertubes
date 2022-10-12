@@ -39,15 +39,15 @@ function toggleMaske(button)
 {
 	for (i=0; i <= 2; i++) {
 		maske = document.getElementById("transform_maske_"+i)
+		if (maske) maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "135 0 0" : "0 0 0")
 		optik = document.getElementById("transform_optik_"+i)
-		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "35 0 0" : "0 0 0")
-		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "20 0 0" : "0 0 0")
+		if (optik) optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "120 0 0" : "0 0 0")
 	}
 	for (i=0; i <= 2; i++) {
 		maske = document.getElementById("transform_matrix_maske_"+i)
+		if (maske) maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 120" : "0 0 0")
 		optik = document.getElementById("transform_matrix_optik_"+i)
-		maske.setAttribute("translation", maske.getAttribute("translation") == "0 0 0" ? "0 0 20" : "0 0 0")
-		optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 30" : "0 0 0")
+		if (optik) optik.setAttribute("translation", optik.getAttribute("translation") == "0 0 0" ? "0 0 130" : "0 0 0")
 	}
 }
 function configure()
