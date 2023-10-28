@@ -28,7 +28,7 @@ I later rebuild the railway lab electronics of the <a href="http://www.via.rwth-
 </p>
 
 <p>
-During my 2+ years at <a href="https://arm.com">Arm</a>, I worked as an Embedded Software Engineer on mbed OS core and HAL, as well as <a href="https://github.com/ARMmbed/uvisor/">uVisor</a>, a device security layer for Cortex-M microcontrollers, and the <a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm">arm-none-eabi-gcc toolchain</a>, and co-authored three patents. I have expert knowledge on and experience with all ARM Cortex-M architectures: v6-M, v7-M, and v8-M.
+During my 2+ years at <a href="https://arm.com">Arm</a>, I worked as an Embedded Software Engineer on mbed OS core and HAL, as well as <a href="https://github.com/ARMmbed/uvisor/">uVisor</a>, a device security layer for Cortex-M microcontrollers, and the <a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm">arm-none-eabi-gcc toolchain</a>, and <a href="https://patents.google.com/?inventor=Niklas+Lennart+Hauser">co-authored three patents</a>. I have expert knowledge on and experience with all ARM Cortex-M architectures: v6-M, v7-M, and v8-M.
 </p>
 
 <p>
@@ -39,53 +39,67 @@ I'm currently working as a Senior Embedded Software Engineer at <a href="https:/
 I'm currently looking for a job in the area of embedded software and tooling. <a href="https://salkinium.com/cv.pdf">Here is my CV</a>, feel free to <a href="mailto:niklas@salkinium.com">email me</a> if you're interested.
 </p> -->
 
-<h1>Code</h1>
+<h1>Science</h1>
 <p>
-<a href="https://modm.io">modm</a>: Project lead and co-maintainer of a C++23 barebone embedded library generator, which generates custom HALs for thousands of different AVRs and Cortex-M devices.
+Master Thesis: <a href="https://salkinium.com/master.pdf">Holistic Data Extraction From Technical Documentation For Generating Embedded Software</a>
 </p>
 
 <p>
-<a href="https://github.com/modm-io/modm-devices">modm-devices</a>: Maintainer of a Python data pipeline that provides a database of detailed hardware descriptions for modm.
-</p>
-
-<p>
-<a href="https://github.com/modm-io/lbuild">lbuild</a>: Maintainer of a modular code generator used by modm.
-</p>
-
-<p>
-<a href="https://github.com/auterion/embedded-debug-tools">Embedded Debug Tools</a>: Creator and maintainer of a toolbox of GDB plugins and tracing converters to debug and profile the PX4 Autopilot firmware with the NuttX RTOS. (<a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Presentation</a>)
-</p>
-
-<p>
-My other projects are hosted on <a href="https://github.com/salkinium">GitHub</a> too.
+Paper in the Journal of Systems Research (JSys): <a href="https://www.jsys.org/read">Automatically Extracting Hardware Descriptions from PDF Technical Documentation</a>.
+The paper is based on the above mentioned master thesis. The tool development is continued as the <a href="https://data.modm.io">modm-data project</a>.
 </p>
 
 <h1>Talks</h1>
-<!-- <p>
-At <a href="http://2017.embo.io">emBO++17</a> I presented <a href="https://salkinium.com/talks/embo17_modm.pdf">modm: a toolbox to generate microcontroller HALs</a>.
-</p> -->
-
 <p>
 At <a href="http://2018.embo.io">emBO++18</a> I held a lightning talk on <a href="https://salkinium.com/talks/embo18_armv8m.pdf">ARMv8-M and TrustZone-M</a>.
 </p>
-
-<!-- <p>
-At the DLR Software Engineering Workshop 2018 I gave the keynote about <a href="https://salkinium.com/talks/dlr18_embedded_data_science.pdf">Improving Embedded Software with Data Science</a>.
-</p> -->
 
 <p>
 At <a href="http://2019.embo.io">emBO++19</a> I gave a short talk about <a href="https://salkinium.com/talks/embo19_lbuild.pdf">Modular Code Generation with lbuild</a>.
 </p>
 
 <p>
-At <a href="https://events.ccc.de/camp/2023/">CCCamp23</a> I talked about <a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Debugging and Profiling Microcontrollers</a> (<a href="https://salkinium.com/talks/cccamp23_debugging_microcontrollers.pdf">Slides with Notes</a>).
+At <a href="https://events.ccc.de/camp/2023/">CCCamp23</a> I talked about <a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Debugging Microcontrollers</a> (<a href="https://salkinium.com/talks/cccamp23_debugging_microcontrollers.pdf">Slides with Notes</a>).
 </p>
 
-<h1>Communication</h1>
+<p>
+At the <a href="https://events.nuttx.apache.org">NuttX Internation Workshop 2023</a> I gave a slightly updated talk on <a href="https://www.youtube.com/watch?v=_k1f4F2JVBA">Debugging and Profiling NuttX and PX4</a>.
+</p>
+
+<p>
+At the <a href="https://events.linuxfoundation.org/px4-developer-summit/">PX4 Developer Summit 2023</a> I gave another talk on Debugging PX4<!-- (<a href="https://salkinium.com/talks/px4summit23_debugging_px4.pdf">Slides with Notes</a>)-->.
+</p>
+
+<h1>Projects</h1>
+<p>
+<a href="https://modm.io">modm</a>: Project lead and co-maintainer of a C++23 barebone embedded library generator, which generates custom HALs for thousands of different AVRs and Cortex-M devices.
+</p>
+
+<!-- <p>
+<a href="https://github.com/modm-io/modm-devices">modm-devices</a>: Maintainer of a Python data pipeline that provides a database of detailed hardware descriptions for modm.
+</p> -->
+
+<p>
+<a href="https://data.modm.io">modm-data</a>: Creator and maintainer of a modular data processor to extract and assemble semantic hardware description data for embedded devices from vendor-provided PDF technical documentation and machine-readable data sources. Based on <a href="https://www.jsys.org/read">my JSys paper</a>.
+</p>
+
+<p>
+<a href="https://github.com/modm-io/lbuild">lbuild</a>: Maintainer of a Python3+Jinja2 modular code generator used by modm.
+</p>
+
+<p>
+<a href="https://github.com/auterion/embedded-debug-tools">emdbg – Embedded Debug Tools</a>: Creator and maintainer of a toolbox of GDB plugins and tracing converters to debug and profile the PX4 Autopilot firmware with the NuttX RTOS. (<a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Presentation</a>)
+</p>
+
+<p>
+My other projects are hosted on <a href="https://github.com/salkinium">GitHub</a>.
+</p>
+
+<h1>Contact</h1>
 <p>
 You can reach me via electronic mail at <a href="mailto:niklas@salkinium.com">niklas@salkinium.com</a>.</br>
-Follow me on <a href="https://chaos.social/@salkinium">Fediverse</a> for my brain dump.</br>
-For more structured thoughts refer to <a href="https://blog.salkinium.com">my blog</a>.
+Follow me on <a rel="me" href="https://chaos.social/@salkinium">Mastodon</a> for my brain dump.</br>
+For a few more structured thoughts refer to <a href="https://blog.salkinium.com">my blog</a>.
 </p>
 </div>
 </body>
