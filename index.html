@@ -43,7 +43,7 @@ h1 a {
 
 /* Move the text left */
 #main {
-    width: 400pt;
+    width: 450pt;
     padding-left: 150px;
     margin: 0 0 0 100px;
 }
@@ -132,32 +132,6 @@ I'm currently working as a Senior Embedded Software Engineer at <a href="https:/
 I'm currently looking for a job in the area of embedded software and tooling. <a href="https://salkinium.com/cv.pdf">Here is my CV</a>, feel free to <a href="mailto:niklas@salkinium.com">email me</a> if you're interested.
 </p> -->
 
-<h1>Publications</h1>
-<p>
-Paper in the Journal of Systems Research (JSys): <a href="https://escholarship.org/uc/item/32z0068j">Automatically Extracting Hardware Descriptions from PDF Technical Documentation</a>.
-The paper is based on <a href="https://salkinium.com/master.pdf">my master thesis</a> and the tool development is continued in the <a href="https://data.modm.io">modm-data project</a>.
-</p>
-
-<h1>Talks</h1>
-<p>
-At <a href="http://2018.embo.io">emBO++18</a> I held a lightning talk on <a href="https://salkinium.com/talks/embo18_armv8m.pdf">ARMv8-M and TrustZone-M</a>.
-</p>
-
-<p>
-At <a href="http://2019.embo.io">emBO++19</a> I gave a short talk about <a href="https://salkinium.com/talks/embo19_lbuild.pdf">Modular Code Generation with lbuild</a>.
-</p>
-
-<p>
-At <a href="https://events.ccc.de/camp/2023/">CCCamp23</a> I talked about <a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Debugging Microcontrollers</a> (<a href="https://salkinium.com/talks/cccamp23_debugging_microcontrollers.pdf">Slides with Notes</a>).
-</p>
-
-<p>
-At the <a href="https://events.nuttx.apache.org">NuttX International Workshop 2023</a> I gave a slightly updated talk on <a href="https://www.youtube.com/watch?v=_k1f4F2JVBA">Debugging and Profiling NuttX and PX4</a>.
-</p>
-
-<p>
-At the <a href="https://events.linuxfoundation.org/px4-developer-summit/">PX4 Developer Summit 2023</a> I gave another talk on Debugging PX4 (<a href="https://salkinium.com/talks/px4summit23_debugging_px4.pdf">Slides with Notes</a>).
-</p>
 
 <h1>Projects</h1>
 <p>
@@ -182,6 +156,60 @@ At the <a href="https://events.linuxfoundation.org/px4-developer-summit/">PX4 De
 
 <p>
 My other projects are hosted on <a href="https://github.com/salkinium">GitHub</a>.
+</p>
+
+
+<h1>Talks</h1>
+<p>
+At <a href="http://2018.embo.io">emBO++18</a> I held a lightning talk on <a href="https://salkinium.com/talks/embo18_armv8m.pdf">ARMv8-M and TrustZone-M</a>.
+</p>
+
+<p>
+At <a href="http://2019.embo.io">emBO++19</a> I gave a short talk about <a href="https://salkinium.com/talks/embo19_lbuild.pdf">Modular Code Generation with lbuild</a>.
+</p>
+
+<p>
+At <a href="https://events.ccc.de/camp/2023/">CCCamp23</a> I talked about <a href="https://media.ccc.de/v/camp2023-57321-debugging_microcontrollers">Debugging Microcontrollers</a> (<a href="https://salkinium.com/talks/cccamp23_debugging_microcontrollers.pdf">Slides with Notes</a>).
+</p>
+
+<p>
+At the <a href="https://events.nuttx.apache.org">NuttX International Workshop 2023</a> I gave a slightly updated talk on <a href="https://www.youtube.com/watch?v=_k1f4F2JVBA">Debugging and Profiling NuttX and PX4</a>.
+</p>
+
+<p>
+At the <a href="https://events.linuxfoundation.org/px4-developer-summit/">PX4 Developer Summit 2023</a> I gave another talk on Debugging PX4 (<a href="https://salkinium.com/talks/px4summit23_debugging_px4.pdf">Slides with Notes</a>).
+</p>
+
+
+<h1>Publications</h1>
+<p>
+Niklas Hauser and Jan Pennekamp.</br>
+<u>Automatically Extracting Hardware Descriptions from PDF Technical Documentation</u>.</br>
+<i>Journal of Systems Research</i>, 3(1), 10 2023.</br>
+<a href="http://dx.doi.org/10.5070/SR33162446">[DOI]</a> <a href="https://salkinium.com/hp23.pdf">[PDF]</a> <a href="https://github.com/salkinium/pdf-data-extraction-jsys-artifact">[CODE]</a>
+<details><summary>ABSTRACT</summary>
+The ever-increasing variety of microcontrollers aggravates the challenge of porting embedded software to new devices through much manual work, whereas code generators can be used only in special cases. Moreover, only little technical documentation for these devices is available in machine-readable formats that could facilitate automating porting efforts. Instead, the bulk of documentation comes as print-oriented PDFs. We hence identify a strong need for a processor to access the PDFs and extract their data with a high quality to improve the code generation for embedded software. In this paper, we design and implement a modular processor for extracting detailed datasets from PDF files containing technical documentation using deterministic table processing for thousands of microcontrollers. Namely, we systematically extract device identifiers, interrupt tables, package and pinouts, pin functions, and register maps. In our evaluation, we compare the documentation from STMicro against existing machine-readable sources. Our results show that our processor matches 96.5% of almost 6 million reference data points, and we further discuss identified issues in both sources. Hence, our tool yields very accurate data with only limited manual effort and can enable and enhance a significant amount of existing and new code generation use cases in the embedded software domain that are currently limited by a lack of machine-readable data sources.
+</details>
+<details><summary>BIBTEX</summary><code><pre>
+@article{HP23,
+  author = {Hauser, Niklas and Pennekamp, Jan},
+  title = {{Automatically Extracting Hardware Descriptions from PDF Technical Documentation}},
+  journal = {Journal of Systems Research},
+  year = {2023},
+  volume = {3},
+  number = {1},
+  publisher = {eScholarship Publishing},
+  month = {10},
+  doi = {10.5070/SR33162446},
+  code = {https://github.com/salkinium/pdf-data-extraction-jsys-artifact},
+  code2 = {https://github.com/modm-io/modm-data},
+  meta = {},
+}
+</pre></code></details>
+</p>
+
+<p>
+The tool development is continued in the <a href="https://data.modm.io">modm-data project</a>.
 </p>
 
 <h1>Contact</h1>
