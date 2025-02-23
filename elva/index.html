@@ -12,12 +12,21 @@
 
 <h2>ELVA German Railway Signals</h2>
 
+<center>
+<video width="49%" autoplay loop muted>
+<source src="vid1.mp4" type="video/mp4"/>
+</video>
+<video width="49%" autoplay loop muted>
+<source src="vid2.mp4" type="video/mp4"/>
+</video>
+</center>
+
 <p>
 The <a href="http://www.via.rwth-aachen.de/elva.php">railway lab ELVA of the Institute of Transport Science</a> was originally built from 1958-1961 and operated completely electrical, only using some (railway grade) relays to store state.
 The gauge was a non-standard 34mm (O gauge is 32mm!) with custom-built vehicles, so it could not be upgraded with commercial parts and instead had to be repaired manually.
 </p>
 <p>
-From 2015-2018 the railway lab was completely renovated and the model railway was replaced with a <a href="https://twitter.com/salkinium/status/1425145497942171655">standard H0-gauge digital control system</a>.
+From 2015-2018 the railway lab was completely renovated and the model railway was replaced with a standard H0-gauge digital control system.
 The model railway has about 1200m of track (Roco), 200 switch points (using indestructible LGB motors), 400 axle counters (dual hall sensors), and 150 signals (custom design).
 Additionally, the physical interlocking systems required about 600 custom digital and analog IO connections using various MOSFET and micro-relays circuits to interface with higher DC or AC voltages.
 </p>
@@ -55,18 +64,21 @@ We also had several original railway signals (Form-, H/V'51- and Ks'S&amp;B-Sign
 After the concept and design phase, I started to design the first PCBs using KiCAD and lots of Python scripting for 2D import of outlines and 3D export of VRML converted to X3D to be assembled virtually and check all dimensions.
 All PCBs were custom panelized using more Python scripting and manufactured with some convincing by JLCPCB.
 The 10x14 LED matrices where SMT assembled by JLCPCB too, but due to the limitations of the design, had to be manually reworked and then sandwiched using a spacer PCB on top of the logic PCB.
-This was a lot of specialized work with plenty of testing and cursing <a href="https://twitter.com/salkinium/status/1429280125598801921">as detailed in this thread</a>.
+This was a lot of specialized work with plenty of testing and cursing <a href="https://chaos.social/@salkinium/113318579367625346">as detailed in this thread</a>.
 The screen masks were created using SolidPython, which generates OpenSCAD code, and included a custom panelizer to generate custom panels with support structures that minimized cost.
 The assembly of the clear SLA optics into the MJF prints was then done manually and then the mask was glued onto the signal screen.
 You can find the 3D models below, including all the different configurations the system can model.
-<a href="https://twitter.com/salkinium/status/1425200465504051206">The end results are spectacular!</a>
 </p>
 
 <p>
 Note that the first generation signals will not be open-sourced by request of the institute, due to a lack of technical support capabilities.
 Due to the painful assembly process of the first generation, I strongly recommend that you significantly improve the design if you plan to build your own version!
-For fun I'm <a href="https://twitter.com/salkinium/status/1430475987368697857">creating a second generation of these signals</a>, which are basically a complete redesign of the first version.
+For fun I'm <a href="https://chaos.social/@salkinium/113318722898639040">creating a second generation of these signals</a>, which are basically a complete redesign of the first version.
 Considering the parts shortage and my current preoccupation with other things in my life, the completion will probably be in a few years.
+</p>
+
+<p>
+<a href="https://chaos.social/@salkinium/113313183794636898">Here is a summary Mastodon thread with many more pictures!</a>
 </p>
 
 Overview of resources:
